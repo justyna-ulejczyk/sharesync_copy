@@ -2,12 +2,15 @@
 // Connect to the database
 require_once "connect_db.php";
 
-// Prepare the SQL statement with a placeholder for the username
-$stmt = pg_prepare($conn, "find_user", "SELECT * FROM accounts WHERE username = $1");
+// Start or resume a session
+session_start();
 
 // Get username and password from POST data
 $username = $_POST['username'];
 $user_entered_password = $_POST['password'];
+
+// Prepare the SQL statement with a placeholder for the username
+$stmt = pg_prepare($conn, "find_user", "SELECT * FROM accounts WHERE username = $1");
 
 // Execute the prepared statement with the provided username
 $result = pg_execute($conn, "find_user", array($username));
@@ -25,18 +28,11 @@ $stored_password_hash = pg_fetch_result($result, 0, 'password');
 if (!password_verify($user_entered_password, $stored_password_hash)) {
     echo "Incorrect password";
 } else {
-    // Start a session and store the username
-    session_start();
-    //session_id("userSession");
+    // Store username in session
     $_SESSION['username'] = $username;
 
     // Redirect to home.php
     header("Location: ../html/home.php");
     exit(); // Make sure to stop further execution after redirecting
 }
-
-    
-    
-    
-       
-        
+?>
