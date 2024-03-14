@@ -1,63 +1,62 @@
-
 <?php
 
 require_once "../php/connect_db.php";
 
-//session_id("userSession");
 session_start();
+
+// Redirect to login page if user is not logged in
 if (!isset($_SESSION["username"])) {
-    header('Location: ' . "./login.php");
-    exit(); // Make sure to exit after redirecting
+    header('Location: ./login.php');
+    exit();
 }
+
 $login_username = $_SESSION["username"];
-session_write_close();
-session_id("groupSession");
-session_start();
-// Get passed product genre and assign it to a variable.
+
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $_SESSION["groupid"] = $id;
+    $_SESSION["groupid"] = $_GET['id'];
 }
+
 $groupid = $_SESSION["groupid"];
-
-// Corrected variable names
 $followee = $_GET['name'];
-$group = $_SESSION['groupid']; // Using session variable directly
 
-//check if not following user yet
-$stmtFollowee = pg_prepare($conn, "check", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
-$stmtEx = pg_execute($conn, "check", array($followee, $login_username));
+if ($followee == $login_username) {
+    echo "You cannot follow yourself.";
+    header("Location: ../html/profile.php");
+    exit();
+}
 
-if($stmtEx !== false) {
-    // Check if there are any rows returned
-    if(pg_num_rows($stmtEx) > 0) {
-        echo "You already follow $followee";
-    }else{ if($followee==$login_username){
-        echo "you cannot follow yourself...";
-        header ("Location: ../html/profile.php");
-    }else{
+// Check if the user is already following the followee
+$stmtFollowee = pg_prepare($conn, "check_followee", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
+$resultFollowee = pg_execute($conn, "check_followee", array($followee, $login_username));
 
-// Assuming $conn is properly initialized
-$stmt = pg_prepare($conn, "followers", "INSERT INTO  follows (username, followee) VALUES ($1, $2)");
-$result = pg_execute($conn, "followers", array( $login_username, $followee)); // Using $result instead of $result2
-if ($result) {
-   header ("Location: ../html/profile.php?id=$followee");
+if ($resultFollowee !== false && pg_num_rows($resultFollowee) > 0) {
+    echo "You are already following $followee.";
 } else {
-    echo "Error: " . pg_last_error($conn);
-    die();
-    }}}}
- 
- // adding to notifications table 
+    // Insert into follows table
+    $stmtFollowers = pg_prepare($conn, "insert_followers", "INSERT INTO follows (username, followee) VALUES ($1, $2)");
+    $resultFollowers = pg_execute($conn, "insert_followers", array($login_username, $followee));
 
+    if ($resultFollowers) {
+        header("Location: ../html/profile.php?id=$followee");
+        exit();
+    } else {
+        echo "Error: " . pg_last_error($conn);
+        exit();
+    }
+}
+
+// Add to notifications table
 $date = date("Y-m-d");
 $killTime = new DateTime();
 $killTime->modify('+3 weeks');
 
-$mess =  "$login_username started following  $followee";
-$notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
-(username, timestamp, killtime, notifmessage) 
-VALUES ($1, $2, $3, $4) RETURNING notificationID");
+$mess = "$login_username started following $followee";
+$notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications (username, timestamp, killtime, notifmessage) VALUES ($1, $2, $3, $4) RETURNING notificationID");
 $notificationResult = pg_execute($conn, "add_notification", array($login_username, $date, $killTime->format('Y-m-d'), $mess));
+
+if (!$notificationResult) {
+    echo "Error: " . pg_last_error($conn);
+}
 
 pg_close($conn);
 ?>
