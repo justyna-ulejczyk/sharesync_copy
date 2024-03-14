@@ -73,6 +73,9 @@
             <h1>ShareSync</h1>
             <h1>Register</h1>
         </div>
+       <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+        <label for="agreeTerms">I agree to the <a href="tc.html">Terms and Conditions</a></label><br>
+               
         <form action="../php/register.php" method="post" id="registrationForm">
             <div>
                 <label for="name">Full name:</label>
@@ -90,12 +93,13 @@
                 <label for="student">Student</label><br>
                 <input type="radio" id="artist" name="account_type" value="artist">
                 <label for="artist">Artist</label><br>
-                <div class="option2">
+        <div class="option2">
                     <p>Already a Member?</p>
                     <a class="to-login-change-screen">Login</a>
                 </div>
             </div>
             <div>
+           
                 <input id="registerSubmit" name="register" type="submit" value="register" onload="" />
             </div>
         </form>
