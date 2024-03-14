@@ -1,6 +1,6 @@
 <?php
 require_once("connect_db.php");
-session_id("userSession");
+//session_id("userSession");
 session_start();
 
 // Get the raw POST data

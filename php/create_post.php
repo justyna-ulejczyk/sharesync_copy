@@ -1,5 +1,5 @@
 <?php
-session_id("userSession");
+//session_id("userSession");
 session_start();
 if (! isset($_SESSION["username"])){
     header('Location: '."../html/login.html"); // redirect the user to the register page if they have not already logged in

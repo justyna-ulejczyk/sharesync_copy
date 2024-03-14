@@ -2,7 +2,7 @@
 
 require_once "../php/connect_db.php";
 
-session_id("userSession");
+//session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");

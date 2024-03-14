@@ -7,7 +7,7 @@ if (!isset($_SESSION["username"])) {
 }
 $login_username = $_SESSION["username"];
 session_write_close();
-session_id("groupSession");
+//session_id("groupSession");
 session_start();
 // Get passed product genre and assign it to a variable.
 if (isset($_GET['id'])) {

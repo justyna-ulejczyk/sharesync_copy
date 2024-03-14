@@ -2,7 +2,7 @@
 
 require_once "connect_db.php";
 
-session_id("userSession");
+//session_id("userSession");
 session_start();
 $bio = $_POST["bio"];
 $username = $_SESSION["username"];
