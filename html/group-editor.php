@@ -8,8 +8,8 @@ if (!isset($_SESSION["username"])) {
 }
 $username = $_SESSION["username"];
 session_write_close();
-session_id("groupSession");
-session_start();
+//session_id("groupSession");
+//session_start();
 $groupid = $_SESSION["groupid"];
 $groupname = $_SESSION["groupname"];
 session_write_close();
