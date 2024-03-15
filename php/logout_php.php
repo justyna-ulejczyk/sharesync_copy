@@ -1,22 +1,19 @@
 <?php
-//session_id("userSession");
 session_start();
 
+// Check if the user is logged in
 if (!isset($_SESSION["username"])) {
     header('Location: ./login.php');
-    exit(); // Make sure to exit after redirection to prevent further execution
+    exit(); // Exit to prevent further execution
 }
 
-require_once "../php/connect_db.php";
+// Unset specific session variables
+unset($_SESSION["username"]);
 
-$username = $_SESSION["username"];
-
-# Clear existing variables.
-$_SESSION = array();
-# Destroy the session.
+// Destroy the session data
 session_destroy();
 
-# Redirect to the login page.
+// Redirect to the login page
 header('Location: ../html/login.php');
-exit(); // Make sure to exit after redirection to prevent further execution
+exit(); // Exit to prevent further execution
 ?>
