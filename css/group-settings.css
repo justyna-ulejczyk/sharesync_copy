@@ -151,3 +151,13 @@ input[type="submit"].change-group-name {
     border-radius: 15px;
     border: 1px solid var(--text) !important;
 }
+
+.delete-group {
+    cursor: pointer;
+    padding: 10px 35px;
+    color: var(--text);
+
+    background: none;
+    border: 1px solid var(--text);
+    border-radius: 15px;
+}
