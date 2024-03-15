@@ -13,7 +13,7 @@ if ($NumbRows > 0) {
         $notification = $row['notifmessage'];
         $time = $row['timestamp'];
         $killtime = $row['killtime'];
-        if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
+        if (strtotime($killtime) >= strtotime(date("Y-m-d"))) {
             $notifications[] = array('notificationID' => $notificationID, 'notification' => $notification, 'time' => $time);
         }
     }
@@ -34,22 +34,22 @@ if ($NumbRows2 > 0) {
         $user_table = $row['username'];
         $time = $row['timestamp'];
         $killtime = $row['killtime'];
-        if($user != $user_table && strtotime($killtime) >= strtotime(date("Y-m-d"))){
+        if ($user != $user_table && strtotime($killtime) >= strtotime(date("Y-m-d"))) {
             $notifications[] = array('notificationID' => $notificationID, 'notification' => " $notification", 'time' => $time);
         }
     }
 }
 
 // Sort notifications by ID first, then by time
-usort($notifications, function($a, $b) {
+usort($notifications, function ($a, $b) {
     // Compare notificationID first
     $idComparison = $b['notificationID'] - $a['notificationID'];
-    
+
     // If notificationID is equal, compare timestamps
     if ($idComparison == 0) {
         return strtotime($b['time']) - strtotime($a['time']);
     }
-    
+
     return $idComparison;
 });
 
@@ -57,7 +57,17 @@ if (count($notifications) > 0) {
     $counter = 0;
     foreach ($notifications as $notification) {
         $counter++;
-        echo "<list> <p>{$notification['notification']}</p><br></list>";
+        echo "<list>";
+        $i = 0;
+        foreach ($notifications as $notification) {
+            if ($i < 3) {
+                echo "<p class='dropdown-item'>{$notification['notification']}</p>";
+            } else {
+                break; // Break the loop once the top 3 items are displayed
+            }
+            $i++;
+        }
+        echo "</list>";
     }
 } else {
     echo "<div> <h1>No notifications yet...</h1></div>";

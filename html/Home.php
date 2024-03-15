@@ -28,7 +28,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="../js/Home.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/main.js"></script>
     <script src="../js/navbar.js"></script>
 </head>
 
@@ -577,6 +576,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
 
     </main>
+
+    <script src="../js/main.js"></script>
 </body>
 <?php pg_close($conn); ?>
 

@@ -299,6 +299,8 @@ form:valid .fa {
 }
 
 .dropdown-content {
+    box-sizing: border-box;
+    padding: 10px 20px;
     position: absolute;
     margin-top: 60px;
     margin-left: -80px;

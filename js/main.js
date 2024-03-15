@@ -1,6 +1,19 @@
 function toggleDropdownNav() {
     var dropdownContent = document.getElementById("dropdownContent");
     dropdownContent.classList.toggle("active");
+
+    // Select all items in the dropdown
+    var items = dropdownContent.querySelectorAll(".dropdown-item");
+
+    // Loop through each item
+    for (var i = 0; i < items.length; i++) {
+        // Show the first 3 items, hide the rest
+        if (i < 3) {
+            items[i].style.display = "block";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
 }
 
 function toggleDropdownProfile() {
@@ -100,14 +113,14 @@ function handleSubmit(buttonId, formId, messageId) {
         alert("Please enter a message.");
         return;
     } else {
-            // Disable the button to prevent multiple submissions
-            document.getElementById(buttonId).disabled = true;
+        // Disable the button to prevent multiple submissions
+        document.getElementById(buttonId).disabled = true;
 
-            // Submit the form
-            document.getElementById(formId).submit();
+        // Submit the form
+        document.getElementById(formId).submit();
     }
 
-    
+
 }
 
 
