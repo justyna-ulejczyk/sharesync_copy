@@ -1,7 +1,7 @@
 <?php
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
@@ -11,7 +11,7 @@ require_once "../php/connect_db.php";
 $username = $_SESSION["username"];
 $login_username = $_SESSION["username"];
 $account_username = $username;
-if (isset($_GET["id"])) {
+if (isset ($_GET["id"])) {
     $id = $_GET["id"];
     $account_username = $id;
 }
@@ -307,7 +307,6 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 <div class="banner-profile-options">
                     <div>
                         <button onclick="showPostsTab()">Posts</button>
-                        <button onclick="showGroupsTab()">Groups</button>
                         <button onclick="showAboutTab()">About</button>
                     </div>
                     <div>
@@ -388,12 +387,12 @@ if (pg_num_rows($userDataRESULT) == 0) {
                             <div class='choices'>
                                 <div class='comment-post-options'>
                                     <!-- Likes -->";
-                                    if ($postLikedByUser) {
-                                        echo "<button id='likePostButton' class='like icons post-$postid active' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
-                                    } else {
-                                        echo "<button id='likePostButton' class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
-                                    }
-                                        echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                            if ($postLikedByUser) {
+                                echo "<button id='likePostButton' class='like icons post-$postid active' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
+                            } else {
+                                echo "<button id='likePostButton' class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
+                            }
+                            echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                             xmlns='http://www.w3.org/2000/svg'>
                                             <path
                                                 d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
@@ -528,15 +527,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
             </div>
         </section>
 
-        <!-- Displaying part of groups -->
-        <section class="profile-info-groups">
-            <div class="profile-info-groups-container">
-                <div class="profile-info-groups-group-container">
-                    <img class="profile-info-groups-group" src="../images/f1.png">
-                    <a class="profile-info-groups-name">Group Name</a>
-                </div>
-            </div>
-        </section>
+
 
         <!-- Displaying About -->
         <section class="profile-info-about">

@@ -1,7 +1,7 @@
 <?php
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
@@ -397,7 +397,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <!-- Start Post 1 -->
             <?php
             $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
-            if (isset($_GET["id"])) {
+            if (isset ($_GET["id"])) {
                 if ($_GET["id"] == "following") {
                     $postsListQuery = "SELECT postid, text, post.username, name FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN follows ON accounts.username = follows.followee WHERE follows.username = '$username' ORDER BY postid DESC";
                 }
@@ -520,45 +520,45 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         <form action="../php/comments.php" method="post">
                             <input class="comment-create" id="comment" name="text" type="text">
                             <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
-                            <button type="submit" name="commentSubmit">Comment</button> 
+                            <button type="submit" name="commentSubmit">Comment</button>
                         </form>
-                </div>
+                    </div>
 
-                        <?php echo "
+                    <?php echo "
             </div>
         </prepost>";
-                        echo "<div class='feed-post'>";
-                        echo "<div class='user-container'>";
-                        echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
-                        echo "<div class='user-post-name'>";
-                        echo "<span>$name</span>";
-                        echo "<span>@$poster_username</span>";
-                        echo "</div>";
-                        echo "</div>";
-                        echo "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
-                        echo "<img class='post-image' src=$post_image_path />";
-                        echo "</button>";
-                        echo "<div class='choices'>";
-                        echo "<div class='post-options'>";
-                        echo "<!-- Likes -->";
-                        if ($postLikedByUser) {
-                            echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
-                        } else {
-                            echo "<button class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
-                        }
-                        echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
-                        echo "xmlns='http://www.w3.org/2000/svg'>";
-                        echo "<path";
-                        echo ' d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"';
-                        echo "fill='red' />";
-                        echo "</svg>";
-                        echo "</button>";
-                        echo "<p class='likeCounter $postid'>$likesCount</p>";
-                        echo "</div>";
-                        echo "</div>";
-                        echo "</div>";
+                    echo "<div class='feed-post'>";
+                    echo "<div class='user-container'>";
+                    echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                    echo "<div class='user-post-name'>";
+                    echo "<span>$name</span>";
+                    echo "<span>@$poster_username</span>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
+                    echo "<img class='post-image' src=$post_image_path />";
+                    echo "</button>";
+                    echo "<div class='choices'>";
+                    echo "<div class='post-options'>";
+                    echo "<!-- Likes -->";
+                    if ($postLikedByUser) {
+                        echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                    } else {
+                        echo "<button class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                    }
+                    echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                    echo "xmlns='http://www.w3.org/2000/svg'>";
+                    echo "<path";
+                    echo ' d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"';
+                    echo "fill='red' />";
+                    echo "</svg>";
+                    echo "</button>";
+                    echo "<p class='likeCounter $postid'>$likesCount</p>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
 
-                        echo "</post>";
+                    echo "</post>";
 
                 }
             } else {
@@ -568,38 +568,14 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             // Close the database connection
             
             ?>
-                <!-- End of Post 1 -->
-                <!-- End of Posts -->
+            <!-- End of Post 1 -->
+            <!-- End of Posts -->
         </feed>
         <!-- End of Feed -->
 
 
 
-        <!-- Start of Groups-->
-        <groups class="tile group">
-            <div id="tile3">
-                <?php
-                $groupsSTMT = pg_prepare($conn, "groups", "SELECT *FROM groups INNER
-                JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
-                $groupsRESULT = pg_execute($conn, "groups", array($username));
 
-                while ($row = pg_fetch_assoc($groupsRESULT)) {
-                    $groupid = $row['groupid'];
-                    $groupname = $row['groupname'];
-                    echo "<button class='groupButton'>
-                    <div class='placeholder-img'></div>
-                <a href='group-page.php?id=$groupid'>
-                    <p>$groupname</p</a>
-                    </button>";
-                }
-                ?>
-            </div>
-
-            <div id="viewMore">
-                <a href="../html/group.php">View More</a>
-            </div>
-        </groups>
-        <!-- End of Gorups -->
     </main>
 </body>
 <?php pg_close($conn); ?>

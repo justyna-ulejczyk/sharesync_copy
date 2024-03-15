@@ -22,23 +22,12 @@ function exitButton(clickedElement) {
     }
 }
 
-function showGroupsTab() {
-    var profileTab = document.querySelector('.profile-info-display');
-    var groupTab = document.querySelector('.profile-info-groups');
-    var aboutTab = document.querySelector('.profile-info-about');
 
-    groupTab.style.display = 'block';
-    profileTab.style.display = 'none'
-    aboutTab.style.display = 'none';
-
-}
 
 function showPostsTab() {
     var profileTab = document.querySelector('.profile-info-display');
-    var groupTab = document.querySelector('.profile-info-groups');
     var aboutTab = document.querySelector('.profile-info-about');
 
-    groupTab.style.display = 'none';
     profileTab.style.display = 'flex'
     aboutTab.style.display = 'none';
 
@@ -46,39 +35,37 @@ function showPostsTab() {
 
 function showAboutTab() {
     var profileTab = document.querySelector('.profile-info-display');
-    var groupTab = document.querySelector('.profile-info-groups');
     var aboutTab = document.querySelector('.profile-info-about');
 
-    groupTab.style.display = 'none';
     profileTab.style.display = 'none'
     aboutTab.style.display = 'block';
 
 }
 
-function hideAllAbout()  {
+function hideAllAbout() {
     var overview = document.getElementById("overview");
     var contact = document.getElementById("contact");
     var info = document.getElementById("profileInfo")
-    overview.style.display ='none';
+    overview.style.display = 'none';
     contact.style.display = 'none';
     info.style.display = 'none'
 
 }
 
-function overview(clickedElement){
+function overview(clickedElement) {
     hideAllAbout();
     var overview = document.getElementById("overview");
-    overview.style.display= 'block';
+    overview.style.display = 'block';
 }
 
-function contact(clickedElement){
+function contact(clickedElement) {
     hideAllAbout();
     var contact = document.getElementById("contact");
     contact.style.display = 'block';
 }
 
 
-function profileInfo(clickedElement){
+function profileInfo(clickedElement) {
     hideAllAbout();
     var info = document.getElementById("profileInfo")
     info.style.display = 'block';
