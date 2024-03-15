@@ -14,6 +14,6 @@ unset($_SESSION["username"]);
 session_destroy();
 
 // Redirect to the login page
-header('Location: ../html/login.php');
+header('Location: ../html/Login.php');
 exit(); // Exit to prevent further execution
 ?>

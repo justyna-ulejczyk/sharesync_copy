@@ -33,6 +33,7 @@ session_write_close();
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/Group-settings.css">
 
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -345,6 +346,23 @@ session_write_close();
                                     <input type="submit" class="change-group-name " />
                                 </div>
                             </div>
+                            <div class="wrapper">
+                                <h2>Change Icon</h2>
+                                <!-- change this below to a form -->
+                                <div class="change-container">
+                                    <div class="avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                            <label for="imageUpload"></label>
+                                        </div>
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                style="background-image: url(../images/icons/Unknown_person.jpg);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                         <article>
                             <form action="../php/add_users.php" method="post" class='add-members'>
@@ -359,7 +377,10 @@ session_write_close();
                         </article>
                         <article>
                             <h2>Are you sure you want to leave?</h2>
-                            <p>Put the button to leave here</p>
+                            <form action="../php/delete_group.php" method="post">
+                                <input type="hidden" name=groupid value='<?php echo "$groupid" ?>'>
+                                <input class='delete-group' type="submit" value="Leave Group">
+                            </form>
                         </article>
                         <article>
                             <h2>Are you sure you want to delete this group?</h2>
@@ -412,7 +433,7 @@ session_write_close();
         </aside>
     </section>
 
-
+    <script src="../js/icon-change.js"></script>
     <script src="../js/group-settings.js"></script>
 </body>
 

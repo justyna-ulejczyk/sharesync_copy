@@ -114,7 +114,7 @@ feed {
     border-radius: 15px;
 }
 
-#newCanvasContent{
+#newCanvasContent {
     display: none;
     background-color: var(--foreground);
     border-radius: 10px;
@@ -122,20 +122,17 @@ feed {
     margin: 0px;
 }
 
-#newCanvas{
+#newCanvas {
     width: 100%;
     align-items: baseline;
     padding: 15px;
-
 }
 
-#newCanvas input{
-
+#newCanvas input {
     margin: 10px;
 }
 
-
-#newCanvas button{
+#newCanvas button {
     margin: 0px;
     margin-right: 0px;
     width: 95px;

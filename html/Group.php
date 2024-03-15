@@ -334,7 +334,7 @@ $username = $_SESSION["username"];
 
         ?>
         <bside class="friendBox">
-            <h1 class="heading">Friends List</h1>
+            <h3 class="heading">Friends List</h3>
             <?php
             if ($numRows > 0) {
                 echo '<section class="friendList">';
@@ -365,7 +365,7 @@ $username = $_SESSION["username"];
 
 
         <a href="../html/friends.php">
-            <h1 class="viewMore">View All</h1>
+            <h4 class="viewMore">View All</h4>
         </a>
         </section>
         </bside>
