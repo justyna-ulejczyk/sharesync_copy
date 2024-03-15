@@ -517,7 +517,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     </div>
                     <div class='comment-create-container'>
                         <form action="../php/comments.php" method="post">
-                            <input class="comment-create" id="comment" name="text" type="text">
+                            <input class="comment-create" id="comment" name="text" type="text" required>
                             <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
                             <button type="submit" name="commentSubmit">Comment</button>
                         </form>
