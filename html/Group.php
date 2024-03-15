@@ -263,21 +263,16 @@ $username = $_SESSION["username"];
     <main>
 
         <section class="create-container">
-            <div class="create-title">
-                <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
-            </div>
             <form action="../php/create_group.php" method="post">
+                <div class="create-title">
+                    <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
+                </div>
                 <div class="create-information">
                     <div id="name">
                         <p>Name</p>
                         <input type="text" id="groupname" name="groupname">
                     </div>
                     <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
-
-                    <!--<div id="desc">
-                    <p>Description</p>
-                    <textarea name="textarea"></textarea>
-                </div>-->
                 </div>
                 <div class="create-options">
                     <button type="button" onclick="closeCreate()">Cancel</button>

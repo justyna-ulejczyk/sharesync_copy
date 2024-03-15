@@ -59,7 +59,7 @@ section.create-container {
     aspect-ratio: 10/9;
     width: 100%;
     max-width: 700px;
-    max-height: 500px;
+    max-height: 300px;
     border-radius: 15px;
     z-index: 999;
 }
@@ -115,8 +115,13 @@ section.create-container {
 }
 
 .create-options button {
+    margin-top: 25px;
     background-color: var(--text);
     color: var(--background);
     padding: 18px 48px;
     border-radius: 24px;
+}
+
+.create-container form {
+    width: 100%;
 }
