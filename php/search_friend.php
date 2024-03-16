@@ -1,72 +1,83 @@
 <?php
-//session_id("userSession");
 session_start();
+
+// Redirect if user is not logged in
 if (!isset($_SESSION["username"])) {
-    header('Location: ' . "./login.php");
+    header('Location: ./login.php');
+    exit(); // Exit to prevent further execution
 }
 
 require_once "../php/connect_db.php";
-$username = $_SESSION["username"];
-?>
-<!DOCTYPE html>
-<html class="dimmed">
 
-<head>
-    <title>Groups</title>
-    <link rel="stylesheet" href="../css/Group.css">
-    <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/Group-create.css">
-    <link rel="stylesheet" href="../css/Friends.css">
+// Get the logged-in username
+$username = $_SESSION['username'];
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <script src="../js/main.js"></script>
-    <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/createGroup.js"></script>
-</head>
-
-<!-- test commit -->
-
-<!-- test commit - branch demo -->
-
-<body>
-    <!-- Start of SubNav -->
-    <subnav>
-        <ul>
-            <li>
-                <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
-                </a>
-            </li>
-
-            <li>
-                <div class="dropdown">
-                    <button class="dropButton">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
-                                stroke="black" stroke-width="2" />
-                            <path
-                                d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
-                                stroke="black" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+// Check if search query is submitted
+if (isset($_POST['search'])) {
+    $search = $_POST['search'];
+    session_write_close();
+    
+    $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
+    $userDataRESULT = pg_execute($conn, "user_data", array($username));
+    $name = pg_fetch_result($userDataRESULT, 0, "name");
+    ?>
+    
+    <!DOCTYPE html>
+    <html class="dimmed">
+    
+    <head>
+        <title>Homepage</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/Home.css">
+        <link rel="stylesheet" href="../css/StyleSheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <script src="../js/Home.js"></script>
+        <script src="../js/darkmode.js"></script>
+        <script src="../js/navbar.js"></script>
+    </head>
+    
+    <!-- test commit -->
+    
+    <!-- test commit - branch demo -->
+    
+    <body id="theme-switcher">
+    
+        <!-- Start of SubNav -->
+        <subnav>
+            <ul>
+                <li>
+                    <a href="Profile.php">
+                        <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
+                    </a>
+                </li>
+    
+                <li>
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
+                                    stroke="black" stroke-width="2" />
+                                <path
+                                    d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+    
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </subnav>
-    <!-- End of SubNav -->
-
-    <!-- Start of Nav -->
+                </li>
+            </ul>
+        </subnav>
+        <!-- End of SubNav -->
+    
+        <!-- Start of Nav -->
     <nav>
         <section>
             <form id="searchForm" action="">
@@ -235,62 +246,31 @@ $username = $_SESSION["username"];
     </nav>
     <!-- End of Nav -->
 <body>
-    <?php
-$stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1 ");
- $result = pg_execute($conn, "followers", array($username)); 
-$numRows = pg_num_rows($result);
-$stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE followee=$1");
+    <main>
+        
+<?php    
+    // Prepare and execute the query
+    $searchUser = pg_prepare($conn, "user_search", "SELECT * FROM accounts WHERE username LIKE $1 OR name Like $1 ");
+    $userResult = pg_execute($conn, "user_search", array("%$search%"));
 
+    // Check if there are results
+    if (pg_num_rows($userResult) > 0) {
+        echo 'SEARCH RESULTS:<br>';
+        // Loop through the results
+        while ($row = pg_fetch_assoc($userResult)) {
+            $username = $row['username']; // Fetch username from the row
 
-        ?>
-        <section id= "FriendsContentArea">
-                <h1>Friends List</h1>
-            <?php 
-            if ($numRows > 0) {
-               
-                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                while ($row = pg_fetch_assoc($result)){
-                    $followee = $row['followee'];     
-                    
-                    $result2 = pg_execute($conn, "followers2", array($username)); 
-                    $numRows2 = pg_num_rows($result2);
-                    if( $numRows2>0){
-                        echo '<div>';
-                        while ($row2= pg_fetch_assoc($result2)){
-                        $follower = $row2['username'];
-                        if($follower ==$followee){
-                            echo  "<section id='friendDisplay'>";
-                            echo   "<img src='../images/cat.jpg' class='friendIcon'>";
-                            echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span><br>";
-                            echo "</section>";
-                }}}}}?>
-    <?php
- $stmt = pg_prepare($conn, "followee", "SELECT * FROM follows WHERE username=$1");
- $result = pg_execute($conn, "followee", array($username)); // Assuming $login_username is set properly
- $numRows = pg_num_rows($result);
- 
+            // Display the search result with a link to the profile page
+            echo "<section'>
+            <a href='../html/profile.php?id=$username'>$username</a>
+            </section><br>";
+        }
+    } else {
+        echo "No results found.";
+    }
+} else {
+    echo "Please provide a search query.";
+}
 ?>
-    <section>
-        <h2>Look for your Friends:</h2>
-        <form id="searchForm" action="../php/search_friend.php" method="POST"> <!-- Added method="POST" -->
-        <input id="searchInput" type="search" name="search" required> <!-- Added name="search" -->
-        <button type="submit"> <!-- Added submit button -->
-        <!-- Optionally, you can add an icon if needed -->
-         <i class="fa fa-search"></i></button>
-    </form>
-            </section>
-
-
-            </body>
-            </html>
-
-
-                
-
-
-
-    
-
-
-
+</main>
 </body>
