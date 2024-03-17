@@ -21,7 +21,9 @@ if ($NumbRows > 0) {
 
 $followeeNot = pg_prepare($conn, "notification_list", "SELECT DISTINCT notifications.* FROM notifications 
 JOIN follows 
-ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC Limit 3");
+ON notifications.username = follows.followee WHERE follows.username = $1 AND 
+notifmessage NOT LIKE '%message%'
+ORDER BY notifications.notificationID DESC Limit 3");
 
 $followeeRes = pg_execute($conn, "notification_list", array($user));
 

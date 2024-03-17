@@ -283,8 +283,8 @@ $result = pg_query($conn, $query);
             <section>
                 <h1>Notifications: </h1><br>
                 <?php
-                $notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC");
-                $notificationResult = pg_execute($conn, "notification", array($username));
+$notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1  ORDER BY notificationID DESC");
+$notificationResult = pg_execute($conn, "notification", array($username));
                 $NumbRows = pg_num_rows($notificationResult);
 
                 $notifications = array(); // Array to hold all notifications
@@ -301,9 +301,9 @@ $result = pg_query($conn, $query);
                     }
                 }
 
-                $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
+ $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
 JOIN follows 
-ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC");
+ON notifications.username = follows.followee WHERE follows.username = $1 AND notifmessage NOT LIKE '%message%' ORDER BY notifications.notificationID DESC");
 
                 $followeeRes = pg_execute($conn, "notification1", array($username));
 
