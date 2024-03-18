@@ -79,7 +79,6 @@ function hasClass(element, className) {
 
 
 function handleLikeButtonClick(postid) {
-    console.log("handling")
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../php/update_likes.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
