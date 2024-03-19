@@ -476,7 +476,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 </div>
 
                     
-                <div class='comment-container'>";
+                <div class='comment-container id-$postid'>";
 
                     if ($commentNumb > 0) {
                         while ($row = pg_fetch_assoc($commentResult)) {
@@ -487,7 +487,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$commenting_user'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$commenting_user</span>
                                 <span>Comment - $date</span>
@@ -501,7 +501,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         </button>
                     </div>
                     </div>
-                        <div>
+                    <div>
                         <div class='comment-text'>$comment</div>
                         <div class='comment-options'>
                             <span>1 Like</span>
@@ -516,11 +516,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                     </div>
                     <div class='comment-create-container'>
-                        <form action="../php/comments.php" method="post">
-                            <input class="comment-create" id="comment" name="text" type="text" required>
-                            <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
-                            <button type="submit" name="commentSubmit">Comment</button>
-                        </form>
+                        <input class='comment-create' id='comment-create-text-<?php echo "$postid"?>' name="text" type="text" required>
+                        <input type="hidden" id='comment-create-postid-<?php echo "$postid"?>' name="postid" value="<?php echo $postid; ?>">
+                        <button name="commentSubmit" onclick='postComment(<?php echo "$postid, \"$username\""?>);'>Comment</button>
                     </div>
 
                     <?php echo "

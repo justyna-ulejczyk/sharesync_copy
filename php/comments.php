@@ -8,39 +8,38 @@ if (!isset($_SESSION["username"])) {
 
 require_once "connect_db.php";
 
-if (isset($_POST['commentSubmit'])) {
-    $user_id = $_SESSION["username"];
-    $date = date('Y-m-d H:i:s');
-    $comment = $_POST['text'];
-    $post_id = $_POST['postid'];
+$user_id = $_SESSION["username"];
+$date = date('Y-m-d H:i:s');
 
-    $query = "INSERT INTO comments(username, timestamp, text, postid) VALUES($1, $2, $3, $4) RETURNING commentid;";
-    $result = pg_query_params($conn, $query, array($user_id, $date, $comment, $post_id));
-    if ($result) {
-        //adding notifications
-        $postquery = pg_prepare($conn, "post_name", "SELECT * FROM post WHERE postid = $1");
-        $postresult = pg_execute($conn, "post_name", array($post_id));
-        $postRow = pg_fetch_assoc($postresult);
-        $post_user = $postRow['username'];
+$rawData = file_get_contents('php://input');
+$data = json_decode($rawData, true);
 
-        $user = $_SESSION['username'];
-        $date = date("Y-m-d");
-        $killTime = new DateTime();
-        $killTime->modify('+3 weeks');
+$post_id = $data['postid'];
+$comment = $data['text'];
 
-        $mess = "$user commented on $post_user's post <a href='../html/Home.php'>See here</a>";
+$query = "INSERT INTO comments(username, timestamp, text, postid) VALUES($1, $2, $3, $4) RETURNING commentid;";
+$result = pg_query_params($conn, $query, array($user_id, $date, $comment, $post_id));
+if ($result) {
+    //adding notifications
+    $postquery = pg_prepare($conn, "post_name", "SELECT * FROM post WHERE postid = $1");
+    $postresult = pg_execute($conn, "post_name", array($post_id));
+    $postRow = pg_fetch_assoc($postresult);
+    $post_user = $postRow['username'];
 
-        $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
-                        (username, timestamp, killtime, notifmessage) 
-                        VALUES ($1, $2, $3, $4) RETURNING notificationID");
-        $notificationResult = pg_execute($conn, "add_notification", array($user, $date, $killTime->format('Y-m-d'), $mess));
+    $user = $_SESSION['username'];
+    $date = date("Y-m-d");
+    $killTime = new DateTime();
+    $killTime->modify('+3 weeks');
 
-        header('Location: ../html/Home.php');
-        exit();
-    }
+    $mess = "$user commented on $post_user's post <a href='../html/Home.php'>See here</a>";
+
+    $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
+                    (username, timestamp, killtime, notifmessage) 
+                    VALUES ($1, $2, $3, $4) RETURNING notificationID");
+    $notificationResult = pg_execute($conn, "add_notification", array($user, $date, $killTime->format('Y-m-d'), $mess));
+    exit();
 }
+
 
 // Close the connection
 pg_close($conn);
-
-?>
