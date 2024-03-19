@@ -260,7 +260,7 @@ $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE fol
                         $follower = $row2['username'];
                         if($follower ==$followee){
                             echo  "<section id='friendDisplay'>";
-                            echo   "<img src='../images/cat.jpg' class='friendIcon'>";
+                            echo   "<img src='../profile_pic/profile_pic_$followee.png' class='friendIcon'>";
                             echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span><br>";
                             echo "</section>";
                 }}}}}?>
