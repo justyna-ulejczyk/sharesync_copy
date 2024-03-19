@@ -142,7 +142,7 @@ function updateVisibilty(username, checkbox) {
     formData.append("privacy", privacy);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            console.log("updated")
+            console.log(xhr.response)
         }
     };
 

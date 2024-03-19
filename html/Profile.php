@@ -20,6 +20,10 @@ $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where use
 $userDataRESULT = pg_execute($conn, "user_data", array($account_username));
 $name = pg_fetch_result($userDataRESULT, 0, "name");
 $bio = pg_fetch_result($userDataRESULT, 0, "bio");
+if(pg_fetch_result($userDataRESULT, 0, "accountvisibility") == 1){
+    header('Location: ' . "./profile.php");
+}
+
 $query = "SELECT postID, text, post.username, name  
     FROM post 
     INNER JOIN accounts ON accounts.username = post.username 

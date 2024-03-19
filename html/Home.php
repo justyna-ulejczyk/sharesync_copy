@@ -322,67 +322,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 class="feed-create-post-captions"></textarea>
                         </div>
                         <div class="tags-container">
-                            <h3>Tags</h3>
-                            <div class="tags-box">
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-                                <div><input type="checkbox" name="tag" value="tag" id="tag">
-                                    <label for="tag">Tag</label>
-                                </div>
-
-                            </div>
+                            <h3>Tags (please seperate with commas)</h3>
+                            <input type="text" id="tags" name="tags">
                         </div>
                         <input value="Post" type="submit" name="submit_post" class="feed-create-post-submit"
                             onclick="finishPost()">
@@ -395,7 +336,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php
-            $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
+            $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username WHERE accountvisibility=0 ORDER BY postid DESC";
             if (isset ($_GET["id"])) {
                 if ($_GET["id"] == "following") {
                     $postsListQuery = "SELECT postid, text, post.username, name FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN follows ON accounts.username = follows.followee WHERE follows.username = '$username' ORDER BY postid DESC";

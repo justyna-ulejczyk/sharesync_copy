@@ -615,7 +615,7 @@ if ($settingsResult) {
             <h1>Profile Visibility</h1>
             <p class="inline">public</p>
             <label class="profileSwitch" class="round">
-                <input type="checkbox" onchange='updateVisibilty(<?php echo "$username"; ?>, this);'>
+                <input type="checkbox" onchange='updateVisibilty(<?php echo "\"$username\""; ?>, this);'>
                 <span class="slider"></span>
             </label>
             <p class="inline">private</p>
