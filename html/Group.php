@@ -318,8 +318,7 @@ $username = $_SESSION["username"];
                 </script>";
         }
         ?>
-    </section>
-</aside>
+   
 
 
 
@@ -340,7 +339,7 @@ $username = $_SESSION["username"];
 
             </section>
         </aside>
-
+       
         <?php
         $stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1");
         $result = pg_execute($conn, "followers", array($username));
@@ -349,6 +348,7 @@ $username = $_SESSION["username"];
 
 
         ?>
+        
         <bside class="friendBox">
             <h3 class="heading">Friends List</h3>
             <?php
@@ -367,10 +367,11 @@ $username = $_SESSION["username"];
                                 ?>
 
                                 <friend>
-                                    <img src="<?php echo "../profile_pic/profile_pic_$followee.png";?>" class="friendIcon">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$followee.png";?>" 
+                                    class="friendIcon">
                                     <?php
-
-                                    echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span></friend>";
+                                    echo "<span><p><a href ='../html/Profile.php?id=$followee'>
+                                    $followee</p><a></span></friend>";
                             }
                         }
                     }
@@ -378,8 +379,6 @@ $username = $_SESSION["username"];
             } ?>
 
         </bside>
-
-
         <a href="../html/friends.php">
             <h4 class="viewMore">View All</h4>
         </a>
