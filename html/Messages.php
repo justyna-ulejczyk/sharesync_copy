@@ -294,9 +294,10 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     while ($row = pg_fetch_assoc($usersListRESULT)) {
                         if ($row["username"] != $login_username) {
                             $user = $row["username"];
-                            echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
-                <img src="../profile_pic/profile_pic_$username.png">
-                <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
+                            echo '<button class="chatter-list-user" 
+                            onclick="changeChat(this)" userid=' . $row['username'] . '>';
+                echo "<img src='../profile_pic/profile_pic_$user.png'>";
+               echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
                             if ($row["messageread"] == 0 && $row["last_messageid"] != -1)echo '***'; 
                 echo '</a></p></button>';
                         }
@@ -332,8 +333,8 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 
                                     echo ' <div class="chatter-chat-sender">
                             <div class="chatter-sender">
-                                <div class="chatter-chat-info">
-                                    <img src="../profile_pic/profile_pic_$login_username.png">';
+                                <div class="chatter-chat-info">';
+                                  echo "  <img src='../profile_pic/profile_pic_$sender.png'>";
                                     echo "                       <p> $sender </p>";
                                     echo " </div>
                                 <div class='chat'>
