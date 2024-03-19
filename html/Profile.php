@@ -293,7 +293,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
             <div class="banner-profile-info">
                 <span class="profilePic">
                 <img src="<?php 
-                echo "../profile_pic/profile_pic_$username.png";?>">
+                echo "../profile_pic/profile_pic_$account_username.png";?>">
 </span>
                 <div class="profilePicBorder"></div>
                 <div class="banner-profile-person">

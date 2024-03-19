@@ -8,16 +8,17 @@ header('Location: ../html/Group.php');
 
 require_once "../php/connect_db.php";
 
-$stmt = pg_prepare($conn, "create_group", "INSERT INTO groups (managerID, groupname) VALUES ($1, $2) RETURNING groupID");
+$stmt = pg_prepare($conn, "create_group", "INSERT INTO groups (managerID, groupname, description) VALUES ($1, $2, $3) RETURNING groupID");
 $username = $_SESSION['username'];
 $groupname = $_POST['groupname'];
-$date = date("Y-m-d");
+$description = $_POST['description'];
+$date = date("Y-m-d"); 
 
 $killTime = new DateTime();
 $killTime->modify('+3 weeks');
 
 $mess =  "$username created $groupname";
-$result = pg_execute($conn, "create_group", array($username, $groupname));
+$result = pg_execute($conn, "create_group", array($username, $groupname, $description));
 
 $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
 (username, timestamp, killtime, notifmessage) 

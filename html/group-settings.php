@@ -349,19 +349,18 @@ session_write_close();
                             <div class="wrapper">
                                 <h2>Change Icon</h2>
                                 <!-- change this below to a form -->
-                                <div class="change-container">
-                                    <div class="avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                            <label for="imageUpload"></label>
-                                        </div>
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                style="background-image: url(../images/icons/Unknown_person.jpg);">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="avatar-upload">
+    <form action="../php/upload_group_avatar.php" method="POST" enctype="multipart/form-data">
+        <div class="avatar-edit">
+            <input type="file" id="imageUpload" name="group_pic" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+            <div id="imagePreview" style="background-image:<?php echo " url(../group_pic/group_pic_$groupname.png)";?>;"></div>
+        </div>
+        <input type="submit" value="Save">
+    </form>
+</div>
                             </div>
                         </article>
                         <article>
@@ -420,12 +419,9 @@ session_write_close();
             <img src="../images/icons/Unknown_person.jpg" alt="">';
                     echo "<span>$username</span>
                     <span><a href ='../php/delete_member.php?user=$username'>remove</a></span>
-
         </div>";
                 }
-
             }
-
 
             ?>
 
