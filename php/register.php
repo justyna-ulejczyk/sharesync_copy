@@ -25,9 +25,22 @@ if (isset($_POST['register'])) {
     if ($result) {
         echo "New account created successfully!";
         $username = pg_fetch_result($result, 0, 'username');
-        //session_id("userSession");
+        
         session_start();
         $_SESSION['username'] = $username;
+
+        // File handling
+        $upload_dir = '../profile_pic/';
+        $profile_pic_name = "profile_pic_" . $username . ".png";
+        $upload_file = $upload_dir . $profile_pic_name;
+
+        // Copy the file reg.png to the desired location
+        if (copy('../profile_pic/reg.jpg', $upload_file)) {
+            header('Location: ../html/Home.php'); // Redirect to Home page
+        } else {
+            echo "Error copying file.";
+        }
+
         header('Location: '."../html/Home.php");
     } else {
         echo "Error: " . pg_last_error($conn);
