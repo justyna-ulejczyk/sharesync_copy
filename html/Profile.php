@@ -216,7 +216,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
                                     <p>
                                         <?php echo "$username" ?>
                                     </p>
@@ -287,7 +287,10 @@ if (pg_num_rows($userDataRESULT) == 0) {
             <div>
             </div>
             <div class="banner-profile-info">
-                <span class="profilePic"><img src="../images/icons/Unknown_person.jpg"></span>
+                <span class="profilePic">
+                <img src="<?php 
+                echo "../profile_pic/profile_pic_$username.png";?>">
+</span>
                 <div class="profilePicBorder"></div>
                 <div class="banner-profile-person">
                     <span class="banner-profile-name">

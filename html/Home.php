@@ -42,7 +42,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
+                    <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" class="nav-profile">
                 </a>
             </li>
 
@@ -196,12 +196,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="../images/icons/Unknown_person.jpg">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png";?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
                                     <?php echo "<p>$username</p>" ?>
                                 </a>
                             </div>
@@ -271,7 +271,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <div>
                 <div>
                     <div id="Banner"></div>
-                    <a href="Profile.php"><img class="pfp" src="../images/icons/Unknown_person.jpg" alt="pfp"
+                    <a href="Profile.php"><img class="pfp" src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="pfp"
                             width="100" height="100" /></a>
                     <div id="pfp-outline"></div>
                 </div>
@@ -437,7 +437,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <div class='post-info'>
                     <div class=' comment-header'>
                         <div class='user-container'>
-                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$poster_username'><img src='../profile_pic/profile_pic_$poster_username.png' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$name</span>
                                 <span>@$poster_username</span>
@@ -487,7 +487,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php?id=$commenting_user'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$commenting_user'><img src='../profile_pic/profile_pic_$commenting_user.png' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$commenting_user</span>
                                 <span>Comment - $date</span>
@@ -526,7 +526,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         </prepost>";
                     echo "<div class='feed-post'>";
                     echo "<div class='user-container'>";
-                    echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                    echo "<a href='Profile.php?id=$poster_username'><img src='../profile_pic/profile_pic_$poster_username.png' class='post-avatar' /></a>";
                     echo "<div class='user-post-name'>";
                     echo "<span>$name</span>";
                     echo "<span>@$poster_username</span>";

@@ -207,12 +207,13 @@ if (isset($_GET['id'])) {
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="../images/icons/Unknown_person.jpg">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png";?>"
+";?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
                                     <p><?php echo"$username"?></p>
                                 </a>
                             </div>

@@ -207,12 +207,12 @@ if ($settingsResult) {
                     <li>
                         <div class="dropdown">
                             <img class="nav-profile" onclick="toggleDropdownProfile()"
-                                src="../images/icons/Unknown_person.jpg">
+                                src="<?php echo "../profile_pic/profile_pic_$username.png";?>">
                             </img>
                             <div class="dropdown-content-profile" id="dropdownContentProfile">
                                 <div class="dropdown-profile-icon">
                                     <a href="">
-                                        <img src="../images/icons/Unknown_person.jpg" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
                                         <p>
                                             <?php echo "$username" ?>
                                         </p>
@@ -317,15 +317,17 @@ if ($settingsResult) {
                 <div class="banner-preview"></div>
             </div>
             <div class="avatar-upload">
-                <div class="avatar-edit">
-                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                    <label for="imageUpload"></label>
-                </div>
-                <div class="avatar-preview">
-                    <div id="imagePreview" style="background-image: url(../images/icons/Unknown_person.jpg);">
-                    </div>
-                </div>
-            </div>
+    <form action="../php/upload_avatar.php" method="POST" enctype="multipart/form-data">
+        <div class="avatar-edit">
+            <input type="file" id="imageUpload" name="profile_pic" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+            <div id="imagePreview" style="background-image:<?php echo " url(../profile_pic/profile_pic_$username.png)";?>;"></div>
+        </div>
+        <input type="submit" value="Save">
+    </form>
+</div>
 
         </div>
 

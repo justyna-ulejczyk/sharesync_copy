@@ -200,12 +200,12 @@ if (isset($_GET['id'])) {
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="../images/icons/Unknown_person.jpg">
+                            src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>" alt="">
                                     <p>
                                         <?php echo "$login_username" ?>
                                     </p>
@@ -295,7 +295,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                         if ($row["username"] != $login_username) {
                             $user = $row["username"];
                             echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
-                <img src="../images/icons/Unknown_person.jpg">
+                <img src="../profile_pic/profile_pic_$username.png">
                 <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
                             if ($row["messageread"] == 0 && $row["last_messageid"] != -1)echo '***'; 
                 echo '</a></p></button>';
@@ -333,7 +333,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                                     echo ' <div class="chatter-chat-sender">
                             <div class="chatter-sender">
                                 <div class="chatter-chat-info">
-                                    <img src="../images/icons/Unknown_person.jpg">';
+                                    <img src="../profile_pic/profile_pic_$login_username.png">';
                                     echo "                       <p> $sender </p>";
                                     echo " </div>
                                 <div class='chat'>
@@ -347,7 +347,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             <div class="chatter-reciever">
                                 <div class="chatter-chat-info">';
                                         echo "         <p>$sender</p>";
-                                        echo "        <img src='../images/icons/Unknown_person.jpg'>
+                                        echo "        <img src='../profile_pic/profile_pic_$login_username.png'>
                                 </div>
                                 <div class='chat'>
                                     $text
