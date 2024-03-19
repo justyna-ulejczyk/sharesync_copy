@@ -355,6 +355,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                     <?php
                     $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
                     $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
+                    $commentQuery = pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
                     if ($result) {
                         // Output data of each row
                         while ($row = pg_fetch_assoc($result)) {
@@ -367,6 +368,8 @@ if (pg_num_rows($userDataRESULT) == 0) {
                             $likesCount = pg_num_rows($postLikesRESULT);
                             $postLikedByUserRESULT = pg_execute($conn, "postLikedByUser", array($postid, $username));
                             $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
+                            $commentResult = pg_execute($conn, "comment", array($postid));
+                            $commentNumb = pg_num_rows($commentResult);
 
                             echo "<post class='posts' id=$postid>";
                             echo " <prepost>
@@ -424,49 +427,57 @@ if (pg_num_rows($userDataRESULT) == 0) {
                             <h4>Comments</h4>
                             <div class='divider'></div>
                         </div>
-                        <div class='comment-container'>
-                            <div class='comment-user-comment'>
-                                <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                                    <div class='user-post-name'>
-                                        <span>Kacper test</span>
-                                        <span>Comment - 22/01/23</span>
-                                    </div>
-                                </div>
-                                <div class='comment-like'>
-                                    <button class='like icons' onclick='toggleHeart(this)'>
-                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                            xmlns='http://www.w3.org/2000/svg'>
-                                            <path
-                                                d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                                fill='red' />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-        
-                            <div>
-                                <div class='comment-text'>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                                    quidem
-                                    nostrum commodi tenetur?123
-                                </div>
-                                <div class='comment-options'>
-                                    <span>1 Like</span>
-                                    <button>Delete</button>
-                                </div>
+                        <div class='comment-container id-$postid'>";
+
+                    if ($commentNumb > 0) {
+                        while ($row = pg_fetch_assoc($commentResult)) {
+                            $commenting_user = $row['username'];
+                            $comment = $row['text'];
+                            $date = $row['timestamp'];
+
+                            echo "
+
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>$commenting_user</span>
+                                <span>Comment - $date</span>
                             </div>
                         </div>
-
+                        <div class='comment-like'>
+                        <button class='like icons' onclick='toggleHeart(this)'>
+                            <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z' fill='red' />
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                        <div>
+                        <div class='comment-text'>$comment</div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <form action='../php/deleteComments.php' method='post'>
+                    <input type='hidden' name='postid' value='$postid'>
+                    <input type='hidden' name='timestamp' value='$row[timestamp]'>
+                    <button type='submit' name='delete_comment'>Delete</button>
+                </form>
+                        </div>
+                    </div>";
+                        }
+                    } else {
+                        echo "No comments";
+                    }?>
+                        </div>
                         
                         <div class='comment-create-container'>
-                            <form>
-                                <input class='comment-create' type='text'>
-                            </form>
-                        </div>
+                        <input class='comment-create' id='comment-create-text-<?php echo "$postid"?>' name="text" type="text" required>
+                        <input type="hidden" id='comment-create-postid-<?php echo "$postid"?>' name="postid" value="<?php echo $postid; ?>">
+                        <button name="commentSubmit" onclick='postComment(<?php echo "$postid, \"$username\""?>);'>Comment</button>
                     </div>
-                </prepost>";
-                            echo "<div class='feed-post'>";
+                    </div>
+                </prepost>
+                          <?php  echo "<div class='feed-post'>";
                             echo "<div class='user-container'>";
                             echo "<a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
                             echo "<div class='user-post-name'>";
@@ -515,8 +526,6 @@ if (pg_num_rows($userDataRESULT) == 0) {
                     } else {
                         echo "No posts found.";
                     }
-
-
                     ?>
 
 

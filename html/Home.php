@@ -483,11 +483,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             $commenting_user = $row['username'];
                             $comment = $row['text'];
                             $date = $row['timestamp'];
+
                             echo "
-                
+
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php?id=$commenting_user'><img src='../profile_pic/profile_pic_$commenting_user.png' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$commenting_user</span>
                                 <span>Comment - $date</span>
@@ -501,11 +502,15 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         </button>
                     </div>
                     </div>
-                    <div>
+                        <div>
                         <div class='comment-text'>$comment</div>
                         <div class='comment-options'>
                             <span>1 Like</span>
-                            <a><button>Delete</button></a>
+                            <form action='../php/deleteComments.php' method='post'>
+                    <input type='hidden' name='postid' value='$postid'>
+                    <input type='hidden' name='timestamp' value='$row[timestamp]'>
+                    <button type='submit' name='delete_comment'>Delete</button>
+                </form>
                         </div>
                     </div>";
                         }
