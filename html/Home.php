@@ -290,7 +290,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <div>
                 <a href="../html/Group.php"> Collabs</a>
                 <a href="../html/Messages.php"> Messages</a>
-                <a href="../html/notifs.php"> Notifications</a>
+                <a href="../html/Notifications.php"> Notifications</a>
             </div>
         </profile>
         <!-- End of Profile -->
