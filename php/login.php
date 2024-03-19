@@ -9,6 +9,11 @@ session_start();
 $username = $_POST['username'];
 $user_entered_password = $_POST['password'];
 
+if(empty($username) || empty($user_entered_password)) {
+    echo "Please provide both username and password";
+    die();
+}
+
 // Prepare the SQL statement with a placeholder for the username
 $stmt = pg_prepare($conn, "find_user", "SELECT * FROM accounts WHERE username = $1");
 
@@ -35,4 +40,4 @@ if (!password_verify($user_entered_password, $stored_password_hash)) {
     header("Location: ../html/home.php");
     exit(); // Make sure to stop further execution after redirecting
 }
-?>
+

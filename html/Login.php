@@ -80,13 +80,13 @@
         <form action="../php/register.php" method="post" id="registrationForm">
             <div class='enter-info'>
                 <label for="name">Full name:</label>
-                <input id="name" name="name" type="text" />
+                <input id="name" name="name" type="text" pattern="[A-Za-z]+" required/>
                 <label for="username">Username:</label>
                 <input id="username" name="username" required="" type="text"
                     oninput="checkUsernameAvailability(this.value)" />
                 <span id="usernameAvailability"></span><br>
                 <label for="email">Email:</label>
-                <input id="email" name="email" required="" type="email" />
+                <input id="email" name="email" required="" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required/>
                 <label for="password">Password:</label>
                 <input id="password" name="password" required="" type="password" />
                 <p>Account type:</p>
