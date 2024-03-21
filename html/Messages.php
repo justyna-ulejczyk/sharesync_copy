@@ -312,64 +312,11 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 <div class="chatter-box">
                     <!-- Chat box -->
                     <?php
+                    // Get passed product genre and assign it to a variable.
 
-                    $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE
-                     (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
-                    $result = pg_execute($conn, "read_message", array($login_username, $id));
-                    $numRows = pg_num_rows($result);
-
-
-                    if ($numRows > 0) {
-
-                        echo "<p>Total Messages: $numRows</p>"; // Display total number of messages
-                        echo ' <div class="chatter-chat">';
-                        while ($row = pg_fetch_assoc($result)) {
-                            $text = $row["text"];
-                            $sender = $row["username"];
-                            $recipient = $row["recipient"];
-                            //echo $row["username"] ;
-                            if ($text) {
-                                if ($sender == $id) {
-
-                                    echo ' <div class="chatter-chat-sender">
-                            <div class="chatter-sender">
-                                <div class="chatter-chat-info">';
-                                  echo "  <img src='../profile_pic/profile_pic_$sender.png'>";
-                                    echo "                       <p> $sender </p>";
-                                    echo " </div>
-                                <div class='chat'>
-                                   $text 
-                                </div>";
-                                    echo '  </div>
-                        </div>';
-                                } else {
-                                    if ($sender == $login_username) {
-                                        echo ' <div class="chatter-chat-reciever">
-                            <div class="chatter-reciever">
-                                <div class="chatter-chat-info">';
-                                        echo "         <p>$sender</p>";
-                                        echo "        <img src='../profile_pic/profile_pic_$login_username.png'>
-                                </div>
-                                <div class='chat'>
-                                    $text
-                                </div>
-                            </div></div>
-                            
-                        ";
-                                    }
-                                }
-                            }
-                        }
-                        echo "</div>";
-                    } else {
-                        echo 'No Messages Yet';
-                    }
-
-
-
-                    ?>
-
-
+// Load initial notifications
+include_once "../php/load_messages.php";
+?>
 
                 <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 

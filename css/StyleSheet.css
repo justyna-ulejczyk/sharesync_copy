@@ -281,6 +281,7 @@ form:valid .fa {
     height: 35px;
     border-radius: 100%;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .linksBar {
@@ -416,6 +417,7 @@ button.like.active > svg > path {
 /* Actual Posts */
 
 .post-avatar {
+    object-fit: cover;
     width: 40px;
     height: 40px;
     border-radius: 100px;
@@ -454,6 +456,7 @@ button.like.active > svg > path {
 .user-container {
     width: 100%;
     display: flex;
+    gap: 10px;
     align-items: center;
     padding: 10px 10px 0px 5px;
 }
@@ -776,6 +779,7 @@ prepost {
 }
 
 .dropdown-profile-icon > a > img {
+    object-fit: cover;
     border-radius: 100px;
     width: 50px;
     height: 50px;
@@ -907,8 +911,61 @@ prepost {
     }
 }
 
+@media only screen and (min-width: 550px) and (max-width: 800px) {
+    prepost .close {
+        top: auto;
+        right: 125px;
+    }
+}
+
 /* Screen sizes 800 and down */
 @media only screen and (max-width: 800px) {
+    .post-column {
+        display: none;
+    }
+
+    img.post-image {
+        border: none;
+    }
+
+    .comment-container {
+        width: 350px;
+    }
+
+    .comment-text {
+        max-width: 320px;
+    }
+
+    prepost .close {
+        top: auto;
+    }
+
+    prepost {
+        top: 0%;
+        bottom: 0%;
+        margin-top: auto;
+        margin-bottom: auto;
+        flex-direction: column;
+        height: auto;
+    }
+
+    prepost .choices {
+        display: none;
+    }
+
+    .caption {
+        display: none;
+    }
+
+    .comments-column {
+        border: none;
+        overflow-y: scroll;
+        overflow-x: none;
+        border-radius: 0;
+        max-width: 100%;
+        max-height: 700px;
+    }
+
     nav {
         border-top: solid 1px var(--gray);
         z-index: 999;

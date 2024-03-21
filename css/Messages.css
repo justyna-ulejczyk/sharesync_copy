@@ -110,7 +110,7 @@ div.chatter-info {
 
 .chatter-send-message input {
     border: 1px solid var(--input-border);
-    width: 95%;
+    width: 100%;
     border-radius: 50px;
 }
 
@@ -219,26 +219,26 @@ div.chatter-info {
     flex: 3;
 }
 
-form.chatter-send-message {
-    position: relative;
-    box-sizing: border-box;
-    height: 50px;
-    width: 80%;
-    display: flex;
-    gap: 10px;
-    margin-top: auto;
-    margin-bottom: 25px;
-    bottom: 0;
-}
-
 .chatter-box {
-    position: relative;
+    position: relative; /* Add this line to set position relative */
     height: 100%;
     box-sizing: border-box;
-    align-items: center;
+    width: 100%;
+    border: 1px solid var(--gray); /* Add a border */
+    border-radius: 5px; /* Add border radius for a boxy appearance */
+    padding: 10px; /* Add padding for content spacing */
     display: flex;
     flex-direction: column;
-    width: 100%;
     flex: 3;
-    border-left: 1px solid var(--gray);
+    overflow: hidden; /* Add this line to prevent overflow from the absolutely positioned element */
 }
+
+.chatter-send-message {
+    box-sizing: border-box;
+    height: 50px;
+    width: 100%; /* Set width to 100% to match parent's width */
+    display: flex;
+    gap: 10px;
+}
+
+

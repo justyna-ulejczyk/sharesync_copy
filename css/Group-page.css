@@ -292,3 +292,24 @@ form.add-members {
     padding: 15px 20px;
     border: 1px solid white;
 }
+
+@media only screen and (max-width: 800px) {
+    body {
+        height: 86vh;
+    }
+
+    aside.right-bar,
+    aside.left-bar {
+        display: none;
+    }
+
+    .feed {
+        padding: 0;
+    }
+
+    .post-container {
+        box-sizing: border-box;
+        width: 300px;
+        padding: 10;
+    }
+}

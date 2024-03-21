@@ -99,6 +99,7 @@ main > profile > div:nth-child(2) {
 }
 
 .pfp {
+    object-fit: cover;
     margin-top: -37.5px;
     width: 75px;
     height: 75px;
@@ -337,8 +338,16 @@ main > profile > div:nth-child(2) {
 
 /* Screen sizes 800 and down */
 @media only screen and (max-width: 800px) {
+    .feed-create-post-container {
+        border-radius: 0;
+    }
+
     main {
-        margin-top: 25px;
+        margin-top: 75px;
+    }
+
+    .feed {
+        margin: 0%;
     }
 
     main .group {

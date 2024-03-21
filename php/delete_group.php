@@ -65,6 +65,35 @@ $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifica
 (username, timestamp, killtime, notifmessage) 
 VALUES ($1, $2, $3, $4) RETURNING notificationID");
 $notificationResult = pg_execute($conn, "add_notification", array($username, $date, $killTime->format('Y-m-d'), $mess));
-// Close connection
-$conn = null;
-?>
+function deleteFolder($folderPath) {
+    if (!is_dir($folderPath)) {
+        // If $folderPath is not a directory, return false
+        return false;
+    }
+
+    $files = array_diff(scandir($folderPath), array('.', '..'));
+
+    foreach ($files as $file) {
+        // If $file is a directory, recursively delete it
+        if (is_dir("$folderPath/$file")) {
+            deleteFolder("$folderPath/$file");
+        } else {
+            // If $file is a file, delete it
+            unlink("$folderPath/$file");
+        }
+    }
+
+    // After deleting all files and sub-folders, delete the main folder
+    return rmdir($folderPath);
+}
+
+// Usage example
+$folderToDelete = "../groups/$groupname";
+if (deleteFolder($folderToDelete)) {
+    echo "Folder '$folderToDelete' deleted successfully.";
+} else {
+    echo "Failed to delete folder '$folderToDelete'.";
+}
+
+pg_close($conn);
+

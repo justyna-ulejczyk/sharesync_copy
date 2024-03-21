@@ -301,16 +301,7 @@ session_write_close();
 
         <!-- Feed -->
         <Feed>
-            <h1>Group Call</h1>
-            <button id="startButton">Join</button>
-            <button id="hangupButton" disabled>Hang Up</button>
-            <button id="muteButton">Mute</button>
-
-
-            <video id="localVideo" autoplay muted></video>
-            <video id="remoteVideo" autoplay></video>
-
-            <script src="app.js"></script>
+            <div ></div>
         </Feed>
 
 </body>

@@ -87,6 +87,7 @@ div.banner-profile-info {
 }
 
 .profilePic img {
+    object-fit: cover;
     max-width: 155px;
     max-height: 155px;
     width: 100%;
@@ -374,7 +375,7 @@ img.profile-info-groups-group {
     padding: 20px;
 }
 
-.profile a{
+.profile a {
     text-decoration: none;
     color: var(--text);
 }
@@ -412,4 +413,70 @@ img.profile-info-groups-group {
 
 .follow-button a {
     color: var(--text);
+}
+
+@media only screen and (max-width: 800px) {
+    main {
+        margin-top: 50px;
+    }
+
+    .banner-profile > div:first-child {
+        height: 200px;
+        border-radius: 0;
+    }
+
+    div.banner-profile-info {
+        border-radius: 0;
+    }
+
+    .profilePic img {
+        max-width: 75px;
+        max-height: 75px;
+        margin-top: -37.5px;
+    }
+
+    .profilePicBorder {
+        max-width: 84px;
+        max-height: 84px;
+        margin-top: -42px;
+        margin-left: 21px;
+    }
+
+    .banner-profile-person {
+        margin-left: 20px;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+
+    .banner-profile-name h3,
+    .banner-profile-user h4 {
+        font-size: 16px !important;
+    }
+
+    .banner-profile-options {
+        width: auto;
+    }
+
+    .profile-bio {
+        display: none;
+    }
+
+    .post-image img {
+        border: none;
+    }
+
+    .posts {
+        border-radius: 0;
+    }
+
+    #leftMainHeading h1,
+    #leftMainHeading h2 {
+        font-size: 14px;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .profile {
+        width: 80%;
+    }
 }

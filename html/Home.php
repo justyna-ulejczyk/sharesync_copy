@@ -1,3 +1,4 @@
+
 <?php
 //session_id("userSession");
 session_start();
@@ -42,7 +43,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" class="nav-profile">
+                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" class="nav-profile">
                 </a>
             </li>
 
@@ -59,11 +60,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         </svg>
 
                     </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
                 </div>
             </li>
         </ul>
@@ -103,9 +99,14 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     </a>
                 </li>
                 <li>
-                    <a>
-                        <img src="../images/icons/nav-icons/add-square-svgrepo-com.svg">
-                    </a>
+                    <button onclick="createPost()">
+                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM12 8.25C12.4142 8.25 12.75 8.58579 12.75 9V11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H12.75L12.75 15C12.75 15.4142 12.4142 15.75 12 15.75C11.5858 15.75 11.25 15.4142 11.25 15V12.75H9C8.58579 12.75 8.25 12.4142 8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H11.25L11.25 9C11.25 8.58579 11.5858 8.25 12 8.25Z"
+                                fill="#1C274C" />
+                        </svg>
+                    </button>
                 </li>
                 <li>
                     <a href="../html/Group.php">
@@ -196,12 +197,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$username.png";?>">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
                                     <?php echo "<p>$username</p>" ?>
                                 </a>
                             </div>
@@ -271,8 +272,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <div>
                 <div>
                     <div id="Banner"></div>
-                    <a href="Profile.php"><img class="pfp" src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="pfp"
-                            width="100" height="100" /></a>
+                    <a href="Profile.php"><img class="pfp"
+                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="pfp" width="100"
+                            height="100" /></a>
                     <div id="pfp-outline"></div>
                 </div>
 
@@ -331,8 +333,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 </div>
             </div>
             <!-- End of Create Post Options -->
-
-
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php
@@ -347,6 +347,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             $postTagsSTMT = pg_prepare($conn, "postTags", "SELECT tagname FROM tags where postid= $1");
             $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
             $commentQuery = pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
+
 
             if ($postsListRESULT) {
                 // Output data of each row
@@ -365,6 +366,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
                     $commentResult = pg_execute($conn, "comment", array($postid));
                     $commentNumb = pg_num_rows($commentResult);
+
+
                     echo "<post class='posts' id=$postid>";
                     echo " <prepost>
             <div class='post-column'>
@@ -372,7 +375,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <img src=$post_image_path>
                 </div>
             </div>
-
 
             <div class='comments-column'>
                 <div class='post-info'>
@@ -402,10 +404,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 </svg>
                                 <span class='likeCounter $postid'>$likesCount</span>
                             </button>
-                            
-                        
+
                         </div>
-                        
+
                     </div>
                     <p class='caption'>
                     $text
@@ -416,55 +417,62 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <div class='divider'></div>
                 </div>
 
-                    
+
                 <div class='comment-container id-$postid'>";
+                if ($commentNumb > 0) {
+                    while ($row = pg_fetch_assoc($commentResult)) {
+                        $commenting_user = $row['username'];
+                        $comment = $row['text'];
+                        $date = $row['timestamp'];
+                        $comment_id = $row['commentid'];
 
-                    if ($commentNumb > 0) {
-                        while ($row = pg_fetch_assoc($commentResult)) {
-                            $commenting_user = $row['username'];
-                            $comment = $row['text'];
-                            $date = $row['timestamp'];
-
-                            echo "
-
-                    <div class='comment-user-comment'>
-                        <div class='user-container'>
-                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                            <div class='user-post-name'>
-                                <span>$commenting_user</span>
-                                <span>Comment - $date</span>
+                        echo "<form action='../php/deleteComments.php' method='post'>";
+                        echo "
+                            <div class='comment-user-comment'>
+                                <div class='user-container'>
+                                    <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                                    <div class='user-post-name'>
+                                        <span>$commenting_user</span>
+                                        <span>Comment - $date</span>
+                                    </div>
+                                </div>
+                                <div class='comment-like'>
+                                    <button class='like icons' onclick='toggleHeart(this)'>
+                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                            <path d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z' fill='red' />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class='comment-like'>
-                        <button class='like icons' onclick='toggleHeart(this)'>
-                            <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                                <path d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z' fill='red' />
-                            </svg>
-                        </button>
-                    </div>
-                    </div>
-                        <div>
-                        <div class='comment-text'>$comment</div>
-                        <div class='comment-options'>
-                            <span>1 Like</span>
-                            <form action='../php/deleteComments.php' method='post'>
-                    <input type='hidden' name='postid' value='$postid'>
-                    <input type='hidden' name='timestamp' value='$row[timestamp]'>
-                    <button type='submit' name='delete_comment'>Delete</button>
-                </form>
-                        </div>
-                    </div>";
-                        }
-                    } else {
-                        echo "No comments";
-                    }
-                    ?>
+                            <div>
+                                <div class='comment-text'>$comment</div>
+                                <div class='comment-options'>";
 
+                         // Corrected form part
+                         if ($commenting_user==$username){
+                            echo "<form action='../php/deleteComments.php' method='post'>";
+                            echo "<input type='hidden' name='comment_id' value='$comment_id'>";
+                            echo "<button type='submit' name='delete_comment'>Delete</button>";
+                            echo "</form>";}
+
+                        // Close the HTML structure
+                        echo "</div>
+                            </div>
+                        </form>";
+                    }
+                } else {
+                    echo "No comments";
+                }
+
+                ?>
                     </div>
                     <div class='comment-create-container'>
-                        <input class='comment-create' id='comment-create-text-<?php echo "$postid"?>' name="text" type="text" required>
-                        <input type="hidden" id='comment-create-postid-<?php echo "$postid"?>' name="postid" value="<?php echo $postid; ?>">
-                        <button name="commentSubmit" onclick='postComment(<?php echo "$postid, \"$username\""?>);'>Comment</button>
+                        <input class='comment-create' id='comment-create-text-<?php echo "$postid" ?>' name="text" type="text"
+                            required>
+                        <input type="hidden" id='comment-create-postid-<?php echo "$postid" ?>' name="postid"
+                            value="<?php echo $postid; ?>">
+                        <button name="commentSubmit"
+                            onclick='postComment(<?php echo "$postid, \"$username\"" ?>);'>Comment</button>
                     </div>
 
                     <?php echo "
@@ -509,15 +517,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             }
 
             // Close the database connection
-            
+
             ?>
             <!-- End of Post 1 -->
             <!-- End of Posts -->
         </feed>
         <!-- End of Feed -->
-
-
-
 
     </main>
 

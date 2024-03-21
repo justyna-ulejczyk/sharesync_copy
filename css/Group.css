@@ -148,3 +148,22 @@ friend img {
     text-decoration: none;
     color: var(--text);
 }
+
+@media only screen and (max-width: 800px) {
+    main {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .groupSection {
+        background-color: transparent;
+    }
+
+    .friendBox {
+        width: 100%;
+    }
+
+    .groupDisplay {
+        grid-template-columns: 1fr 1fr;
+    }
+}
