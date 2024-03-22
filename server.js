@@ -12,10 +12,12 @@ app.use(express.static('public'))
 
 app.get('/', (req,res) => {
     res.redirect(`/${v4}/`)
+    console.log("redirected")
 })
 
 app.get('/:room',(req,res) => {
     res.render('room', {roomId: req.params.room })
+    console.log("room set")
 })
 
 
@@ -23,7 +25,8 @@ io.on('connection', (socket) =>{
     socket.on('join-room',(roomId,userId) =>{
         socket.join(roomId)
         socket.to(roomId).emit('user-connected', userId);
+        console.log("connected to room :" + roomId + " with user " + userId)
     })
 })
 
-server.listen(8010)
+server.listen(3000)

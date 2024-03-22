@@ -141,3 +141,15 @@ feed {
     border-radius: 10px;
     border: white solid 2px;
 }
+
+#splitOptions{
+    display: none;
+    background-color: var(--foreground);
+    border-radius: 10px;
+    padding: 1px;
+}
+
+#splitOptions button{
+    margin: 10px;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 const socket = io('/')
 
-const myPeer = new Peer(undefined,{
+const myPeer  = new Peer(undefined,{
     host:'/',
     port:'3001'
 })
@@ -18,21 +18,19 @@ navigator.mediaDevices.getUserMedia({
     video:true,
     audio:true
 }).then(stream => {
-
     socket.on('user-connected',userId =>{
         connectToNewUser(userId,stream)
-        console.log('Connected:' + userId)
+        console.log('New User Connected: ' + userId)
     })
-
-
+    console.log('test')
     myPeer.on('call', call => {
         call.answer(stream)
         const video = document.createElement('video')
         call.on('stream', userVideoStream => {
+            console.log('test')
             addVideoStream(video, userVideoStream)
         })
     })
-
     addVideoStream(myVideo,stream)
 })
 
@@ -46,11 +44,7 @@ function connectToNewUser(userId, stream){
     call.on('close', () => {
         video.remove()
     })
-
-
-
 }
-
 
 function addVideoStream(video,stream){
     video.srcObject = stream 

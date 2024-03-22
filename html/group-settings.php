@@ -288,7 +288,7 @@ session_write_close();
                 <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
-                <a href="http://localhost:8010">
+                <a href="http://localhost:3000">
                     <li>Meetings</li>
                 </a>
                 <a>
