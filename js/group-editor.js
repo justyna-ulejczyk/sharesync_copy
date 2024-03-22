@@ -48,7 +48,8 @@ showCode.addEventListener('click', function () {
 const filename = document.getElementById('filename');
 
 
-function fileHandle(value, groupid) {
+function fileHandle(value, groupid, split) {
+    console.log(split);
     if (value === 'new') {
         content.innerHTML = '';
         filename.value = 'untitled';
@@ -60,10 +61,12 @@ function fileHandle(value, groupid) {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 if (xhr.responseText == "success") {
                     console.log("file saved");
+                } else {
+                    console.log(xhr.responseText);
                 }
             }
         };
-        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid);
+        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid + "&split=" + split);
         }
 }
 
