@@ -20,7 +20,7 @@ $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where use
 $userDataRESULT = pg_execute($conn, "user_data", array($account_username));
 $name = pg_fetch_result($userDataRESULT, 0, "name");
 $bio = pg_fetch_result($userDataRESULT, 0, "bio");
-if(pg_fetch_result($userDataRESULT, 0, "accountvisibility") == 1){
+if (pg_fetch_result($userDataRESULT, 0, "accountvisibility") == 1) {
     header('Location: ' . "./profile.php");
 }
 
@@ -67,24 +67,22 @@ if (pg_num_rows($userDataRESULT) == 0) {
             </li>
 
             <li>
-                <div class="dropdown">
-                    <button class="dropButton">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
-                                stroke="black" stroke-width="2" />
-                            <path
-                                d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
-                                stroke="black" stroke-width="2" stroke-linecap="round" />
-                        </svg>
+                <a href="../html/Notifications.php">
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
+                                    stroke="black" stroke-width="2" />
+                                <path
+                                    d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" />
+                            </svg>
 
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        </button>
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </subnav>
@@ -220,7 +218,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
                                     <p>
                                         <?php echo "$username" ?>
                                     </p>
@@ -292,9 +290,9 @@ if (pg_num_rows($userDataRESULT) == 0) {
             </div>
             <div class="banner-profile-info">
                 <span class="profilePic">
-                <img src="<?php 
-                echo "../profile_pic/profile_pic_$account_username.png";?>">
-</span>
+                    <img src="<?php
+                    echo "../profile_pic/profile_pic_$account_username.png"; ?>">
+                </span>
                 <div class="profilePicBorder"></div>
                 <div class="banner-profile-person">
                     <span class="banner-profile-name">
@@ -433,13 +431,13 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         </div>
                         <div class='comment-container id-$postid'>";
 
-                    if ($commentNumb > 0) {
-                        while ($row = pg_fetch_assoc($commentResult)) {
-                            $commenting_user = $row['username'];
-                            $comment = $row['text'];
-                            $date = $row['timestamp'];
+                            if ($commentNumb > 0) {
+                                while ($row = pg_fetch_assoc($commentResult)) {
+                                    $commenting_user = $row['username'];
+                                    $comment = $row['text'];
+                                    $date = $row['timestamp'];
 
-                            echo "
+                                    echo "
 
                     <div class='comment-user-comment'>
                         <div class='user-container'>
@@ -468,62 +466,65 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 </form>
                         </div>
                     </div>";
-                        }
-                    } else {
-                        echo "No comments";
-                    }?>
-                        </div>
-                        
-                        <div class='comment-create-container'>
-                        <input class='comment-create' id='comment-create-text-<?php echo "$postid"?>' name="text" type="text" required>
-                        <input type="hidden" id='comment-create-postid-<?php echo "$postid"?>' name="postid" value="<?php echo $postid; ?>">
-                        <button name="commentSubmit" onclick='postComment(<?php echo "$postid, \"$username\""?>);'>Comment</button>
-                    </div>
-                    </div>
-                </prepost>
-                          <?php  echo "<div class='feed-post'>";
-                            echo "<div class='user-container'>";
-                            echo "<a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
-                            echo "<div class='user-post-name'>";
-                            echo "<span>$name</span>";
-                            echo "<span>@$username</span>";
-                            echo "</div>";
-                            echo "</div>";
-                            echo "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
-                            echo "<img class='post-image' src=$post_image_path />";
-                            echo "</button>";
-                            echo "<div class='choices'>";
-                            echo "<div class='post-options'>";
-                            echo "<!-- Likes -->";
-                            if ($postLikedByUser) {
-                                echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                                }
                             } else {
-                                echo "<button class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
-                            }
-                            echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
-                            echo "xmlns='http://www.w3.org/2000/svg'>";
-                            echo "<path";
-                            echo ' d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"';
-                            echo "fill='red' />";
-                            echo "</svg>";
-                            echo "</button>";
-                            echo "<!-- Comment -->";
-                            echo "<button class='post-comment-button'>";
-                            echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
-                            echo "xmlns='http://www.w3.org/2000/svg'>";
-                            echo "<path fill-rule='evenodd' clip-rule='evenodd'";
-                            echo " d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z'";
-                            echo "fill='#1C274C' />";
-                            echo "</svg>";
-                            echo "</button>";
+                                echo "No comments";
+                            } ?>
+                    </div>
+
+                    <div class='comment-create-container'>
+                        <input class='comment-create' id='comment-create-text-<?php echo "$postid" ?>' name="text" type="text"
+                            required>
+                        <input type="hidden" id='comment-create-postid-<?php echo "$postid" ?>' name="postid"
+                            value="<?php echo $postid; ?>">
+                        <button name="commentSubmit"
+                            onclick='postComment(<?php echo "$postid, \"$username\"" ?>);'>Comment</button>
+                    </div>
+                    </div>
+                    </prepost>
+                    <?php echo "<div class='feed-post'>";
+                    echo "<div class='user-container'>";
+                    echo "<a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                    echo "<div class='user-post-name'>";
+                    echo "<span>$name</span>";
+                    echo "<span>@$username</span>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
+                    echo "<img class='post-image' src=$post_image_path />";
+                    echo "</button>";
+                    echo "<div class='choices'>";
+                    echo "<div class='post-options'>";
+                    echo "<!-- Likes -->";
+                    if ($postLikedByUser) {
+                        echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                    } else {
+                        echo "<button class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                    }
+                    echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                    echo "xmlns='http://www.w3.org/2000/svg'>";
+                    echo "<path";
+                    echo ' d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"';
+                    echo "fill='red' />";
+                    echo "</svg>";
+                    echo "</button>";
+                    echo "<!-- Comment -->";
+                    echo "<button class='post-comment-button'>";
+                    echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                    echo "xmlns='http://www.w3.org/2000/svg'>";
+                    echo "<path fill-rule='evenodd' clip-rule='evenodd'";
+                    echo " d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z'";
+                    echo "fill='#1C274C' />";
+                    echo "</svg>";
+                    echo "</button>";
 
 
-                            echo "</div>";
+                    echo "</div>";
 
-                            echo "</div>";
-                            echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
 
-                            echo "</post>";
+                    echo "</post>";
 
                         }
 
@@ -533,13 +534,13 @@ if (pg_num_rows($userDataRESULT) == 0) {
                     ?>
 
 
-                    <!-- Include this script in your HTML -->
-                    <?php
-                    // Close the database connection
-                    //pg_close($conn);
-                    ?>
+            <!-- Include this script in your HTML -->
+            <?php
+            // Close the database connection
+            //pg_close($conn);
+            ?>
 
-                </bside>
+            </bside>
             </div>
         </section>
 

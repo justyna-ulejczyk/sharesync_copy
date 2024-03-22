@@ -60,6 +60,7 @@ body {
     box-sizing: border-box;
     background-color: var(--background) !important;
     width: 100%;
+    overflow-y: hidden;
 }
 
 nav {
@@ -240,5 +241,3 @@ div.chatter-info {
     display: flex;
     gap: 10px;
 }
-
-

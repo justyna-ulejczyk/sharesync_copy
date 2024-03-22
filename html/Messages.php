@@ -1,7 +1,7 @@
 <?php
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
@@ -9,7 +9,7 @@ require_once "../php/connect_db.php";
 
 $login_username = $_SESSION["username"];
 // Get passed product genre and assign it to a variable.
-if (isset($_GET['id'])) {
+if (isset ($_GET['id'])) {
     $id = $_GET['id'];
     $messageReadSTMT = pg_prepare($conn, "messageRead", "UPDATE messages SET messageread = 1 WHERE username = $1 AND recipient = '$login_username'");
     $messageReadRESULT = pg_execute($conn, "messageRead", array($id));
@@ -164,35 +164,35 @@ if (isset($_GET['id'])) {
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php" >See More</a>
-</div>
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -200,12 +200,12 @@ if (isset($_GET['id'])) {
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>">
+                            src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>" alt="">
                                     <p>
                                         <?php echo "$login_username" ?>
                                     </p>
@@ -296,10 +296,11 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             $user = $row["username"];
                             echo '<button class="chatter-list-user" 
                             onclick="changeChat(this)" userid=' . $row['username'] . '>';
-                echo "<img src='../profile_pic/profile_pic_$user.png'>";
-               echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
-                            if ($row["messageread"] == 0 && $row["last_messageid"] != -1)echo '***'; 
-                echo '</a></p></button>';
+                            echo "<img src='../profile_pic/profile_pic_$user.png'>";
+                            echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
+                            if ($row["messageread"] == 0 && $row["last_messageid"] != -1)
+                                echo '***';
+                            echo '</a></p></button>';
                         }
                     }
                     echo "</div>";
@@ -313,25 +314,25 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     <!-- Chat box -->
                     <?php
                     // Get passed product genre and assign it to a variable.
+                    
+                    // Load initial notifications
+                    include_once "../php/load_messages.php";
+                    ?>
 
-// Load initial notifications
-include_once "../php/load_messages.php";
-?>
-
-                <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
+                    <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
 
-                    <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
-                        style="display:none;">
+                        <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
+                            style="display:none;">
 
-                    <input type="text" id="text" name="text" required="">
+                        <input type="text" id="text" name="text" required="">
 
-                    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
-                        style="display:none;">
-                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-                </form>
+                        <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"
+                            hidden style="display:none;">
+                        <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                    </form>
+                </div>
             </div>
-        </div>
 
 
     </main>

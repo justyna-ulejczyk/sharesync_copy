@@ -47,7 +47,9 @@ if ($numRows > 0) {
     }
     echo '</div>'; // Close chatter-chat div
 } else {
-    echo 'No Messages Yet';
+    echo '<div class="chatter-chat" id="chatter-chat">
+            No Messages Yet
+            </div>';
 }
 
 ?>
@@ -60,7 +62,7 @@ if ($numRows > 0) {
     }
 
     // Call the function to scroll chatter-chat div to its bottom after the page has loaded
-    window.onload = function() {
+    window.onload = function () {
         scrollChatterBoxToBottom();
     };
 </script>
