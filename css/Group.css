@@ -155,6 +155,11 @@ friend img {
     text-decoration: none;
     color: var(--text);
 }
+.create-container{
+    padding: 25px;
+
+
+}
 
 @media only screen and (max-width: 800px) {
     main {
@@ -174,3 +179,5 @@ friend img {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+

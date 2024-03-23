@@ -318,8 +318,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <div class="feed-create-post-container">
                     <a href="#" class="close" onclick="exitButton(this)"></a>
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
-                        <input type="file" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg"
+                        <input type="file" id="photoInput" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg, image/*;" capture
                             required>
+
                         <div class="caption-container">
                             <h3>Caption</h3>
                             <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"

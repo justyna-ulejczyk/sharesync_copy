@@ -261,7 +261,7 @@ $username = $_SESSION["username"];
 
     <main>
 
-        <section class="create-container">
+        <section class="create-container" >
             <form action="../php/create_group.php" method="post">
                 <div class="create-title">
                     <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>

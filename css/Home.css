@@ -242,6 +242,8 @@ main > profile > div:nth-child(2) {
     height: 90%;
     z-index: 999;
     display: none;
+    padding: 20px;
+    align-items: center;
 }
 
 .feed-create-post-container form {
@@ -257,6 +259,13 @@ main > profile > div:nth-child(2) {
 .tags-container {
     width: 80%;
 }
+.tags-container input{
+    width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
 
 .tags-box {
     border: 1px solid var(--dark-gray);
@@ -277,7 +286,10 @@ main > profile > div:nth-child(2) {
 }
 
 .feed-create-post-captions {
-    width: 100%;
+    width: 600px;
+    max-width: 600px;
+    height: 200px;
+    max-height: 500px;
 }
 
 .feed-create-post-container input[type="submit"] {

@@ -310,15 +310,36 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 ?>
 
 
-                <div class="chatter-box">
+                <div class="chatter-box" id='chatter-box'>
                     <!-- Chat box -->
-                    <?php
-                    // Get passed product genre and assign it to a variable.
+        <script>
+        function fetchUpdates() {
+            // Make an AJAX request to server.php
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../php/load_messages.php?id=' + <?php echo "'$id'"?>, true);
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // Parse JSON response
+                    console.log(xhr.responseText)
+                    var data = JSON.parse(xhr.responseText);
                     
-                    // Load initial notifications
-                    include_once "../php/load_messages.php";
-                    ?>
-                
+                    // Update dynamic content
+                    document.getElementById('chatter-box').innerHTML = data;
+                } else{
+                    console.log(xhr.responseText)
+                }
+            };
+
+            xhr.send();
+
+            // Fetch updates every 5 seconds (adjust as needed)
+            setTimeout(fetchUpdates, 5000);
+        }
+
+        // Start fetching updates
+        fetchUpdates();
+    </script>
 
                     <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 

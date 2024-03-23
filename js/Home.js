@@ -15,7 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
+document.getElementById('photoInput').addEventListener('change', function(event) {
+    const [file] = event.target.files;
+    if (file) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+    }
+  });
 function finishPost() {
     var dimmedElement = document.querySelector('.dimmed');
     var createPost = document.querySelector('.feed-create-post-container')
