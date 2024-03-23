@@ -213,7 +213,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="../images/icons/Unknown_person.jpg">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
@@ -384,7 +384,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         <div class='post-info'>
                             <div class=' comment-header'>
                                 <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                                    <a href='Profile.php'><img src='../profile_pic/profile_pic_$username.png' class='post-avatar' /></a>
                                     <div class='user-post-name'>
                                         <span>$name</span>
                                         <span>@$username</span>
@@ -441,7 +441,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
 
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$username'><img src='../profile_pic/profile_pic_$commenting_user.png' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$commenting_user</span>
                                 <span>Comment - $date</span>
@@ -484,7 +484,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                     </prepost>
                     <?php echo "<div class='feed-post'>";
                     echo "<div class='user-container'>";
-                    echo "<a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                    echo "<a href='Profile.php'><img src='../profile_pic/profile_pic_$username.png' class='post-avatar' /></a>";
                     echo "<div class='user-post-name'>";
                     echo "<span>$name</span>";
                     echo "<span>@$username</span>";
@@ -549,7 +549,11 @@ if (pg_num_rows($userDataRESULT) == 0) {
         <!-- Displaying About -->
         <section class="profile-info-about">
 
-
+<?php
+$details=pg_prepare($conn, "details", "SELECT * FROM accounts Where username = $1 ");
+$detailsResult = pg_execute($conn, "details", array($account_username));
+$row = pg_fetch_assoc($detailsResult);
+?>
             <div class="aboutContainer">
                 <div id="leftMainHeading">
                     <h1>About</h1>
