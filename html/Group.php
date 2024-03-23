@@ -299,7 +299,7 @@ $username = $_SESSION["username"];
                     $groupname = $row['groupname'];
                     echo "<div>
                     <a href='group-page.php?id=$groupid'>
-                        <img class='nav-profile' id='profile-img_$groupid'  src='../group_pic/group_pic_$groupname.png'></img>
+                        <img id='profile-img_$groupid'  src='../group_pic/group_pic_$groupname.png'></img>
                         <h1 class='groupName'>$groupname</h1>
                     </a>
                 </div>";
@@ -311,7 +311,7 @@ $username = $_SESSION["username"];
                         document.getElementById('profile-img_$groupid').src = '../group_pic/group_pic_' + groupname_$groupid + '.png';
                     };
                     img_$groupid.onerror = function() {
-                        document.getElementById('profile-img_$groupid').src = '../images/cat.jpg';
+                        document.getElementById('profile-img_$groupid').src = '../images/groupEmpty.svg';
                     };
                     img_$groupid.src = '../group_pic/group_pic_' + groupname_$groupid + '.png';
                 </script>";
