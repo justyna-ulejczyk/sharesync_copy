@@ -318,6 +318,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     // Load initial notifications
                     include_once "../php/load_messages.php";
                     ?>
+                
 
                     <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
@@ -325,11 +326,13 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                         <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
                             style="display:none;">
 
-                        <input type="text" id="text" name="text" required="">
-
+                        <div id="msgInput">
+                            <input type="text" id="text" name="text" required="">
+                        </div>
+                        
                         <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"
-                            hidden style="display:none;">
-                        <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                            hidden style="display:none; ">
+                        <button type="submit" style = "margin-bottom: 20px;"><i class="fab fa-telegram-plane"></i></button>
                     </form>
                 </div>
             </div>

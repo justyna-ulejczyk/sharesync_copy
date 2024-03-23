@@ -103,6 +103,7 @@ div.chatter-info {
     height: 100%;
     width: 100%;
     overflow-y: auto;
+
 }
 
 .chatter-chat::-webkit-scrollbar {
@@ -153,7 +154,8 @@ div.chatter-info {
     width: 100%;
     height: auto;
     min-height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
+
 }
 .chatter-chat-sender {
     width: 100%;
@@ -231,26 +233,31 @@ div.chatter-info {
     display: flex;
     flex-direction: column;
     flex: 3;
+    margin-bottom: 10px;
     overflow: hidden; /* Add this line to prevent overflow from the absolutely positioned element */
 }
 
 .chatter-send-message {
     box-sizing: border-box;
     height: 50px;
-    margin-bottom: 20px;
-    
+    margin-bottom: 30px;
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
+
 
 #msgInput{
     display: block;
-    width: 800px;
+    width: 600px;
     height: 80px;
+
     margin-right: 40px;
     margin-left: 200px;
+    margin-bottom: 20px;
 }
 #msgInput input{
+
     padding: 20px;
 }
+
 
