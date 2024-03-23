@@ -12,7 +12,7 @@ $username = $_SESSION["username"];
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
+    <title>Friends Page</title>
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-create.css">
@@ -243,13 +243,20 @@ $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE fol
 
 
         ?>
+        <section id = 'title'>                             
+            <h1 >Friends List</h1>
+        </section>
+         
         <section id= "FriendsContentArea">
-                <h1>Friends List</h1>
+        
+        
             <?php 
+            
             if ($numRows > 0) {
                
                 //echo "<p>You follow: $numRows users</p>"; // Display total number of members
                 while ($row = pg_fetch_assoc($result)){
+                    
                     $followee = $row['followee'];     
                     
                     $result2 = pg_execute($conn, "followers2", array($username)); 
@@ -259,10 +266,13 @@ $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE fol
                         while ($row2= pg_fetch_assoc($result2)){
                         $follower = $row2['username'];
                         if($follower ==$followee){
+
                             echo  "<section id='friendDisplay'>";
+                            echo "<a href ='../html/Profile.php?id=$followee'>";
                             echo   "<img src='../profile_pic/profile_pic_$followee.png' class='friendIcon'>";
-                            echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span><br>";
+                            echo "<span><p>$followee</p><a></span><br>";
                             echo "</section>";
+                            echo "</a>";
                 }}}}}?>
     <?php
  $stmt = pg_prepare($conn, "followee", "SELECT * FROM follows WHERE username=$1");

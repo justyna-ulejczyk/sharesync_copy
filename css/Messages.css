@@ -238,7 +238,19 @@ div.chatter-info {
     box-sizing: border-box;
     height: 50px;
     margin-bottom: 20px;
-    width: 100%; /* Set width to 100% to match parent's width */
+    
     display: flex;
     gap: 10px;
 }
+
+#msgInput{
+    display: block;
+    width: 800px;
+    height: 80px;
+    margin-right: 40px;
+    margin-left: 200px;
+}
+#msgInput input{
+    padding: 20px;
+}
+

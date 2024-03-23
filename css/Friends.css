@@ -1,22 +1,33 @@
 #FriendsContentArea{
-    display: block;
-    width: 100%;
-    margin: 80px;
-    padding: 30px;
-
+    position: relative;
+    margin-top:150px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px; 
 }
 
 #friendDisplay{
-    display: inline-block;
-    width: 70px;
-    height: 60px;
-    padding: 10px;
-    margin: 10px;
-    background-color: grey;
-    border-radius: 10px;
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #ddd; /* Light grey border */
+    padding: 20px; /* Padding inside each grid item */
+    text-align: center; /* Center the text inside grid items */
+
 }
+
+#friendDisplay:hover{    
+    cursor: text;}
+
+
 
 #friendDisplay img{
     width: 40px;
     height: 40px;
+}
+
+#title{
+    display: flex;
+    margin-top: -50px;
+    margin-bottom: 0px;
+position: absolute;
 }

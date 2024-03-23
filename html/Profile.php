@@ -606,8 +606,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                                    <p id="friendName">';
                             echo "<a href ='../html/Profile.php?id=$foll'>$foll<a> </p>";
                             if ($login_username == $account_username) {
-                                echo "<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>";
-
+                                echo "<span><a href='../php/stop_follow.php?id=$foll'><img src=''></img> </a></div>";
                             } else {
                                 echo '</div>';
                             }
