@@ -29,16 +29,25 @@ if ($result) {
     echo "Group created successfully!";
     $groupid = pg_fetch_result($result, 0, 'groupid');
     // Create a folder with the group name
-    $folderPath = "../groups/" . $groupname; 
+    $folderPath = "../groups/" . $groupid; 
     
     if (!file_exists($folderPath)) {
         if (!mkdir($folderPath, 0777, true)) {
             die('Failed to create folders...');
         }
         echo "Folder created successfully!";
-    } else {
-        echo "Folder already exists!";
-    }
+   // Create a readme.txt file
+   $readmeContent = "This is the readme file for group " . $groupid;
+   $readmeFilePath = $folderPath . "/readme.txt";
+   if (file_put_contents($readmeFilePath, $readmeContent) !== false) {
+       echo "Readme file created successfully!";
+   } else {
+       echo "Failed to create readme file!";
+   }
+} else {
+   echo "Folder already exists!";
+}
+
     
     // Insert into accountToGroup table
     $stmt2 = pg_prepare($conn, "members", "INSERT INTO accountToGroup (username, groupID) VALUES ($1, $2)");
