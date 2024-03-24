@@ -55,19 +55,6 @@ if ($numRows > 0) {
             </div>';
 }
 
-$data .= "<form class='chatter-send-message' id='messages' action='../php/send_message.php' method='post'>
-
-
-<input type='text' id='recipient' name='recipient' value='$id' hidden
-    style='display:none;'>
-
-<input type='text' id='text' name='text' required=''>
-
-<input type='text' class='username' name='username' value='$login_username'
-    hidden style='display:none;'>
-<button type='submit'><i class='fab fa-telegram-plane'></i></button>
-</form>
-</div></div>";
 
 header('Content-Type: application/json');
 echo json_encode($data);

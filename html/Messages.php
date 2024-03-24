@@ -309,37 +309,41 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 }
                 ?>
 
-
+<div class="chatter-box">
                 <div class="chatter-box" id='chatter-box'>
                     <!-- Chat box -->
-        <script>
-        function fetchUpdates() {
-            // Make an AJAX request to server.php
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '../php/load_messages.php?id=' + <?php echo "'$id'"?>, true);
+                    <script>
+function fetchUpdates() {
+    // Make an AJAX request to server.php
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../php/load_messages.php?id=' + <?php echo "'$id'"?>, true);
 
-            xhr.onload = function() {
-                if (xhr.status == 200) {
-                    // Parse JSON response
-                    console.log(xhr.responseText)
-                    var data = JSON.parse(xhr.responseText);
-                    
-                    // Update dynamic content
-                    document.getElementById('chatter-box').innerHTML = data;
-                } else{
-                    console.log(xhr.responseText)
-                }
-            };
-
-            xhr.send();
-
-            // Fetch updates every 5 seconds (adjust as needed)
-            setTimeout(fetchUpdates, 5000);
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            // Parse JSON response
+            console.log(xhr.responseText);
+            var data = JSON.parse(xhr.responseText);
+            
+            // Update dynamic content
+            document.getElementById('chatter-box').innerHTML = data;
+            
+            // Scroll to the bottom of the chat container
+            document.getElementById('chatter-chat').scrollTop = document.getElementById('chatter-chat').scrollHeight;
+        } else {
+            console.log(xhr.responseText);
         }
+    };
 
-        // Start fetching updates
-        fetchUpdates();
-    </script>
+    xhr.send();
+
+    // Fetch updates every 5 seconds (adjust as needed)
+    setTimeout(fetchUpdates, 5000);
+}
+
+// Start fetching updates
+fetchUpdates();
+</script>
+</div>
 
                     <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
@@ -353,11 +357,12 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                         
                         <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"
                             hidden style="display:none; ">
-                        <button type="submit" style = "margin-bottom: 20px;"><i class="fab fa-telegram-plane"></i></button>
+                        <button type="submit" style = "margin-bottom: 20px;"
+                        ><i class="fab fa-telegram-plane"></i></button>
                     </form>
                 </div>
             </div>
-
+</div>
 
     </main>
 
