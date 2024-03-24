@@ -360,7 +360,7 @@ $split = $_GET["split"];
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
                         $filename = $row["filename"];
                         echo
-                            "<a href='group-editor.php?id=$filename'>
+                            "<a href='group-editor.php?id=$filename&split=$split'>
                             <div class='folder-container' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
                         <span id='$filename'>$filename</span>

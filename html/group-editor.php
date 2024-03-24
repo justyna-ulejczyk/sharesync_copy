@@ -20,10 +20,13 @@ $split = $_GET["split"];
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if($split==1){
-        $filePath = "../groups/$groupname/$id" . "B";
+        $filePath = "../splits/$groupid/$id";
     } else{
-        $filePath = "../groups/$groupname/$id";
+        $filePath = "../groups/$groupid/$id";
     }
+    $idFile = $myfile = fopen($filePath, "r");
+    $fileContents = fread($idFile,filesize($filePath));
+    fclose($idFile);
 }
 ?>
 

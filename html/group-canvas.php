@@ -207,12 +207,12 @@ session_write_close();
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src=<?php echo "../profile_pic/profile_pic_$username.png";?>>
+                            src=<?php echo "../profile_pic/profile_pic_$login_username.png";?>>
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
+                                <img src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>" alt="">
                                     <p>
                                         <?php echo "$login_username" ?>
                                     </p>
