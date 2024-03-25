@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION["username"])){
-    header('Location: '."../html/login.html"); // redirect the user to the register page if they have not already logged in
+    header('Location: '."../html/login.php"); // redirect the user to the register page if they have not already logged in
     exit(); // Stop further execution
 }
 
