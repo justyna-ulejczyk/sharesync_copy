@@ -416,6 +416,12 @@ img.profile-info-groups-group {
     color: var(--text);
 }
 
+@media only screen and (max-width: 1000px) and (min-width: 800px) {
+    .profile-bio a div {
+        width: auto;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     main {
         margin-top: 50px;
@@ -479,6 +485,14 @@ img.profile-info-groups-group {
 
     .profile {
         width: 80%;
+    }
+
+    .profile-bio {
+        display: none;
+    }
+
+    bside.profile-posts {
+        align-items: center;
     }
 }
 

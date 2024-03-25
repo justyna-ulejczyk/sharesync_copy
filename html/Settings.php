@@ -498,7 +498,18 @@ if ($settingsResult) {
                 <input type="text" id="gender" name="gender" required />
                 <button class="confirmButton">Comfirm Update</button>
             </form>
+            <form action="../php/profile_details.php" method="post">
+                <div class="info-display">
+                    <p class="info-cat">Date of birth- </p>
+                    <p>
+                        Date of birth
+                    </p>
 
+                </div>
+                <p>Update:</p>
+                <input type="text" id="dob" name="dob" required />
+                <button class="confirmButton">Comfirm Update</button>
+            </form>
 
         </div>
 
