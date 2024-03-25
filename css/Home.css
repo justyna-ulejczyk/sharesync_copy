@@ -236,7 +236,7 @@ main > profile > div:nth-child(2) {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 750px;
+    max-width: 500px;
     background-color: var(--foreground);
     border-radius: 25px;
     height: 90%;
@@ -259,14 +259,13 @@ main > profile > div:nth-child(2) {
 .tags-container {
     width: 80%;
 }
-.tags-container input{
-    width: 580px;
+.tags-container input {
+    width: 100%;
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
 }
-
 
 .tags-box {
     border: 1px solid var(--dark-gray);
@@ -287,19 +286,51 @@ main > profile > div:nth-child(2) {
 }
 
 .feed-create-post-captions {
-    width: 600px;
-    max-width: 600px;
+    width: 100%;
+    max-width: 400px;
     height: 200px;
-    max-height: 500px;
+    max-height: 350px;
 }
 
-.feed-create-post-container input[type="submit"] {
+.feed-create-post-container input[type="submit"],
+.feed-create-post-container button {
+    box-sizing: border-box;
     padding: 10px 50px;
     border-radius: 15px;
     border: 1px solid var(--text);
     color: var(--text);
     background: none;
     font-size: 20px;
+}
+
+textarea#text {
+    border-radius: 24px;
+    resize: none;
+}
+.final-decision {
+    display: flex;
+    gap: 20px;
+}
+
+.file-upload {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-upload:hover {
+    background-color: var(--accent);
+}
+
+.file-upload .icon {
+    margin-right: 5px;
+}
+
+.file-upload input[type="file"] {
+    display: none;
 }
 
 /* Screen sizes between 1150 and 1200 */
@@ -351,16 +382,23 @@ main > profile > div:nth-child(2) {
 
 /* Screen sizes 800 and down */
 @media only screen and (max-width: 800px) {
+    subnav {
+        margin: 0;
+    }
+
     .feed-create-post-container {
         border-radius: 0;
     }
 
     main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         margin-top: 75px;
+        overflow-x: hidden;
     }
 
     .feed {
-        margin: 0%;
+        margin: 0px;
     }
 
     main .group {
@@ -412,6 +450,8 @@ main > profile > div:nth-child(2) {
 
     .posts {
         margin-top: 40px;
+        background-color: transparent !important;
+        box-shadow: none !important;
     }
 
     .noti {
@@ -435,6 +475,10 @@ main > profile > div:nth-child(2) {
 
     .feed-create-post-button {
         display: none;
+    }
+
+    .feed-create-post-container {
+        padding: 0;
     }
 }
 

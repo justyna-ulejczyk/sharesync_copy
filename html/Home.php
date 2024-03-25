@@ -317,13 +317,20 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <a href='Home.php?id=following'><button>Following</button></a>
             </div>
             <!-- End of Create Post Button-->
+
+
             <!-- Start of Create Post Options -->
             <div>
                 <div class="feed-create-post-container">
-                    <a href="#" class="close" onclick="exitButton(this)"></a>
+
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
+                        <label for="photoInput" class="file-upload">
+                            <span class="icon"><i class="fas fa-upload"></i></span>
+                            <span class="text">Choose a file</span>
+                        </label>
                         <input type="file" id="photoInput" class="feed-create-post-img" name="post_image"
-                            accept=".png, .jpg, .jpeg, image/*;" capture required>
+                            accept=".png, .jpg, .jpeg, image/*;" capture required style="display: none;">
+
 
                         <div class="caption-container">
                             <h3>Caption</h3>
@@ -334,12 +341,19 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             <h3>Tags (please seperate with commas)</h3>
                             <input type="text" id="tags" name="tags">
                         </div>
-                        <input value="Post" type="submit" name="submit_post" class="feed-create-post-submit"
-                            onclick="finishPost()">
+                        <div class='final-decision'>
+                            <button onclick="exitButton(this)">Cancel</button>
+                            <input value="Post" type="submit" name="submit_post" class="feed-create-post-submit"
+                                onclick="finishPost()">
+
+                        </div>
                     </form>
                 </div>
             </div>
             <!-- End of Create Post Options -->
+
+
+
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php

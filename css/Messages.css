@@ -260,4 +260,24 @@ div.chatter-info {
     nav > section:nth-child(2) > ul > li:nth-child(3) {
         display: none;
     }
+
+    .chatter-list-user p {
+        visibility: hidden;
+    }
+
+    #msgInput {
+        margin-left: 0;
+    }
+
+    main {
+        height: 94vh;
+    }
+
+    .chatter-container {
+        margin-top: 50px;
+    }
+
+    nav {
+        position: fixed !important;
+    }
 }

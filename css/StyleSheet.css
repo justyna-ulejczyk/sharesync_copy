@@ -977,6 +977,13 @@ prepost {
         justify-content: space-around;
     }
 
+    main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 75px;
+        overflow-x: hidden;
+    }
+
     .notfications-message span {
         font-size: 20px;
     }
@@ -1065,6 +1072,7 @@ prepost {
         position: fixed;
         top: 0;
         z-index: 999;
+        padding-left: 0;
     }
 
     .noti {
