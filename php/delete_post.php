@@ -6,7 +6,7 @@ if (!isset($_SESSION["username"])) {
     header('Location: ' . "../html/login.html");
     exit();
 }
-    $postid = $_POST['postid'];
+    $postid = $_POST['post_id'];
     $query = pg_prepare($conn, "delete", "DELETE FROM post where postid = $1");
     $stmt = pg_execute($conn, "delete", array($postid));
 

@@ -19,7 +19,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 <html class="dimmed">
 
 <head>
-    <title>Homepage</title>
+    <title>Feed</title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/Home.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
