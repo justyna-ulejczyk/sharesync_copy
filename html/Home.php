@@ -166,7 +166,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             // Load initial notifications
                             include_once "../php/load_notifications.php";
                             ?>
-    <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
+                            <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
                         </div>
 
 
@@ -318,8 +318,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <div class="feed-create-post-container">
                     <a href="#" class="close" onclick="exitButton(this)"></a>
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
-                        <input type="file" id="photoInput" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg, image/*;" capture
-                            required>
+                        <input type="file" id="photoInput" class="feed-create-post-img" name="post_image"
+                            accept=".png, .jpg, .jpeg, image/*;" capture required>
 
                         <div class="caption-container">
                             <h3>Caption</h3>
@@ -492,12 +492,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "</button>";
                     echo "<div class='choices'>";
                     echo "<div class='post-options'>";
-                    if ($poster_username == $username) {
-                        echo "<form action='../php/delete_post.php' method='post'>";
-                        echo "<input type='hidden' name='post_id' value='$postid'>";
-                        echo "<button type='submit' name='delete_post'>Delete</button style='display: flex; justify-content='end''>";
-                        echo "</form>";
-                    }
+
 
 
                     echo "<!-- Likes -->";
@@ -514,7 +509,14 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "</svg>";
                     echo "</button>";
                     echo "<p class='likeCounter $postid'>$likesCount</p>";
+
                     echo "</div>";
+                    if ($poster_username == $username) {
+                        echo "<form action='../php/delete_post.php' method='post'>";
+                        echo "<input type='hidden' name='post_id' value='$postid'>";
+                        echo "<button type='submit' name='delete_post'>Delete</button>";
+                        echo "</form>";
+                    }
                     echo "</div>";
                     echo "</div>";
 
@@ -526,7 +528,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             }
 
             // Close the database connection
-
+            
             ?>
             <!-- End of Post 1 -->
             <!-- End of Posts -->

@@ -480,6 +480,12 @@ button.like.active > svg > path {
     align-items: center;
     height: 40px;
 }
+
+.choices form {
+    width: auto;
+    margin-right: 8px;
+}
+
 .post-options {
     display: flex;
     margin-left: 20px;

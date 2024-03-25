@@ -22,6 +22,10 @@ if ($settingsResult) {
     echo "Error retrieving settings: " . pg_last_error($conn);
 }
 
+$visibilitySTMT = pg_prepare($conn, "check_visibility", "SELECT accountvisibility FROM accounts WHERE username=$1");
+$visibilityRESULT = pg_execute($conn, "check_visibility", array($username));
+$visibilityRow = pg_fetch_assoc($visibilityRESULT);
+$visibility = $row["accountvisibility"];
 
 ?>
 
@@ -625,7 +629,7 @@ if ($settingsResult) {
             <h1>Profile Visibility</h1>
             <p class="inline">public</p>
             <label class="profileSwitch" class="round">
-                <input type="checkbox" onchange='updateVisibilty(<?php echo "\"$username\""; ?>, this);'>
+                <input type="checkbox" <?php if($visibility == 1) echo "checked"?> onchange='updateVisibilty(<?php echo "\"$username\""; ?>, this);'>
                 <span class="slider"></span>
             </label>
             <p class="inline">private</p>
