@@ -378,12 +378,19 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
 
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
                         $filename = $row["filename"];
-                        echo
-                            "<a href='group-editor.php?id=$filename&split=$split'>
+                        $extension = substr($filename, -4);
+                        $extensionless = substr($filename, 0, -4);
+                        if ($extension==".rtf"){
+                            echo "<a href='group-editor.php?id=$filename&split=$split'>
                             <div class='folder-container' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
                         <span id='$filename'>$filename</span>
-                        </div></a>";
+                        </div></a>";} else if($extension==".png"){
+                            echo "<a href='group-canvas.php?image=$filename&split=$split&fileName=$extensionless'>
+                            <div class='folder-container' folderid='file'>
+                        <i class='fa fa-paint-brush' aria-hidden='true'></i>
+                        <span id='$filename'>$filename</span>
+                        </div></a>";}
                     }
                     ?>
                 </section>

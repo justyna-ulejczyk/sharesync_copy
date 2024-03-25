@@ -105,6 +105,28 @@ document.getElementById('save').addEventListener('click', function() {
     xhr.send(formData);
 });
 
+document.getElementById('delete').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/delete_canvas.php", true);
+    var split = this.getAttribute("split");
+    var groupid = this.getAttribute("groupid");
+    var filename = this.getAttribute("filename");
+    var formData = new FormData();
+    formData.append("filename", filename);
+    formData.append("groupid", groupid);
+    formData.append("split", split);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+            //window.location.href = '../html/group-page-file.php';
+        } else {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
+});
+
 imageLoader.addEventListener('change', handleImage, false);
 
 function handleImage(e) {

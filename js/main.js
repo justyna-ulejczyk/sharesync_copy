@@ -57,6 +57,8 @@ function openPost(clickedElement) {
 
 
 
+
+
 function toggleMore() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");

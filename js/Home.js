@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-document.getElementById('photoInput').addEventListener('change', function(event) {
+document.getElementById('photoInput').addEventListener('change', function (event) {
     const [file] = event.target.files;
     if (file) {
-      const preview = document.getElementById('preview');
-      preview.src = URL.createObjectURL(file);
-      preview.style.display = 'block';
+        const preview = document.getElementById('preview');
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
     }
-  });
+});
 function finishPost() {
     var dimmedElement = document.querySelector('.dimmed');
     var createPost = document.querySelector('.feed-create-post-container')
@@ -101,17 +101,12 @@ function postComment(postid, username) {
                     <span>Comment - ${formattedDate}</span>
                 </div>
             </div>
-            <div class='comment-like'>
-            <button class='like icons' onclick='toggleHeart(this)'>
-                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                    <path d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z' fill='red' />
-                </svg>
             </button>`
                 var newCommentBottom = document.createElement("div");
                 newCommentBottom.innerHTML = `<div>
                 <div class='comment-text'>${text}</div>
                 <div class='comment-options'>
-                    <span>1 Like</span>
+       
                     <a><button>Delete</button></a>
                 </div>
             </div>`

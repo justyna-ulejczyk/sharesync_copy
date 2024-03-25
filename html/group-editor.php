@@ -325,6 +325,7 @@ if (isset($_GET['id'])) {
                             <option value="new">New file</option>
                             <option value="save">Save file</option>
                             <option value="export">Export file</option>
+                            <option value="delete">Delete file</option>
                         </select>
                         <select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
                             <option value="" selected="" hidden="" disabled="">Format</option>

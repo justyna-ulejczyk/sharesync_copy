@@ -30,6 +30,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <script src="../js/Home.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/navbar.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <!-- test commit -->
@@ -81,7 +82,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <section>
             <ul class="linksBar">
                 <li class="active">
-                    <a href="../html/Home.php" class="active">
+                    <a href="../html/Home.php">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -102,6 +103,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     </a>
                 </li>
                 <li>
+
                     <button onclick="createPost()">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -167,9 +169,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             // Load initial notifications
                             include_once "../php/load_notifications.php";
                             ?>
-                            <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
-
 
                         <script>
                             // Function to load more notifications
@@ -206,7 +207,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
-                                    <?php echo "<p>$username</p>" ?>
+                                    <p>
+                                        <?php echo "$username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -221,7 +224,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>My Profile</span>
                                 </button>
                             </a>
-                            <a href="../html/Settings.php">
+                            <a href="Settings.php">
                                 <button class="settings">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -438,13 +441,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                         <span>$commenting_user</span>
                                         <span>Comment - $date</span>
                                     </div>
-                                </div>
-                                <div class='comment-like'>
-                                    <button class='like icons' onclick='toggleHeart(this)'>
-                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                                            <path d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z' fill='red' />
-                                        </svg>
-                                    </button>
+
                                 </div>
                             </div>
                             <div>
@@ -538,7 +535,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
     </main>
 
-    <script src="../js/main.js"></script>
+
 </body>
 <?php pg_close($conn); ?>
 

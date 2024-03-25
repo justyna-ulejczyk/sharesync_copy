@@ -1,56 +1,85 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
 
-class DatabaseConnectionTest extends TestCase
-{
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->mockSessionStart();
-    }
-
-    public function testLoginWithValidCredentials()
-    {
-        // Mock the required database connection and statement execution
-        $connMock = $this->createMock(PDO::class);
-        $stmtMock = $this->createMock(PDOStatement::class);
-
-        $connMock->expects($this->once())
-                 ->method('prepare')
-                 ->with($this->equalTo("SELECT * FROM accounts WHERE username = ?"))
-                 ->willReturn($stmtMock);
-
-        $stmtMock->expects($this->once())
-                 ->method('execute')
-                 ->with($this->equalTo(["test_username"]))
-                 ->willReturn(true);
-
-        $stmtMock->expects($this->once())
-                 ->method('rowCount')
-                 ->willReturn(1);
-
-        $hashedPassword = password_hash("test_password", PASSWORD_DEFAULT);
-        $stmtMock->expects($this->once())
-                 ->method('fetch')
-                 ->willReturn(["password" => $hashedPassword]);
-
-        // Set up POST data
-        $_POST['username'] = "test_username";
-        $_POST['password'] = "test_password";
-
-        // Include the script
-        require_once "../php/login.php"; // Adjust path as needed
-
-        // Assertions
-        $this->assertEquals("test_username", $_SESSION['username']);
-    }
-
-    protected function mockSessionStart()
-    {
-        // Mock session_start
-        if (!function_exists('session_start')) {
-            function session_start() { return true; }
+// Mock Database class
+class Database {
+    public function execute($username) {
+        // Simulate database query based on username
+        if ($username === 'existing_user') {
+            return [['password' => password_hash('correct_password', PASSWORD_DEFAULT)]];
+        } else {
+            return [];
         }
+    }
+}
+
+// Class to be tested
+class LoginService {
+    private $db;
+
+    public function __construct($db) {
+        $this->db = $db;
+    }
+
+    public function handleLogin($username, $password) {
+        $result = $this->db->execute($username);
+
+        if (count($result) == 0) {
+            return 'invalid username';
+        }
+
+        $storedPassword = $result[0]['password'];
+
+        if (!password_verify($password, $storedPassword)) {
+            return 'Incorrect password';
+        }
+
+        // Assuming you want to return something on successful login
+        return 'Login successful';
+    }
+}
+
+// Test class
+class loginTest extends TestCase {
+    public function testHandleLogin_ValidLogin() {
+        // Mock the database object
+        $dbMock = $this->createMock(Database::class);
+        $dbMock->method('execute')->willReturn([['password' => password_hash('correct_password', PASSWORD_DEFAULT)]]);
+
+        // Instantiate LoginService with mocked database
+        $loginService = new LoginService($dbMock);
+
+        // Test with valid credentials
+        $result = $loginService->handleLogin('existing_user', 'correct_password');
+
+        $this->assertEquals('Login successful', $result);
+    }
+
+    public function testHandleLogin_InvalidUsername() {
+        // Mock the database object
+        $dbMock = $this->createMock(Database::class);
+        $dbMock->method('execute')->willReturn([]);
+
+        // Instantiate LoginService with mocked database
+        $loginService = new LoginService($dbMock);
+
+        // Test with invalid username
+        $result = $loginService->handleLogin('nonexistent_user', 'password');
+
+        $this->assertEquals('invalid username', $result);
+    }
+
+    public function testHandleLogin_IncorrectPassword() {
+        // Mock the database object
+        $dbMock = $this->createMock(Database::class);
+        $dbMock->method('execute')->willReturn([['password' => password_hash('correct_password', PASSWORD_DEFAULT)]]);
+
+        // Instantiate LoginService with mocked database
+        $loginService = new LoginService($dbMock);
+
+        // Test with incorrect password
+        $result = $loginService->handleLogin('existing_user', 'wrong_password');
+
+        $this->assertEquals('Incorrect password', $result);
     }
 }

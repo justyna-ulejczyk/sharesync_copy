@@ -294,7 +294,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     while ($row = pg_fetch_assoc($usersListRESULT)) {
                         if ($row["username"] != $login_username) {
                             $user = $row["username"];
-                            echo '<button class="chatter-list-user" 
+                            echo '<button class="chatter-list-user"
                             onclick="changeChat(this)" userid=' . $row['username'] . '>';
                             echo "<img src='../profile_pic/profile_pic_$user.png'>";
                             echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
@@ -328,8 +328,6 @@ function fetchUpdates() {
                 scrollPos = document.getElementById('chatter-chat').scrollTop;
             }
             document.getElementById('chatter-box').innerHTML = data;
-            
-            // Scroll to the bottom of the chat container
             document.getElementById('chatter-chat').scrollTop = scrollPos;
         } else {
             console.log(xhr.responseText);
@@ -339,7 +337,7 @@ function fetchUpdates() {
     xhr.send();
 
     // Fetch updates every 5 seconds (adjust as needed)
-    setTimeout(fetchUpdates, 5000);
+    setTimeout(fetchUpdates, 2000);
 }
 
 // Start fetching updates
