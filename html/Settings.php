@@ -448,33 +448,32 @@ if ($settingsResult) {
         <div id="overview">
             <span class="updateTitle">Overview</span>
             <div class='divider'></div>
-            <form action="" method="post">
+            <form action="../php/profile_details.php" method="post">
                 <div class="info-display">
-                    <p class="info-cat">University -</p>
+                    <p class="info-cat">University </p>
                     <p>
                         University
                     </p>
 
                 </div>
-                <p>New University</p>
-                <input type="text" id="email1" name="email1" required />
+                <p><input type= "text" name ="university" id= "university" required /></p>
                 <button class="confirmButton">Comfirm Update</button>
             </form>
 
-            <form action="" method="post">
+            <form action="../php/profile_details.php" method="post">
                 <div class="info-display">
-                    <p class="info-cat">Work Place -</p>
+                    <p class="info-cat">Work Place </p>
                     <p>
                         work place
                     </p>
 
                 </div>
                 <p>New work place</p>
-                <input type="text" id="email1" name="email1" required />
+                <input type="text" id="worksat" name="worksat" required />
                 <button class="confirmButton">Comfirm Update</button>
             </form>
 
-            <form action="" method="post">
+            <form action="../php/profile_details.php" method="post">
                 <div class="info-display">
                     <p class="info-cat">Nationality -</p>
                     <p>
@@ -483,11 +482,11 @@ if ($settingsResult) {
 
                 </div>
                 <p>New Nationality</p>
-                <input type="text" id="email1" name="email1" required />
+                <input type="text" id="location" name="location" required />
                 <button class="confirmButton">Comfirm Update</button>
             </form>
 
-            <form action="" method="post">
+            <form action="../php/profile_details.php" method="post">
                 <div class="info-display">
                     <p class="info-cat">Gender -</p>
                     <p>
@@ -496,7 +495,7 @@ if ($settingsResult) {
 
                 </div>
                 <p>New Gender</p>
-                <input type="text" id="email1" name="email1" required />
+                <input type="text" id="gender" name="gender" required />
                 <button class="confirmButton">Comfirm Update</button>
             </form>
 
@@ -510,12 +509,12 @@ if ($settingsResult) {
                 <div class="info-display">
                     <p class="info-cat">Current Number -</p>
                     <p>
-                        07785521002
+                        your number
                     </p>
 
                 </div>
                 <p>New Number</p>
-                <input type="text" id="email1" name="email1" required />
+                <input type="text" id="phonenum" name="phonenum" required />
                 <button class="confirmButton">Comfirm Update</button>
             </form>
 

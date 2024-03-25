@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Change email';
+$page_title = 'Change name';
 //session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {

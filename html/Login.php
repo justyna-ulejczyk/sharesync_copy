@@ -80,7 +80,7 @@
         <form action="../php/register.php" method="post" id="registrationForm">
             <div class='enter-info'>
                 <label for="name">Full name:</label>
-                <input id="name" name="name" type="text" pattern="[A-Za-z]+" required/>
+                <input id="name" name="fullname" type="text" required/>
                 <label for="username">Username:</label>
                 <input id="username" name="username" required="" type="text"
                     oninput="checkUsernameAvailability(this.value)" />

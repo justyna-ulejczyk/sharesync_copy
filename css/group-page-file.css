@@ -112,6 +112,8 @@ feed {
     box-shadow: var(--box-shadow);
     padding: 14px 24px;
     border-radius: 15px;
+    width:180px;
+    height: 80px;
 }
 
 #newCanvasContent {

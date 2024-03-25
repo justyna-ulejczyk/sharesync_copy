@@ -20,6 +20,8 @@ $get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
 $row = pg_fetch_assoc($get_groupnameRESULT);
 $_SESSION["groupname"] = $row["groupname"];
 $groupname = $_SESSION["groupname"];
+$filename = $_GET["fileName"];
+$split = $_GET["split"];
 session_write_close();
 ?>
 
@@ -303,7 +305,7 @@ session_write_close();
         <!-- Feed -->
         <feed>
         <div id="toolbar">
-            <h1>FileName</h1>
+            <h1><?php echo "$filename"?></h1>
             <label for="stroke">Stroke</label>
             <input id="stroke" name='stroke' type="color">
             <label for="lineWidth">Line Width</label>
@@ -311,7 +313,8 @@ session_write_close();
             <button id="clear">Clear</button>
             <button id="undo">Undo</button>
             <button id="redo">Redo</button>
-            <button id="save">Save</button>
+            <button id="save" split="<?php echo"$split"?>" filename="<?php echo"$filename"?>" groupid="<?php echo"$groupid"?>">Save</button>
+            <button id="export">Export</button>
             <input type="file" id="imageLoader" accept="image/*" />
         </div>
             <div class="drawing-board">

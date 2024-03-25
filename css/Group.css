@@ -96,7 +96,8 @@ a {
     width: 80px;
     height: 80px;
     border-radius: 30px;
-    border:solid 0.25px #181818 
+    border: solid 0.25px var(--foreground);
+    background-color: var(--foreground);
 }
 
 

@@ -260,10 +260,11 @@ main > profile > div:nth-child(2) {
     width: 80%;
 }
 .tags-container input{
-    width: 500px;
-    padding: 20px;
+    width: 580px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 10px;
-
 }
 
 
