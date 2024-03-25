@@ -66,7 +66,26 @@ function fileHandle(value, groupid, split) {
                 }
             }
         };
-        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid + "&split=" + split);
+        xhr.send("filename=" + filename.value + "&content=" + content.innerHTML + "&groupid=" + groupid + "&split=" + split);
+    } else if (value === 'export') {
+        const blob = new Blob([content.innerHTML], { type: 'application/rtf' });
+
+        // Create a link element
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+    
+        // Set the filename for the download
+        link.download = filename.value;
+    
+        // Append the link to the document body
+        document.body.appendChild(link);
+    
+        // Trigger a click event on the link to start the download
+        link.click();
+    
+        // Cleanup: remove the link and revoke the Blob URL
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
         }
 }
 

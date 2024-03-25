@@ -1,4 +1,6 @@
 <?php
+
+
 require_once "../php/connect_db.php";
 
 //session_id("userSession");
@@ -24,7 +26,7 @@ if (isset($_GET['id'])) {
     } else{
         $filePath = "../groups/$groupid/$id";
     }
-    $idFile = $myfile = fopen($filePath, "r");
+    $idFile = fopen($filePath, "r");
     $fileContents = fread($idFile,filesize($filePath));
     fclose($idFile);
 }
@@ -317,11 +319,12 @@ if (isset($_GET['id'])) {
             <div class="container">
                 <div class="toolbar">
                     <div class="head">
-                        <input type="text" placeholder="Filename" value="untitled" id="filename">
+                        <input type="text" placeholder="Filename" value=<?php if(isset($id)){echo substr($id,0,-4);} else {echo "untitled";}?> id="filename">
                         <select onchange='fileHandle(this.value,<?php echo"$groupid,$split"?> ); this.selectedIndex=0'>
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
                             <option value="save">Save file</option>
+                            <option value="export">Export file</option>
                         </select>
                         <select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
                             <option value="" selected="" hidden="" disabled="">Format</option>

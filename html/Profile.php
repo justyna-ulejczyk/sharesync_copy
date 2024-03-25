@@ -339,14 +339,15 @@ if (pg_num_rows($userDataRESULT) == 0) {
         <!-- Profile Display For Bio and Posts-->
         <section class="profile-info-display">
             <aside class="profile-bio">
-                <h3>Bio</h3>
-                <bio>
-                    <?php echo "$bio" ?>
-                </bio>
-                <div>
-                    <span>IMG</span>
-                    <span>Studies at Heriot Watt</span>
-                </div>
+                <a href="../html/Home.php">
+                    <div>Home</div>
+                </a>
+                <a href="../html/Group.php">
+                    <div>Collabs</div>
+                </a>
+                <a href="../html/Messages.php">
+                    <div>Messages</div>
+                </a>
             </aside>
             <div class="profile-post-column">
 
@@ -549,11 +550,11 @@ if (pg_num_rows($userDataRESULT) == 0) {
         <!-- Displaying About -->
         <section class="profile-info-about">
 
-<?php
-$details=pg_prepare($conn, "details", "SELECT * FROM accounts Where username = $1 ");
-$detailsResult = pg_execute($conn, "details", array($account_username));
-$row = pg_fetch_assoc($detailsResult);
-?>
+            <?php
+            $details = pg_prepare($conn, "details", "SELECT * FROM accounts Where username = $1 ");
+            $detailsResult = pg_execute($conn, "details", array($account_username));
+            $row = pg_fetch_assoc($detailsResult);
+            ?>
             <div class="aboutContainer">
                 <div id="leftMainHeading">
                     <h1>About</h1>

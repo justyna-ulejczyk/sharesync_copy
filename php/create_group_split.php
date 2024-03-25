@@ -1,9 +1,10 @@
 <?php
 require_once "connect_db.php";
-$groupname = $_POST["groupname"];
+session_start();
+$groupid = $_SESSION["groupid"];
 
-$folderPathA = "../groups/" . $groupname; 
-$folderPathB = "../splits/" . $groupname; 
+$folderPathA = "../groups/" . $groupid; 
+$folderPathB = "../splits/" . $groupid; 
     
 if (!file_exists($folderPathB)) {
     if (!mkdir($folderPathB, 0777, true)) {
@@ -15,8 +16,9 @@ if (!file_exists($folderPathB)) {
 }
 
 $insert_filesSTMT = pg_prepare($conn, "insert_files", "INSERT INTO splitfiles (groupid, filename, filetype) VALUES ($1, $2,$3)");
+pg_query($conn, "UPDATE groups SET hassplit = 1 WHERE groupid=$groupid");
 function copyFolder($source, $destination, $conn) {
-    $groupid = $_POST["groupid"];
+    $groupid = $_SESSION["groupid"];
     if (!is_dir($source)) {
         return false;
     }
@@ -49,3 +51,5 @@ if (copyFolder($folderPathA, $folderPathB, $conn)) {
 } else {
     echo "Failed to copy contents of '$folderPathA' to '$folderPathB'.";
 }
+
+header("location: " . "../html/group-page-file.php?split=0");

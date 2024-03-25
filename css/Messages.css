@@ -103,7 +103,6 @@ div.chatter-info {
     height: 100%;
     width: 100%;
     overflow-y: auto;
-
 }
 
 .chatter-chat::-webkit-scrollbar {
@@ -155,7 +154,6 @@ div.chatter-info {
     height: auto;
     min-height: 100px;
     margin-bottom: 60px;
-
 }
 .chatter-chat-sender {
     width: 100%;
@@ -227,7 +225,7 @@ div.chatter-info {
     height: 100%;
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid var(--gray); /* Add a border */
+    border: 0.5px solid var(--gray); /* Add a border */
     border-radius: 5px; /* Add border radius for a boxy appearance */
     padding: 10px; /* Add padding for content spacing */
     display: flex;
@@ -245,8 +243,7 @@ div.chatter-info {
     gap: 20px;
 }
 
-
-#msgInput{
+#msgInput {
     display: block;
     width: 600px;
     height: 80px;
@@ -255,9 +252,6 @@ div.chatter-info {
     margin-left: 200px;
     margin-bottom: 20px;
 }
-#msgInput input{
-
+#msgInput input {
     padding: 20px;
 }
-
-

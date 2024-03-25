@@ -324,11 +324,14 @@ form:valid .fa {
 
 .dropdown-content a {
     cursor: pointer;
-    padding: 16px;
     text-decoration: none;
     text-align: left;
     display: block;
     color: var(--text);
+}
+
+.dropdown-item {
+    padding-bottom: 24px;
 }
 
 /* secondary nav for mobile use mainly */
