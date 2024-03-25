@@ -38,12 +38,6 @@ session_write_close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <script src="../js/main.js"></script>
-    <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/createGroup.js"></script>
-    <script src="../js/GroupMemberBar.js"></script>
 </head>
 
 <!-- test commit -->
@@ -339,7 +333,7 @@ session_write_close();
             <div class="drawing-board">
                 <canvas id="drawing-board" ></canvas>
             </div>
-            <script src="../js/group-canvas.js"></script>
+            
         </feed>
 
 
@@ -392,7 +386,12 @@ session_write_close();
         </aside>
     </section>
 
-
+    <script src="../js/group-canvas.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/darkmode.js"></script>
+    
+    <script src="../js/createGroup.js"></script>
+    <script src="../js/GroupMemberBar.js"></script>
 
 </body>
 
