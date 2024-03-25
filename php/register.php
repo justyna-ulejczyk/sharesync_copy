@@ -18,18 +18,13 @@ if ($password==$confirm_password){
     
     // Hash the password
     $password1 = password_hash($password, PASSWORD_BCRYPT);
-    $result = pg_execute($conn, "insert_account", 
-    array($name, $username, $email, $password1, $account_type));
-
-
-    // Execute the SQL statement
-   
-
-    // Check the result
+    $result = pg_execute($conn, "insert_account", array($name, $username, $email, $password1, $account_type));}
+    else { echo "<script>alert('Password not matching');</script>";
+    }
+  // Check the result
     if ($result) {
-        header('Location: ../html/Home.php');
-         $username = pg_fetch_result($result, 0, 'username');
         
+        $username = pg_fetch_result($result, 0, 'username');
         session_start();
         $_SESSION['username'] = $username;
 
@@ -49,11 +44,10 @@ if ($password==$confirm_password){
     } else {
          
        echo "Error: " . pg_last_error($conn);
+       header('Location: ../html/Login.php');
     }}
-   
-    else { echo "<script>alert('Password not matching');</script>";
-    }
-    header('Location: ../html/Login.php');
+
+    
     // Close the connection
     pg_close($conn);
-}
+
