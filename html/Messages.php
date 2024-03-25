@@ -24,7 +24,8 @@ if (isset ($_GET['id'])) {
 <html>
 
 <head>
-    <title>Messages</title>
+    <title> ShareSync Messages</title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Messages.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Home.css">
@@ -309,41 +310,41 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 }
                 ?>
 
-<div class="chatter-box">
-                <div class="chatter-box" id='chatter-box'>
-                    <!-- Chat box -->
-                    <script>
-function fetchUpdates() {
-    // Make an AJAX request to server.php
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../php/load_messages.php?id=' + <?php echo "'$id'"?>, true);
+                <div class="chatter-box">
+                    <div class="chatter-box" id='chatter-box'>
+                        <!-- Chat box -->
+                        <script>
+                            function fetchUpdates() {
+                                // Make an AJAX request to server.php
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('GET', '../php/load_messages.php?id=' + <?php echo "'$id'" ?>, true);
 
-    xhr.onload = function() {
-        if (xhr.status == 200) {
-            // Parse JSON response
-            var data = JSON.parse(xhr.responseText);
-            
-            // Update dynamic content
-            if(document.getElementById('chatter-chat')!= null){
-                scrollPos = document.getElementById('chatter-chat').scrollTop;
-            }
-            document.getElementById('chatter-box').innerHTML = data;
-            document.getElementById('chatter-chat').scrollTop = scrollPos;
-        } else {
-            console.log(xhr.responseText);
-        }
-    };
+                                xhr.onload = function () {
+                                    if (xhr.status == 200) {
+                                        // Parse JSON response
+                                        var data = JSON.parse(xhr.responseText);
 
-    xhr.send();
+                                        // Update dynamic content
+                                        if (document.getElementById('chatter-chat') != null) {
+                                            scrollPos = document.getElementById('chatter-chat').scrollTop;
+                                        }
+                                        document.getElementById('chatter-box').innerHTML = data;
+                                        document.getElementById('chatter-chat').scrollTop = scrollPos;
+                                    } else {
+                                        console.log(xhr.responseText);
+                                    }
+                                };
 
-    // Fetch updates every 5 seconds (adjust as needed)
-    setTimeout(fetchUpdates, 2000);
-}
+                                xhr.send();
 
-// Start fetching updates
-fetchUpdates();
-</script>
-</div>
+                                // Fetch updates every 5 seconds (adjust as needed)
+                                setTimeout(fetchUpdates, 2000);
+                            }
+
+                            // Start fetching updates
+                            fetchUpdates();
+                        </script>
+                    </div>
 
                     <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
@@ -354,15 +355,15 @@ fetchUpdates();
                         <div id="msgInput">
                             <input type="text" id="text" name="text" required="">
                         </div>
-                        
+
                         <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"
                             hidden style="display:none; ">
-                        <button type="submit" style = "margin-bottom: 20px;"
-                        ><i class="fab fa-telegram-plane"></i></button>
+                        <button type="submit" style="margin-bottom: 20px;"><i
+                                class="fab fa-telegram-plane"></i></button>
                     </form>
                 </div>
             </div>
-</div>
+        </div>
 
     </main>
 

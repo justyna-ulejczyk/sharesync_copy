@@ -1,7 +1,7 @@
 <?php
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
@@ -12,7 +12,10 @@ $username = $_SESSION["username"];
 <html class="dimmed">
 
 <head>
-    <title>Friends Page</title>
+    <title>
+        ShareSync Friends
+    </title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-create.css">
@@ -167,12 +170,12 @@ $username = $_SESSION["username"];
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$username.png";?>">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
                                     <p>
                                         <?php echo "$username" ?>
                                     </p>
@@ -234,72 +237,78 @@ $username = $_SESSION["username"];
         </section>
     </nav>
     <!-- End of Nav -->
-<body>
-    <?php
-$stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1 ");
- $result = pg_execute($conn, "followers", array($username)); 
-$numRows = pg_num_rows($result);
-$stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE followee=$1");
+
+    <body>
+        <?php
+        $stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1 ");
+        $result = pg_execute($conn, "followers", array($username));
+        $numRows = pg_num_rows($result);
+        $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE followee=$1");
 
 
         ?>
-        <section id = 'title'>                             
-            <h1 >Friends List</h1>
+        <section id='title'>
+            <h1>Friends List</h1>
         </section>
-         
-        <section id= "FriendsContentArea">
-        
-        
-            <?php 
-            
-            if ($numRows > 0) {
-               
-                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                while ($row = pg_fetch_assoc($result)){
-                    
-                    $followee = $row['followee'];     
-                    
-                    $result2 = pg_execute($conn, "followers2", array($username)); 
-                    $numRows2 = pg_num_rows($result2);
-                    if( $numRows2>0){
-                        echo '<div>';
-                        while ($row2= pg_fetch_assoc($result2)){
-                        $follower = $row2['username'];
-                        if($follower ==$followee){
 
-                            echo  "<section id='friendDisplay'>";
-                            echo "<a href ='../html/Profile.php?id=$followee'>";
-                            echo   "<img src='../profile_pic/profile_pic_$followee.png' class='friendIcon'>";
-                            echo "<span><p>$followee</p><a></span><br>";
-                            echo "</section>";
-                            echo "</a>";
-                }}}}}?>
-    <?php
- $stmt = pg_prepare($conn, "followee", "SELECT * FROM follows WHERE username=$1");
- $result = pg_execute($conn, "followee", array($username)); // Assuming $login_username is set properly
- $numRows = pg_num_rows($result);
- 
-?>
-    <section>
-        <h2>Look for your Friends:</h2>
-        <form id="searchForm" action="../php/search_friend.php" method="POST"> <!-- Added method="POST" -->
-        <input id="searchInput" type="search" name="search" required> <!-- Added name="search" -->
-        <button type="submit"> <!-- Added submit button -->
-        <!-- Optionally, you can add an icon if needed -->
-         <i class="fa fa-search"></i></button>
-    </form>
+        <section id="FriendsContentArea">
+
+
+            <?php
+
+            if ($numRows > 0) {
+
+                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)) {
+
+                    $followee = $row['followee'];
+
+                    $result2 = pg_execute($conn, "followers2", array($username));
+                    $numRows2 = pg_num_rows($result2);
+                    if ($numRows2 > 0) {
+                        echo '<div>';
+                        while ($row2 = pg_fetch_assoc($result2)) {
+                            $follower = $row2['username'];
+                            if ($follower == $followee) {
+
+                                echo "<section id='friendDisplay'>";
+                                echo "<a href ='../html/Profile.php?id=$followee'>";
+                                echo "<img src='../profile_pic/profile_pic_$followee.png' class='friendIcon'>";
+                                echo "<span><p>$followee</p><a></span><br>";
+                                echo "</section>";
+                                echo "</a>";
+                            }
+                        }
+                    }
+                }
+            } ?>
+            <?php
+            $stmt = pg_prepare($conn, "followee", "SELECT * FROM follows WHERE username=$1");
+            $result = pg_execute($conn, "followee", array($username)); // Assuming $login_username is set properly
+            $numRows = pg_num_rows($result);
+
+            ?>
+            <section>
+                <h2>Look for your Friends:</h2>
+                <form id="searchForm" action="../php/search_friend.php" method="POST"> <!-- Added method="POST" -->
+                    <input id="searchInput" type="search" name="search" required> <!-- Added name="search" -->
+                    <button type="submit"> <!-- Added submit button -->
+                        <!-- Optionally, you can add an icon if needed -->
+                        <i class="fa fa-search"></i></button>
+                </form>
             </section>
 
 
-            </body>
-            </html>
+    </body>
+
+</html>
 
 
-                
 
 
 
-    
+
+
 
 
 

@@ -5,9 +5,11 @@ require_once "../php/connect_db.php";
 
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
+$login_username = $_SESSION["username"];
 $username = $_SESSION["username"];
 session_write_close();
 //session_id("groupSession");
@@ -19,24 +21,35 @@ session_write_close();
 
 $split = $_GET["split"];
 
-if (isset($_GET['id'])) {
+if (isset ($_GET['id'])) {
     $id = $_GET['id'];
-    if($split==1){
+    if ($split == 1) {
         $filePath = "../splits/$groupid/$id";
-    } else{
+    } else {
         $filePath = "../groups/$groupid/$id";
     }
     $idFile = fopen($filePath, "r");
-    $fileContents = fread($idFile,filesize($filePath));
+    $fileContents = fread($idFile, filesize($filePath));
     fclose($idFile);
 }
+
+$groupid = $_SESSION["groupid"];
+$get_groupnameSTMT = pg_prepare($conn, "get_groupname", "SELECT groupname FROM groups where groupid=$1");
+$get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
+$row = pg_fetch_assoc($get_groupnameRESULT);
+$_SESSION["groupname"] = $row["groupname"];
+$groupname = $_SESSION["groupname"];
+session_write_close();
 ?>
 
 <!DOCTYPE html>
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
+<title>
+        <?php echo "$groupname"; ?>
+    </title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
@@ -61,12 +74,13 @@ if (isset($_GET['id'])) {
 <!-- test commit - branch demo -->
 
 <body>
-     <!-- Start of SubNav -->
-     <subnav>
+    <!-- Start of SubNav -->
+    <subnav>
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
+                <img src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>" alt=""
+                        class="nav-profile">
                 </a>
             </li>
 
@@ -103,7 +117,7 @@ if (isset($_GET['id'])) {
         </section>
         <section>
             <ul class="linksBar">
-                <li class="active">
+                <li>
                     <a href="../html/Home.php" class="active">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +148,7 @@ if (isset($_GET['id'])) {
                         </svg>
                     </button>
                 </li>
-                <li>
+                <li class="active">
                     <a href="../html/Group.php">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -190,7 +204,7 @@ if (isset($_GET['id'])) {
                             // Load initial notifications
                             include_once "../php/load_notifications.php";
                             ?>
-    <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
+                            <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
                         </div>
 
 
@@ -319,8 +333,12 @@ if (isset($_GET['id'])) {
             <div class="container">
                 <div class="toolbar">
                     <div class="head">
-                        <input type="text" placeholder="Filename" value=<?php if(isset($id)){echo substr($id,0,-4);} else {echo "untitled";}?> id="filename">
-                        <select onchange='fileHandle(this.value,<?php echo"$groupid,$split"?> ); this.selectedIndex=0'>
+                        <input type="text" placeholder="Filename" value=<?php if (isset ($id)) {
+                            echo substr($id, 0, -4);
+                        } else {
+                            echo "untitled";
+                        } ?> id="filename">
+                        <select onchange='fileHandle(this.value,<?php echo "$groupid,$split" ?> ); this.selectedIndex=0'>
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
                             <option value="save">Save file</option>
@@ -375,9 +393,9 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <div id="content" contenteditable="true" spellcheck="false">
-                    <?php if (isset($fileContents)) {
+                    <?php if (isset ($fileContents)) {
                         echo $fileContents;
-                    }?>
+                    } ?>
                 </div>
             </div>
         </feed>
@@ -385,23 +403,86 @@ if (isset($_GET['id'])) {
 
 
         <!--  Right Side Bar for Members -->
-        <aside class="right-bar active">
+        <aside class="right-bar">
             <div class="member-arrow" onclick="toggleMemberBar()">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member">Add Member</button>
-            <div class="user-list">
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
+            <?php
+            //retriving members of group
+            
 
+            $stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+            $result = pg_execute($conn, "members", array($groupid));
+            $numRows = pg_num_rows($result);
+            //manager
+            
+            $stmtM = pg_prepare($conn, "manager", "SELECT managerID
+             FROM groups WHERE groupid=$1");
+            $resultM = pg_execute($conn, "manager", array($groupid));
+            while ($Mrow = pg_fetch_assoc($resultM)) {
+                $manager = $Mrow['managerid'];
+                if ($login_username == $manager) {
+                    echo '<div class="user-list">';
+                    if ($numRows > 0) {
+                        echo "<p>Members: $numRows</p>"; // Display total number of members
+                        while ($row = pg_fetch_assoc($result)) {
+
+                            $username = $row['username'];
+                            echo " <div class='members'>
+            <img src='../profile_pic/profile_pic_$username.png' alt=''>";
+                            echo "<span>$username</span>";
+                            if ($login_username != $username) {
+                                echo "<span><a href ='../php/delete_member.php?user=$username'>";
+                                echo " <svg width='64px' height='64px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+
+                    <g id='SVGRepo_bgCarrier' stroke-width='0';/>
+
+                    <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'/>
+
+                    <g id='SVGRepo_iconCarrier'> <path d='M3 6.38597C3 5.90152 3.34538 5.50879 3.77143 5.50879L6.43567 5.50832C6.96502 5.49306 7.43202 5.11033 7.61214 4.54412C7.61688 4.52923 7.62232 4.51087 7.64185 4.44424L7.75665 4.05256C7.8269 3.81241 7.8881 3.60318 7.97375 3.41617C8.31209 2.67736 8.93808 2.16432 9.66147 2.03297C9.84457 1.99972 10.0385 1.99986 10.2611 2.00002H13.7391C13.9617 1.99986 14.1556 1.99972 14.3387 2.03297C15.0621 2.16432 15.6881 2.67736 16.0264 3.41617C16.1121 3.60318 16.1733 3.81241 16.2435 4.05256L16.3583 4.44424C16.3778 4.51087 16.3833 4.52923 16.388 4.54412C16.5682 5.11033 17.1278 5.49353 17.6571 5.50879H20.2286C20.6546 5.50879 21 5.90152 21 6.38597C21 6.87043 20.6546 7.26316 20.2286 7.26316H3.77143C3.34538 7.26316 3 6.87043 3 6.38597Z' fill='#1C274C'/> <path fill-rule='evenodd' clip-rule='evenodd' d='M11.5956 22.0001H12.4044C15.1871 22.0001 16.5785 22.0001 17.4831 21.1142C18.3878 20.2283 18.4803 18.7751 18.6654 15.8686L18.9321 11.6807C19.0326 10.1037 19.0828 9.31524 18.6289 8.81558C18.1751 8.31592 17.4087 8.31592 15.876 8.31592H8.12404C6.59127 8.31592 5.82488 8.31592 5.37105 8.81558C4.91722 9.31524 4.96744 10.1037 5.06788 11.6807L5.33459 15.8686C5.5197 18.7751 5.61225 20.2283 6.51689 21.1142C7.42153 22.0001 8.81289 22.0001 11.5956 22.0001ZM10.2463 12.1886C10.2051 11.7548 9.83753 11.4382 9.42537 11.4816C9.01321 11.525 8.71251 11.9119 8.75372 12.3457L9.25372 17.6089C9.29494 18.0427 9.66247 18.3593 10.0746 18.3159C10.4868 18.2725 10.7875 17.8856 10.7463 17.4518L10.2463 12.1886ZM14.5746 11.4816C14.9868 11.525 15.2875 11.9119 15.2463 12.3457L14.7463 17.6089C14.7051 18.0427 14.3375 18.3593 13.9254 18.3159C13.5132 18.2725 13.2125 17.8856 13.2537 17.4518L13.7537 12.1886C13.7949 11.7548 14.1625 11.4382 14.5746 11.4816Z' fill='#1C274C'/> </g>
+
+                    </svg>
+                    </a></span>";
+                            } else {
+                                echo "Manager";
+                            }
+
+
+
+                            echo " </div>";
+                        }
+
+                    }
+                } else {
+                    echo '<div class="user-list">';
+                    if ($numRows > 0) {
+                        echo "<p>Members: $numRows</p>"; // Display total number of members
+                        while ($row = pg_fetch_assoc($result)) {
+
+                            $username = $row['username'];
+
+                            echo " <div class='members'>
+            <img src='../profile_pic/profile_pic_$username.png alt=''>";
+                            echo "<span>$username</span>";
+                            if ($username == $manager) {
+                                echo "Manager";
+                            }
+                            echo " </div>";
+                        }
+
+                    }
+                }
+            }
+
+
+
+            ?>
             </div>
+
+
+
+
         </aside>
     </section>
 

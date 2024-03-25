@@ -31,7 +31,8 @@ $result = pg_query($conn, $query);
 <html class="dimmed">
 
 <head>
-    <title>Notifications</title>
+    <title> ShareSync Notifications</title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/StyleSheet.css">
 
     <link rel="stylesheet" href="../css/notifications.css">

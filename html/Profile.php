@@ -41,7 +41,11 @@ if (pg_num_rows($userDataRESULT) == 0) {
 <html class="dimmed">
 
 <head>
-    <title>Profile</title>
+    <title>
+        <?php echo "$username" ?>
+    </title>
+
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Profile.css">
 
@@ -564,19 +568,31 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 </div>
                 <div id="rightInfo">
                     <div id="overview">
-                        <p>University: <?php  echo $row['university'];?> </p>
+                        <p>University:
+                            <?php echo $row['university']; ?>
+                        </p>
                         <div class="divider"></div>
-                        <p>Works at: <?php  echo $row['worksat'];?> </p>
+                        <p>Works at:
+                            <?php echo $row['worksat']; ?>
+                        </p>
                         <div class="divider"></div>
-                        <p>From: <?php  echo $row['location'];?></p>
+                        <p>From:
+                            <?php echo $row['location']; ?>
+                        </p>
                         <div class="divider"></div>
-                        <p>Gender: <?php  echo $row['gender'];?></p>
+                        <p>Gender:
+                            <?php echo $row['gender']; ?>
+                        </p>
                         <div class="divider"></div>
-                        <p>Birthday: <?php  echo $row['dob'];?></p>
+                        <p>Birthday:
+                            <?php echo $row['dob']; ?>
+                        </p>
                     </div>
 
                     <div id="contact">
-                        <p>Phone Number: <?php  echo $row['phonenum'];?></p>
+                        <p>Phone Number:
+                            <?php echo $row['phonenum']; ?>
+                        </p>
                         <div class="divider"></div>
                         <p>Email: </p>
                         <p></p>

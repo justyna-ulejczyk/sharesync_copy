@@ -26,7 +26,10 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
+    <title>
+        <?php echo "$groupname"; ?>
+    </title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
@@ -53,29 +56,27 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
+                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="" class="nav-profile">
                 </a>
             </li>
 
             <li>
-                <div class="dropdown">
-                    <button class="dropButton">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
-                                stroke="black" stroke-width="2" />
-                            <path
-                                d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
-                                stroke="black" stroke-width="2" stroke-linecap="round" />
-                        </svg>
+                <a href="../html/Notifications.php">
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
+                                    stroke="black" stroke-width="2" />
+                                <path
+                                    d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" />
+                            </svg>
 
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        </button>
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </subnav>
@@ -206,12 +207,12 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="../images/icons/Unknown_person.jpg">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
                                     <p>
                                         <?php echo "$username" ?>
                                     </p>
@@ -357,7 +358,7 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                         <div>
                             <label for="fileName">File Name: </label>
                             <input type="text" name="fileName" required>
-                            <input type="hidden" name="split" value=<?php echo"$split"?>>
+                            <input type="hidden" name="split" value=<?php echo "$split" ?>>
                         </div>
                         <br>
                         <div>
@@ -380,17 +381,19 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                         $filename = $row["filename"];
                         $extension = substr($filename, -4);
                         $extensionless = substr($filename, 0, -4);
-                        if ($extension==".rtf"){
+                        if ($extension == ".rtf") {
                             echo "<a href='group-editor.php?id=$filename&split=$split'>
                             <div class='folder-container' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
                         <span id='$filename'>$filename</span>
-                        </div></a>";} else if($extension==".png"){
+                        </div></a>";
+                        } else if ($extension == ".png") {
                             echo "<a href='group-canvas.php?image=$filename&split=$split&fileName=$extensionless'>
                             <div class='folder-container' folderid='file'>
                         <i class='fa fa-paint-brush' aria-hidden='true'></i>
                         <span id='$filename'>$filename</span>
-                        </div></a>";}
+                        </div></a>";
+                        }
                     }
                     ?>
                 </section>
@@ -426,8 +429,8 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                         while ($row = pg_fetch_assoc($result)) {
 
                             $username = $row['username'];
-                            echo ' <div class="members">
-            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                            echo " <div class='members'>
+            <img src='../profile_pic/profile_pic_$username.png' alt=''>";
                             echo "<span>$username</span>";
                             if ($login_username != $username) {
                                 echo "<span><a href ='../php/delete_member.php?user=$username'>";
@@ -459,8 +462,8 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
 
                             $username = $row['username'];
 
-                            echo ' <div class="members">
-            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                            echo " <div class='members'>
+                            <img src='../profile_pic/profile_pic_$username.png alt=''>";
                             echo "<span>$username</span>";
                             if ($username == $manager) {
                                 echo "Manager";

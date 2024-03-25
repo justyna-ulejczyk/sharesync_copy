@@ -2,14 +2,14 @@
 require_once "../php/connect_db.php";
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 $login_username = $_SESSION["username"];
 session_write_close();
 session_start();
 // Get passed product genre and assign it to a variable.
-if (isset($_GET['id'])) {
+if (isset ($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION["groupid"] = $id;
 }
@@ -26,7 +26,10 @@ session_write_close();
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
+    <title>
+        <?php echo "$groupname"; ?>
+    </title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
@@ -52,29 +55,29 @@ session_write_close();
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
+
+                    <img class="nav-profile" src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>">
+                    </img>
                 </a>
             </li>
 
             <li>
-                <div class="dropdown">
-                    <button class="dropButton">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
-                                stroke="black" stroke-width="2" />
-                            <path
-                                d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
-                                stroke="black" stroke-width="2" stroke-linecap="round" />
-                        </svg>
+                <a href="../html/Notifications.php">
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
+                                    stroke="black" stroke-width="2" />
+                                <path
+                                    d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" />
+                            </svg>
 
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        </button>
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </subnav>
@@ -169,35 +172,35 @@ session_write_close();
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php">See More</a>
-</div>
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -205,12 +208,12 @@ session_write_close();
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>">
+                            src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                <img src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>" alt="">
                                     <p>
                                         <?php echo "$login_username" ?>
                                     </p>
@@ -317,9 +320,9 @@ session_write_close();
                             $sender = $row["username"];
                             $messageid = $row['groupmessageid'];
 
-                            echo '  <div class="post-container">
-                        <div class="user-posting">
-                            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                            echo "  <div class='post-container'>
+                        <div class='user-posting'>
+                            <img src='../profile_pic/profile_pic_$login_username.png' alt=''>";
                             echo "<span>$sender</span></div>
                             <div><br>$text</div>
                             <a href='../php/delete_groupPost.php?mg=$messageid'> delete </a>
@@ -340,7 +343,8 @@ session_write_close();
                 <div class="send">
                     <form action="../php/group_message.php" method="post" id="newPostForm">
                         <input type="text" id="text" name="text" />
-                        <input type="button" value="send" id="messageSubmit" onclick="handleSubmit('messageSubmit', 'newPostForm', 'text');" />
+                        <input type="button" value="send" id="messageSubmit"
+                            onclick="handleSubmit('messageSubmit', 'newPostForm', 'text');" />
                     </form>
                 </div>
             </div>
@@ -362,25 +366,25 @@ session_write_close();
             $result = pg_execute($conn, "members", array($groupid));
             $numRows = pg_num_rows($result);
             //manager
-
+            
             $stmtM = pg_prepare($conn, "manager", "SELECT managerID
              FROM groups WHERE groupid=$1");
             $resultM = pg_execute($conn, "manager", array($groupid));
-                   while ( $Mrow = pg_fetch_assoc($resultM)){
-                    $manager = $Mrow['managerid'];
-                    if ($login_username==$manager){
-            echo '<div class="user-list">';
-            if ($numRows > 0) {
-                echo "<p>Members: $numRows</p>"; // Display total number of members
-                while ($row = pg_fetch_assoc($result)) { 
-                    
-                    $username = $row['username'];
-                    echo ' <div class="members">
-            <img src="../images/icons/Unknown_person.jpg" alt="">';
-                    echo "<span>$username</span>";
-                    if ($login_username!=$username){
-                    echo "<span><a href ='../php/delete_member.php?user=$username'>";
-                    echo " <svg width='64px' height='64px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            while ($Mrow = pg_fetch_assoc($resultM)) {
+                $manager = $Mrow['managerid'];
+                if ($login_username == $manager) {
+                    echo '<div class="user-list">';
+                    if ($numRows > 0) {
+                        echo "<p>Members: $numRows</p>"; // Display total number of members
+                        while ($row = pg_fetch_assoc($result)) {
+
+                            $username = $row['username'];
+                            echo " <div class='members'>
+            <img src='../profile_pic/profile_pic_$username.png' alt=''>";
+                            echo "<span>$username</span>";
+                            if ($login_username != $username) {
+                                echo "<span><a href ='../php/delete_member.php?user=$username'>";
+                                echo " <svg width='64px' height='64px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
 
                     <g id='SVGRepo_bgCarrier' stroke-width='0';/>
 
@@ -389,30 +393,40 @@ session_write_close();
                     <g id='SVGRepo_iconCarrier'> <path d='M3 6.38597C3 5.90152 3.34538 5.50879 3.77143 5.50879L6.43567 5.50832C6.96502 5.49306 7.43202 5.11033 7.61214 4.54412C7.61688 4.52923 7.62232 4.51087 7.64185 4.44424L7.75665 4.05256C7.8269 3.81241 7.8881 3.60318 7.97375 3.41617C8.31209 2.67736 8.93808 2.16432 9.66147 2.03297C9.84457 1.99972 10.0385 1.99986 10.2611 2.00002H13.7391C13.9617 1.99986 14.1556 1.99972 14.3387 2.03297C15.0621 2.16432 15.6881 2.67736 16.0264 3.41617C16.1121 3.60318 16.1733 3.81241 16.2435 4.05256L16.3583 4.44424C16.3778 4.51087 16.3833 4.52923 16.388 4.54412C16.5682 5.11033 17.1278 5.49353 17.6571 5.50879H20.2286C20.6546 5.50879 21 5.90152 21 6.38597C21 6.87043 20.6546 7.26316 20.2286 7.26316H3.77143C3.34538 7.26316 3 6.87043 3 6.38597Z' fill='#1C274C'/> <path fill-rule='evenodd' clip-rule='evenodd' d='M11.5956 22.0001H12.4044C15.1871 22.0001 16.5785 22.0001 17.4831 21.1142C18.3878 20.2283 18.4803 18.7751 18.6654 15.8686L18.9321 11.6807C19.0326 10.1037 19.0828 9.31524 18.6289 8.81558C18.1751 8.31592 17.4087 8.31592 15.876 8.31592H8.12404C6.59127 8.31592 5.82488 8.31592 5.37105 8.81558C4.91722 9.31524 4.96744 10.1037 5.06788 11.6807L5.33459 15.8686C5.5197 18.7751 5.61225 20.2283 6.51689 21.1142C7.42153 22.0001 8.81289 22.0001 11.5956 22.0001ZM10.2463 12.1886C10.2051 11.7548 9.83753 11.4382 9.42537 11.4816C9.01321 11.525 8.71251 11.9119 8.75372 12.3457L9.25372 17.6089C9.29494 18.0427 9.66247 18.3593 10.0746 18.3159C10.4868 18.2725 10.7875 17.8856 10.7463 17.4518L10.2463 12.1886ZM14.5746 11.4816C14.9868 11.525 15.2875 11.9119 15.2463 12.3457L14.7463 17.6089C14.7051 18.0427 14.3375 18.3593 13.9254 18.3159C13.5132 18.2725 13.2125 17.8856 13.2537 17.4518L13.7537 12.1886C13.7949 11.7548 14.1625 11.4382 14.5746 11.4816Z' fill='#1C274C'/> </g>
 
                     </svg>
-                    </a></span>";} else {echo "Manager";}
-                    
-                    
+                    </a></span>";
+                            } else {
+                                echo "Manager";
+                            }
 
-       echo " </div>";
+
+
+                            echo " </div>";
+                        }
+
+                    }
+                } else {
+                    echo '<div class="user-list">';
+                    if ($numRows > 0) {
+                        echo "<p>Members: $numRows</p>"; // Display total number of members
+                        while ($row = pg_fetch_assoc($result)) {
+
+                            $username = $row['username'];
+
+                            echo " <div class='members'>
+            <img src='../profile_pic/profile_pic_$username.png alt=''>";
+
+
+                            echo "<span>$username</span>";
+                            if ($username == $manager) {
+                                echo "Manager";
+                            }
+                            echo " </div>";
+                        }
+
+                    }
                 }
+            }
 
-            }} else{
-            echo '<div class="user-list">';
-            if ($numRows > 0) {
-                echo "<p>Members: $numRows</p>"; // Display total number of members
-                while ($row = pg_fetch_assoc($result)) {
-                   
-                    $username = $row['username'];
-                    
-                    echo ' <div class="members">
-            <img src="../images/icons/Unknown_person.jpg" alt="">';
-                    echo "<span>$username</span>";
-                    if ($username==$manager){echo "Manager";}
-       echo " </div>";
-                }
-
-            }}}
-        
 
 
             ?>

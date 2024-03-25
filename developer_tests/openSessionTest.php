@@ -39,8 +39,8 @@ if (!password_verify($user_entered_password, $stored_password_hash)) {
     // Store username in session
     $_SESSION['username'] = $username;
 
-    // Redirect to home.php
+    //output if session was successfully opened  
     echo "Sesssion was succesfully created";
-    exit(); // Make sure to stop further execution after redirecting
+    exit(); 
 }
 

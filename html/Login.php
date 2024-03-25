@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>ShareSync</title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <script src="../js/login.js"></script>
     <link rel="stylesheet" href="../css/Login.css">
 
@@ -128,12 +129,12 @@
 
                 <div class='account-type-options'>
                     <p>Account type:</p>
-                    
+
                     <input type="radio" id="student" name="account_type" value="student">
                     <label for="student">Student</label><br>
                     <input type="radio" id="artist" name="account_type" value="artist">
                     <label for="artist">Artist</label><br>
-                
+
                 </div>
                 <div class="option2">
                     <p>Already a Member?</p>

@@ -1,7 +1,7 @@
 <?php
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
@@ -33,7 +33,8 @@ $visibility = $row["accountvisibility"];
 <html class="dimmed">
 
 <head>
-    <title>Profile</title>
+    <title> ShareSync Settings</title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Settings.css">
 
@@ -211,12 +212,12 @@ $visibility = $row["accountvisibility"];
                     <li>
                         <div class="dropdown">
                             <img class="nav-profile" onclick="toggleDropdownProfile()"
-                                src="<?php echo "../profile_pic/profile_pic_$username.png";?>">
+                                src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
                             </img>
                             <div class="dropdown-content-profile" id="dropdownContentProfile">
                                 <div class="dropdown-profile-icon">
                                     <a href="">
-                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
+                                        <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
                                         <p>
                                             <?php echo "$username" ?>
                                         </p>
@@ -321,17 +322,19 @@ $visibility = $row["accountvisibility"];
                 <div class="banner-preview"></div>
             </div>
             <div class="avatar-upload">
-    <form action="../php/upload_avatar.php" method="POST" enctype="multipart/form-data">
-        <div class="avatar-edit">
-            <input type="file" id="imageUpload" name="profile_pic" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview" style="background-image:<?php echo " url(../profile_pic/profile_pic_$username.png)";?>;"></div>
-        </div>
-        <input type="submit" value="Save">
-    </form>
-</div>
+                <form action="../php/upload_avatar.php" method="POST" enctype="multipart/form-data">
+                    <div class="avatar-edit">
+                        <input type="file" id="imageUpload" name="profile_pic" accept=".png, .jpg, .jpeg" />
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview"
+                            style="background-image:<?php echo " url(../profile_pic/profile_pic_$username.png)"; ?>;">
+                        </div>
+                    </div>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
 
         </div>
 
@@ -460,7 +463,7 @@ $visibility = $row["accountvisibility"];
                     </p>
 
                 </div>
-                <p><input type= "text" name ="university" id= "university" required /></p>
+                <p><input type="text" name="university" id="university" required /></p>
                 <button class="confirmButton">Comfirm Update</button>
             </form>
 
@@ -629,7 +632,9 @@ $visibility = $row["accountvisibility"];
             <h1>Profile Visibility</h1>
             <p class="inline">public</p>
             <label class="profileSwitch" class="round">
-                <input type="checkbox" <?php if($visibility == 1) echo "checked"?> onchange='updateVisibilty(<?php echo "\"$username\""; ?>, this);'>
+                <input type="checkbox" <?php if ($visibility == 1)
+                    echo "checked" ?>
+                        onchange='updateVisibilty(<?php echo "\"$username\""; ?>, this);'>
                 <span class="slider"></span>
             </label>
             <p class="inline">private</p>
