@@ -416,7 +416,7 @@ $visibility = $row["accountvisibility"];
 
                 </div>
                 <p>New Bio</p>
-                <input type="text" id="bio" name="bio" required />
+                <input type="text" id="bio" name="bio" required maxlength=2400 />
                 <button type="submit" class="confirmButton">Comfirm Update</button>
             </form>
         </div>

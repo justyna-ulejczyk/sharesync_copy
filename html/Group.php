@@ -270,11 +270,11 @@ $username = $_SESSION["username"];
                 <div class="create-information">
                     <div id="name">
                         <p>Name</p>
-                        <input type="text" id="groupname" name="groupname">
+                        <input type="text" id="groupname" name="groupname" maxlength=32>
                     </div>
                     <div id="description">
                         <p>Description</p>
-                        <input type="text" id="description" name="description">
+                        <input type="text" id="description" name="description" maxlength=2499>
                     </div>
                     <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
                 </div>

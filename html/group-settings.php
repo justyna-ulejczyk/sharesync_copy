@@ -319,8 +319,6 @@ session_write_close();
                         <label for="tab1">Manage Group</label>
                         <input type="radio" id="tab2" name="tab">
                         <label for="tab2">Add Member</label>
-                        <input type="radio" id="tab3" name="tab">
-                        <label for="tab3">Remove Member</label>
                         <input type="radio" id="tab4" name="tab">
                         <label for="tab4">Leave Group</label>
                         <input type="radio" id="tab5" name="tab">
@@ -334,7 +332,7 @@ session_write_close();
                                 <div class="change-container">
                                     <form onsubmit="updateGroupName(event);" method="post">
                                         <input type="hidden" name="groupid" value=<?php echo "$groupid" ?>>
-                                        <input type="text" placeholder="New Group Name" name="groupname"
+                                        <input type="text" placeholder="New Group Name" name="groupname" maxlength=32
                                             class="change-group-name" />
                                         <input type="submit" class="change-group-name" />
                                     </form>
@@ -344,7 +342,7 @@ session_write_close();
                                 <h2>Change Description</h2>
                                 <!-- change this below to a form -->
                                 <div class="change-container">
-                                    <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
+                                    <textarea id="text" name="text" rows="4" cols="50" maxlength="2900"
                                         class="feed-create-post-captions"></textarea>
                                     <input type="submit" class="change-group-name " />
                                 </div>
@@ -371,15 +369,12 @@ session_write_close();
                             </div>
                         </article>
                         <article>
-                            <form action="../php/add_users.php" method="post" class='add-members'>
+                        <h4 id="adduserstatus"></h4>
+                            <form onsubmit="addUsers(event);" method="post" class='add-members' id='add-member-form'>
                                 <h2> Add member</h2>
-                                <span class='input-user'>Name:<input type="text" name="name"></span>
+                                <span class='input-user'>Name:<input type="text" name="name" maxlength=34></span>
                                 <input type="submit" class="submit-button">
                             </form>
-                        </article>
-                        <article>
-                            <h2>Users</h2>
-                            <p>Display users along with delete button (same as in the .right-bar)</p>
                         </article>
                         <article>
                             <h2>Are you sure you want to leave?</h2>

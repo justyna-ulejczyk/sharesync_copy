@@ -360,7 +360,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             style="display:none;">
 
                         <div id="msgInput">
-                            <input type="text" id="text" name="text" required="">
+                            <input type="text" id="text" name="text" maxlength="2499" required="">
                         </div>
 
                         <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"

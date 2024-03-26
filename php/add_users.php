@@ -26,12 +26,4 @@ $group = $_SESSION['groupid']; // Using session variable directly
 // Assuming $conn is properly initialized
 $stmt = pg_prepare($conn, "members", "INSERT INTO accountToGroup (username, groupID) VALUES ($1, $2)");
 $result = pg_execute($conn, "members", array($name, $group)); // Using $result instead of $result2
-if ($result) {
-   header ('Location: ../html/group-page.php');
-} else {
-    echo "Error: " . pg_last_error($conn);
-    die();
-}
-
-?>
 

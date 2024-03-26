@@ -334,9 +334,17 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                         <div class="caption-container">
                             <h3>Caption</h3>
-                            <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
+                            <textarea id="text" name="text" rows="4" cols="50" maxlength="200" required
                                 class="feed-create-post-captions"></textarea>
                         </div>
+                        <script>
+                        var textarea = document.getElementById("text");
+                        textarea.addEventListener("input", function() {
+                            if (this.value.length > this.maxLength) {
+                                this.value = this.value.slice(0, this.maxLength);
+                            }
+                        });
+                        </script>
                         <div class="tags-container">
                             <h3>Tags (please seperate with commas)</h3>
                             <input type="text" id="tags" name="tags">
