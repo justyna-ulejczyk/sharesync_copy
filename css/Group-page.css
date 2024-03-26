@@ -293,27 +293,56 @@ form.add-members {
     border: 1px solid white;
 }
 
+.menu-button {
+    display: none;
+    box-sizing: border-box;
+    padding: 8px 12px;
+}
+
 @media only screen and (max-width: 800px) {
-    body {
+    .menu-button {
+        display: block;
+    }
+    .body {
         height: 86vh;
+        flex-direction: column;
     }
 
-    aside.right-bar,
-    aside.left-bar {
+    aside.right-bar {
         display: none;
     }
 
     .feed {
+        margin-top: 12px;
         padding: 0;
     }
 
     .post-container {
         box-sizing: border-box;
-        width: 300px;
+        width: 100%;
         padding: 10;
     }
 
     nav > section:nth-child(2) > ul > li:nth-child(3) {
         display: none;
+    }
+
+    .left-bar {
+        max-height: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .left-bar ul {
+        display: none;
+    }
+
+    .left-bar.active {
+        max-height: 300px;
+    }
+
+    .left-bar.active ul {
+        display: flex;
     }
 }

@@ -170,3 +170,17 @@ aside {
 .right-bar {
     border-left: 1px solid var(--gray);
 }
+
+@media screen and (max-width: 800px) {
+    .left-bar {
+        border-right: none;
+    }
+    .canvas-options {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #drawing-board {
+        width: 100%;
+    }
+}

@@ -279,6 +279,7 @@ session_write_close();
     <!-- Left Side Bar for Options of what to do -->
     <section class="body">
         <aside class="left-bar">
+            <button class="menu-button">Menu</button>
             <ul>
                 <a>
                     <li>

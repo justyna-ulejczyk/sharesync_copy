@@ -16,3 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
         rightPanel.classList.add('active');
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".menu-button");
+    const leftBar = document.querySelector(".left-bar");
+
+    menuButton.addEventListener("click", function () {
+        leftBar.classList.toggle("active");
+    });
+});

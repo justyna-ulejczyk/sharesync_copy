@@ -305,9 +305,10 @@ session_write_close();
 
     <!-- Left Side Bar for Options of what to do -->
     <section class="body">
-        <aside class="left-bar">
+    <aside class="left-bar">
+            <button class="menu-button">Menu</button>
             <ul>
-                <a href="group-page.php">
+            <a href="group-page.php">
                     <li>
                         Home
                     </li>
@@ -315,10 +316,10 @@ session_write_close();
                 <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
-                <a href="group-page-meeting.php">
+                <a href="http://167.172.51.195:8000/">
                     <li>Meetings</li>
                 </a>
-                <a href="group-ettings.php">
+                <a href="group-settings.php">
                     <li>
                         Settings
                     </li>

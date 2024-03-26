@@ -320,15 +320,22 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 
                                 xhr.onload = function () {
                                     if (xhr.status == 200) {
+
                                         // Parse JSON response
                                         var data = JSON.parse(xhr.responseText);
 
                                         // Update dynamic content
                                         if (document.getElementById('chatter-chat') != null) {
-                                            scrollPos = document.getElementById('chatter-chat').scrollTop;
+                                            scrollPos = document.getElementById('chatter-chat').scrollTop; 
                                         }
                                         document.getElementById('chatter-box').innerHTML = data;
-                                        document.getElementById('chatter-chat').scrollTop = scrollPos;
+                                        if(iterator==0){
+                                                document.getElementById('chatter-chat').scrollTop = document.getElementById('chatter-chat').scrollHeight;
+                                                iterator++;
+                                            } else{
+                                                document.getElementById('chatter-chat').scrollTop = scrollPos;
+                                            }
+                                            
                                     } else {
                                         console.log(xhr.responseText);
                                     }
@@ -336,11 +343,12 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 
                                 xhr.send();
 
-    // Fetch updates every 1 second (adjust as needed)
-    setTimeout(fetchUpdates, 1000);
+    // Fetch updates every 2 seconds
+    setTimeout(fetchUpdates, 4000);
 }
 
                             // Start fetching updates
+                            var iterator = 0;
                             fetchUpdates();
                         </script>
                     </div>
