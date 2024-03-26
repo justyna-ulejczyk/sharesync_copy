@@ -452,10 +452,10 @@ $visibility = $row["accountvisibility"];
             </form>
         </div>
 
-        <!-- <div id="overview">
+         <div id="overview">
             <span class="updateTitle">Overview</span>
             <div class='divider'></div>
-            <form action="../php/profile_details.php" method="post">
+            <!-- <form action="../php/profile_details.php" method="post">
                 <div class="info-display">
                     <p class="info-cat">University </p>
                     <p>
@@ -516,7 +516,7 @@ $visibility = $row["accountvisibility"];
                 <p>Update:</p>
                 <input type="text" id="dob" name="dob" required />
                 <button class="confirmButton">Comfirm Update</button>
-            </form>
+            </form> -->
 
         </div>
 
@@ -526,7 +526,7 @@ $visibility = $row["accountvisibility"];
             
         
 
-        </div> -->
+        </div> 
 
 
         <div id="privacyPolicy">

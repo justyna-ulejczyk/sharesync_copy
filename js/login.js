@@ -44,17 +44,17 @@ function checkUsernameAvailability(username) {
     xhr.send("username=" + username);
 }
 
-function loginProcess() {
+function loginProcess(event) {
+    event.preventDefault();
     var username = document.getElementById("loginUsername").value;
     var password = document.getElementById("loginPassword").value;
-    console.log(username + password);
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "../php/login.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            if (xhr.responseText == "success") {
+            if (xhr.responseText == "") {
                 window.location.href = "Home.php";
             }
             document.getElementById("loginMessage").innerHTML = xhr.responseText;

@@ -37,7 +37,6 @@ if (!password_verify($user_entered_password, $stored_password_hash)) {
     $_SESSION['username'] = $username;
 
     // Redirect to home.php
-    header("Location: ../html/home.php");
     exit(); // Make sure to stop further execution after redirecting
 }
 

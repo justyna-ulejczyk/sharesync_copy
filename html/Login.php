@@ -38,7 +38,7 @@
 
         <!-- Login Part -->
 
-        <form action="../php/login.php" method="post" id="loginForm">
+        <form id="loginForm">
             <div>
                 <div class="login-inputs">
                     <div>
@@ -60,27 +60,9 @@
             </div>
             <div>
                 <span id="loginMessage"></span>
-                <input id="loginSubmit" type="submit" name="login" value="Login">
+                <button id="loginSubmit" name="login" onclick="loginProcess(event)">Login</button>
             </div>
         </form>
-
-        <script>
-            document.getElementById("loginForm").addEventListener("keypress", function (event) {
-                // Check if Enter key is pressed
-                if (event.keyCode === 13) {
-                    event.preventDefault(); // Prevent default form submission
-                    loginProcess(); // Call your login process function
-                }
-            });
-
-            function loginProcess() {
-                // Implement your login process here
-                // This function will be called when the form is submitted
-                // You can collect form data and send it to the server for processing
-                // For example:
-                document.getElementById("loginForm").submit(); // Submit the form
-            }
-        </script>
 
     </section>
 
