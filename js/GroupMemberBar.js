@@ -26,3 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
         leftBar.classList.toggle("active");
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".canvas-menu");
+    const toolOptions = document.querySelector(".canvas-options");
+
+    menuButton.addEventListener("click", function () {
+        toolOptions.classList.toggle("active");
+    });
+});

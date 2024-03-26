@@ -23,7 +23,7 @@ function getMousePosition(event) {
     const rect = canvas.getBoundingClientRect();
 
     // Scale mouse coordinates after they have been adjusted to be relative to the element
-    const scaleX = canvas.width / rect.width;    
+    const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
 
     return {
@@ -42,7 +42,7 @@ toolbar.addEventListener('change', e => {
     if (e.target.id === 'stroke') {
         ctx.strokeStyle = e.target.value;
     }
-    
+
     if (e.target.id === 'lineWidth') {
         lineWidth = e.target.value;
     }
@@ -80,7 +80,7 @@ document.getElementById('export').addEventListener('click', () => {
     document.body.removeChild(link);
 });
 
-document.getElementById('save').addEventListener('click', function() {
+document.getElementById('save').addEventListener('click', function () {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "../php/save_canvas.php", true);
     var split = this.getAttribute("split");
@@ -105,7 +105,7 @@ document.getElementById('save').addEventListener('click', function() {
     xhr.send(formData);
 });
 
-document.getElementById('delete').addEventListener('click', function() {
+document.getElementById('delete').addEventListener('click', function () {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "../php/delete_canvas.php", true);
     var split = this.getAttribute("split");
@@ -131,9 +131,9 @@ imageLoader.addEventListener('change', handleImage, false);
 
 function handleImage(e) {
     const reader = new FileReader();
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         const img = new Image();
-        img.onload = function() {
+        img.onload = function () {
             // Clear any existing content
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -165,7 +165,7 @@ function undoLastAction() {
 
     // Clear canvas and load the previous state
     const img = new Image();
-    img.onload = function() {
+    img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     };
@@ -182,7 +182,7 @@ function redoLastAction() {
 
     // Clear canvas and load the next state
     const img = new Image();
-    img.onload = function() {
+    img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     };
@@ -200,6 +200,44 @@ canvas.addEventListener('mouseup', () => {
         saveState();  // Save state on mouse up
     }
 });
+
+
+canvas.addEventListener('touchstart', (e) => {
+    isPainting = true;
+    const position = getTouchPosition(e);
+    ctx.beginPath();
+    ctx.moveTo(position.x, position.y);
+});
+
+canvas.addEventListener('touchmove', (e) => {
+    if (!isPainting) {
+        return;
+    }
+    const position = getTouchPosition(e);
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = 'round';
+    ctx.lineTo(position.x, position.y);
+    ctx.stroke();
+});
+
+canvas.addEventListener('touchend', () => {
+    isPainting = false;
+    saveState(); // Save state on touch end
+});
+
+function getTouchPosition(event) {
+    const rect = canvas.getBoundingClientRect();
+    const touch = event.touches[0];
+
+    // Scale touch coordinates after they have been adjusted to be relative to the element
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY
+    };
+}
 
 // Initialize canvas state on load
 saveState();

@@ -494,6 +494,10 @@ img.profile-info-groups-group {
     bside.profile-posts {
         align-items: center;
     }
+
+    nav > section:nth-child(2) > ul > li:nth-child(3) {
+        display: none;
+    }
 }
 
 #trash {

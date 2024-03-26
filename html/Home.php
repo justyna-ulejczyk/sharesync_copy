@@ -450,9 +450,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             echo "
                             <div class='comment-user-comment'>
                                 <div class='user-container'>
-                                    <a href='Profile.php?id=$username'>
+                                    <a href='Profile.php?id=$commenting_user'>
                                     
-                                    <img src='../profile_pic/profile_pic_$username.png' class='post-avatar' />
+                                    <img src='../profile_pic/profile_pic_$commenting_user.png' class='post-avatar' />
                                     </a>
                                     <div class='user-post-name'>
                                         <span>$commenting_user</span>

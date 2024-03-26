@@ -13,7 +13,7 @@ $university = isset($_POST['university']) ? $_POST['university'] : null;
 $gender = isset($_POST['gender']) ? $_POST['gender'] : null;
 $worksat = isset($_POST['worksat']) ? $_POST['worksat'] : null;
 $location = isset($_POST['location']) ? $_POST['location'] : null;
-$phonenum = isset($_POST['phonenum']) ? $_POST['phonenum'] : null;
+//$phonenum = isset($_POST['phonenum']) ? $_POST['phonenum'] : null;
 $dob = isset($_POST['dob']) ? $_POST['dob'] : null;
 
 if ($university !== null) {
@@ -40,12 +40,12 @@ if ($location !== null) {
     header ('Location:../html/Settings.php');
     exit();
 }
-if ($phonenum !== null) {
-    $insert = pg_prepare($conn, "phone", "UPDATE accounts SET phonenum=$1 WHERE username=$2");
-    $result = pg_execute($conn, "phone", array($phonenum, $username));
-    header ('Location:../html/Settings.php');
-    exit();
-}
+// if ($phonenum !== null) {
+//     $insert = pg_prepare($conn, "phone", "UPDATE accounts SET phonenum=$1 WHERE username=$2");
+//     $result = pg_execute($conn, "phone", array($phonenum, $username));
+//     header ('Location:../html/Settings.php');
+//     exit();
+//}
 if ($dob !== null) {
     $insert = pg_prepare($conn, "dob", "UPDATE accounts SET dob=$1 WHERE username=$2");
     $result = pg_execute($conn, "dob", array($dob, $username));

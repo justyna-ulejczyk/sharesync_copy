@@ -532,7 +532,7 @@ button.like.active > svg > path {
 
 .dimmed:after {
     content: " ";
-    z-index: 10;
+    z-index: 998;
     display: block;
     position: absolute;
     height: 100%;
@@ -1037,7 +1037,7 @@ prepost {
 
     nav {
         border-top: solid 1px var(--gray);
-        z-index: 999;
+        z-index: 997;
         top: auto;
         bottom: 0;
     }
@@ -1071,7 +1071,7 @@ prepost {
         display: block;
         position: fixed;
         top: 0;
-        z-index: 999;
+        z-index: 997;
         padding-left: 0;
     }
 

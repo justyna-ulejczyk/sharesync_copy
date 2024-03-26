@@ -95,9 +95,18 @@ input[type="radio"] {
 }
 
 article {
-    height: 100%;
+    height: 90%;
+    display: none;
+    position: relative;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+article::-webkit-scrollbar {
     display: none;
 }
+
 article.on {
     display: block;
 }

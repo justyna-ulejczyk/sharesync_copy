@@ -171,16 +171,39 @@ aside {
     border-left: 1px solid var(--gray);
 }
 
+.canvas-menu {
+    display: none;
+}
+
+.canvas-menu-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 800px) {
     .left-bar {
         border-right: none;
+        max-width: 100%;
     }
     .canvas-options {
-        display: flex;
         flex-wrap: wrap;
+        display: none;
     }
 
     #drawing-board {
         width: 100%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .canvas-menu {
+        display: block;
+    }
+
+    .canvas-options.active {
+        display: flex;
     }
 }

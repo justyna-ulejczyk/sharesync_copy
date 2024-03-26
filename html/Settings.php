@@ -532,8 +532,8 @@ $visibility = $row["accountvisibility"];
 
                 </div>
                 <p>New Number</p>
-                <input type="text" id="phonenum" name="phonenum" required />
-                <button class="confirmButton">Comfirm Update</button>
+                <!-- <input type="text" id="phonenum" name="phonenum" required />
+                <button class="confirmButton">Comfirm Update</button> -->
             </form>
 
         </div>
