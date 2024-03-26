@@ -296,7 +296,7 @@ $visibility = $row["accountvisibility"];
                 <h3 onclick="updatePassword()">Reset Password</h3>
                 <h3 onclick="updateBio()">Update Bio</h3>
                 <h3 onclick="overview()">Overview</h3>
-                <h3 onclick="contactinfo()">Contact Info</h3>
+                <!-- <h3 onclick="contactinfo()">Contact Info</h3> -->
 
                 <h1 onclick="privacy()">Privacy & security</h2>
                     <h3 onclick="accountPrivacy()">Account Privacy</h3>
@@ -523,18 +523,8 @@ $visibility = $row["accountvisibility"];
         <div id="contactinfo">
             <span class="updateTitle">Contact Methods</span>
             <div class='divider'></div>
-            <form action="" method="post">
-                <div class="info-display">
-                    <p class="info-cat">Current Number -</p>
-                    <p>
-                        your number
-                    </p>
-
-                </div>
-                <p>New Number</p>
-                <!-- <input type="text" id="phonenum" name="phonenum" required />
-                <button class="confirmButton">Comfirm Update</button> -->
-            </form>
+            
+        
 
         </div>
 
