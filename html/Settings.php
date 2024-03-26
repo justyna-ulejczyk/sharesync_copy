@@ -91,11 +91,26 @@ $visibility = $row["accountvisibility"];
         <!-- Start of Nav -->
         <nav>
             <section>
-                <form id="searchForm" action="">
-                    <input id="searchInput" type="search" required>
+                <form id="searchForm" action="searchPage.php" method="POST">
+                    <input id="searchInput" type="search" name="searchWord" required>
                     <i class="fa fa-search"></i>
                 </form>
-
+                <script>
+                    function submitForm(event) {
+                        var searchWord = document.getElementById("searchInput").value;
+                        var regex = /[;'"\]/;
+                        if (regex.test(searchWord)) {
+                            alert("Invalid characters detected. Please remove special characters.");
+                            event.preventDefault();
+                        }
+                    }
+                    document.getElementById("searchForm").addEventListener("keyup", function (event) {
+                        if (event.keyCode === 13) {
+                            submitForm(event);
+                        }
+                    })
+                        ;
+                </script>
             </section>
             <section>
                 <ul>
@@ -290,7 +305,7 @@ $visibility = $row["accountvisibility"];
 
 
 
-          <h1 onclick="account()">Account</h2>
+            <h1 onclick="account()">Account</h2>
                 <h3 onclick="updateEmail()">Update Email</h3>
                 <h3 onclick="updateName()">Update Name</h3>
                 <h3 onclick="updatePassword()">Reset Password</h3>
@@ -301,7 +316,7 @@ $visibility = $row["accountvisibility"];
                 <h1 onclick="privacy()">Privacy & security</h2>
                     <h3 onclick="accountPrivacy()">Account Privacy</h3>
                     <h3 onclick="privacyPolicy()"> Privacy Policy</h3>
-                    <h3 onclick="deleteAccount()">Delete Account</h3> 
+                    <h3 onclick="deleteAccount()">Delete Account</h3>
 
 
         </div>
@@ -313,14 +328,7 @@ $visibility = $row["accountvisibility"];
 
         <div id="general">
             <h1 class="updateTitle">General Settings</h1>
-            <div class="banner" style="background-image: url(../images/default-background.png);">
-                <div class="banner-edit">
-                    <input type='file' id="bannerUpload" accept=".png, .jpg, .jpeg" />
-                    <label for="bannerUpload"></label>
-                </div>
 
-                <div class="banner-preview"></div>
-            </div>
             <div class="avatar-upload">
                 <form action="../php/upload_avatar.php" method="POST" enctype="multipart/form-data">
                     <div class="avatar-edit">
@@ -452,7 +460,7 @@ $visibility = $row["accountvisibility"];
             </form>
         </div>
 
-         <div id="overview">
+        <div id="overview">
             <span class="updateTitle">Overview</span>
             <div class='divider'></div>
             <!-- <form action="../php/profile_details.php" method="post">
@@ -523,10 +531,10 @@ $visibility = $row["accountvisibility"];
         <div id="contactinfo">
             <span class="updateTitle">Contact Methods</span>
             <div class='divider'></div>
-            
-        
 
-        </div> 
+
+
+        </div>
 
 
         <div id="privacyPolicy">

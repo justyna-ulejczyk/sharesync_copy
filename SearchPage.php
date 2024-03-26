@@ -25,7 +25,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="../js/searchpage.js"></script>
+    <script src="../js/Home.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/navbar.js"></script>
@@ -42,27 +42,29 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="" class="nav-profile">
+                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
                 </a>
             </li>
 
             <li>
-                <a href="../html/Notifications.php">
-                    <div class="dropdown">
-                        <button class="dropButton">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
-                                    stroke="black" stroke-width="2" />
-                                <path
-                                    d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
-                                    stroke="black" stroke-width="2" stroke-linecap="round" />
-                            </svg>
+                <div class="dropdown">
+                    <button class="dropButton">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
+                                stroke="black" stroke-width="2" />
+                            <path
+                                d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
+                                stroke="black" stroke-width="2" stroke-linecap="round" />
+                        </svg>
 
-                        </button>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
                     </div>
-                </a>
+                </div>
             </li>
         </ul>
     </subnav>
@@ -70,7 +72,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
     <!-- Start of Nav -->
     <nav>
-        <section>
+    <section>
             <form id="searchForm" action="searchPage.php" method="POST">
                 <input id="searchInput" type="search" name="searchWord" required>
                 <i class="fa fa-search"></i>
@@ -78,24 +80,24 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <script>
                 function submitForm(event) {
                     var searchWord = document.getElementById("searchInput").value;
-                    var regex = /[;'"\]/;
+                    var regex = /[;'"\\]/;
                     if (regex.test(searchWord)) {
                         alert("Invalid characters detected. Please remove special characters.");
                         event.preventDefault();
                     }
                 }
-                document.getElementById("searchForm").addEventListener("keyup", function (event) {
+                document.getElementById("searchForm").addEventListener("keyup", function(event) {
                     if (event.keyCode === 13) {
                         submitForm(event);
                     }
                 })
-                    ;
+                ;
             </script>
         </section>
         <section>
             <ul class="linksBar">
-                <li>
-                    <a href="../html/Home.php">
+                <li class="active">
+                    <a href="../html/Home.php" class="active">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -116,15 +118,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     </a>
                 </li>
                 <li>
-
-                    <button onclick="createPost()">
-                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM12 8.25C12.4142 8.25 12.75 8.58579 12.75 9V11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H12.75L12.75 15C12.75 15.4142 12.4142 15.75 12 15.75C11.5858 15.75 11.25 15.4142 11.25 15V12.75H9C8.58579 12.75 8.25 12.4142 8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H11.25L11.25 9C11.25 8.58579 11.5858 8.25 12 8.25Z"
-                                fill="#1C274C" />
-                        </svg>
-                    </button>
+                    <a>
+                        <img src="../images/icons/nav-icons/add-square-svgrepo-com.svg">
+                    </a>
                 </li>
                 <li>
                     <a href="../html/Group.php">
@@ -178,35 +174,11 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-                            <?php
-                            // Load initial notifications
-                            include_once "../php/load_notifications.php";
-                            ?>
-                            <a href="../html/Notifications.php">See More</a>
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                            <a href="../html/Group.php">See More</a>
                         </div>
-
-                        <script>
-                            // Function to load more notifications
-                            function loadMoreNotifications() {
-                                // Make an AJAX request
-                                var xhr = new XMLHttpRequest();
-                                xhr.open("GET", "load_notifications.php", true);
-                                xhr.onreadystatechange = function () {
-                                    if (xhr.readyState == 4 && xhr.status == 200) {
-                                        // Update the content of the dropdownContent div
-                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-                                    }
-                                };
-                                xhr.send();
-                            }
-
-                            // Attach click event listener to the "See More" link
-                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
-                                event.preventDefault(); // Prevent default link behavior
-                                loadMoreNotifications(); // Call the function to load more notifications
-                            });
-                        </script>
-                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -214,15 +186,13 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
+                            src="../images/icons/Unknown_person.jpg">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
-                                    <p>
-                                        <?php echo "$username" ?>
-                                    </p>
+                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                    <?php echo "<p>$username</p>" ?>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -237,7 +207,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>My Profile</span>
                                 </button>
                             </a>
-                            <a href="Settings.php">
+                            <a href="../html/Settings.php">
                                 <button class="settings">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -291,9 +261,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <div>
                 <div>
                     <div id="Banner"></div>
-                    <a href="Profile.php"><img class="pfp"
-                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="pfp" width="100"
-                            height="100" /></a>
+                    <a href="Profile.php"><img class="pfp" src="../images/icons/Unknown_person.jpg" alt="pfp"
+                            width="100" height="100" /></a>
                     <div id="pfp-outline"></div>
                 </div>
 
@@ -311,14 +280,40 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <div>
                 <a href="../html/Group.php"> Collabs</a>
                 <a href="../html/Messages.php"> Messages</a>
-                <a href="../html/Notifications.php"> Notifications</a>
+                <a href="../html/notifs.php"> Notifications</a>
             </div>
         </profile>
         <!-- End of Profile -->
 
         <!-- Start of Feed -->
         <feed class="feed">
-
+            <!-- Start of Create Post Button-->
+            <div>
+                <button class="feed-create-post-button" onclick="createPost()">
+                    Create Post
+                </button>
+            </div>
+            <!-- End of Create Post Button-->
+            <!-- Start of Create Post Options -->
+            <div>
+                <div class="feed-create-post-container">
+                    <a href="#" class="close" onclick="exitButton(this)"></a>
+                    <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
+                        <input type="file" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg"
+                            required>
+                        <div>
+                            <h3>Caption</h3>
+                            <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
+                                class="feed-create-post-captions"></textarea>
+                        </div>
+                        <div>
+                            <h3>tags will go here</h3>
+                        </div>
+                        <input type="submit" name="submit_post" class="feed-create-post-submit" onclick="finishPost()">
+                    </form>
+                </div>
+            </div>
+            <!-- End of Create Post Options -->
 
             <!-- Start Search -->
             <!-- Start Post -->
@@ -326,21 +321,21 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <?php
 
             if (isset ($_POST['searchWord']) && !empty ($_POST['searchWord'])) {
-
+                
                 $search_query = $_POST['searchWord'];
 
                 // exact match
                 $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username WHERE text = '$search_query' ORDER BY postid DESC";
-                $profileSearchListQuery = "SELECT username, name FROM accounts WHERE name = '$search_query'";
+                $profileSearchListQuery = "SELECT username, name FROM accounts WHERE name = '$search_query' OR username = '$search_query'";
                 $groupSearchListQuery = "SELECT groups.groupid, managerid, groupname, description FROM groups INNER JOIN accounttogroup ON accounttogroup.groupid = groups.groupid WHERE groupname = '$search_query' AND accounttogroup.username = '$username' ORDER BY groupId DESC";
-
+                
                 // like matches
                 $postsLikeListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username WHERE text LIKE '%$search_query%' AND text != '$search_query' ORDER BY postid DESC";
-                $profileLikeSearchListQuery = "SELECT username, name FROM accounts WHERE name LIKE '%$search_query%'AND name != '$search_query'";
+                $profileLikeSearchListQuery = "SELECT username, name FROM accounts WHERE (name LIKE '%$search_query%' OR username LIKE '%$search_query%')AND name != '$search_query' AND username != '$search_query'";
                 $groupLikeSearchListQuery = "SELECT groups.groupid, managerid, groupname, description FROM groups INNER JOIN accounttogroup ON accounttogroup.groupid = groups.groupid WHERE groupname LIKE '$search_query' AND groupname != '$search_query' AND username = '$username' ORDER BY groupId DESC";
-
+                                
                 // tags match
-                $postsTagsListQuery = "SELECT post.postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN tags ON post.postid = tags.postid WHERE tagname LIKE '%$search_query%' AND text != '$search_query' ORDER BY post.postid DESC";
+                $postsTagsListQuery = "SELECT post.postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN tags ON post.postid = tags.postid WHERE tagname LIKE '%$search_query%' AND text != '$search_query' ORDER BY post.postid DESC";  
 
                 $profileListQuery = "SELECT usename, ";
 
@@ -355,10 +350,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                 $postsTagsRESULT = pg_query($conn, $postsTagsListQuery);
 
-                $postTagsSTMT = pg_prepare($conn, "postTags", "SELECT tagname FROM tags where postid= $1");
                 $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
                 $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
-                $commentQuery = pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
 
 
                 //exact posts
@@ -373,122 +366,286 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         $postLikesRESULT = pg_execute($conn, "postLikes", array($postid));
                         $likesCount = pg_num_rows($postLikesRESULT);
 
-                        $postTagsRESULT = pg_execute($conn, "postTags", array($postid));
-
                         $postLikedByUserRESULT = pg_execute($conn, "postLikedByUser", array($postid, $username));
                         $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
-                        $commentResult = pg_execute($conn, "comment", array($postid));
-                        $commentNumb = pg_num_rows($commentResult);
 
                         echo "<post class='posts' id=$postid>";
                         echo " <prepost>
-                <div class='post-column'>
-                    <div class='expanded-post'>
-                        <img src=$post_image_path>
-                    </div>
+            <div class='post-column'>
+                <div class='expanded-post'>
+                    <img src=$post_image_path>
                 </div>
-    
-    
-                <div class='comments-column'>
-                    <div class='post-info'>
-                        <div class=' comment-header'>
-                            <div class='user-container'>
-                                <a href='Profile.php?id=$poster_username'><img src='../profile_pic/profile_pic_$poster_username.png' class='post-avatar' /></a>
-                                <div class='user-post-name'>
-                                    <span>$name</span>
-                                    <span>@$poster_username</span>
-                                </div>
+            </div>
+
+
+            <div class='comments-column'>
+                <div class='post-info'>
+                    <div class=' comment-header'>
+                        <div class='user-container'>
+                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>$name</span>
+                                <span>@$poster_username</span>
                             </div>
-                            <a href='#' class='close' onclick='exitButton(this)'></a>
                         </div>
-                        <div class='choices'>
-                            <div class='comment-post-options'>
-                                <!-- Likes -->";
+                        <a href='#' class='close' onclick='exitButton(this)'></a>
+                    </div>
+                    <div class='choices'>
+                        <div class='comment-post-options'>
+                            <!-- Likes -->";
                         if ($postLikedByUser) {
                             echo "<button id='likePostButton' class='like icons post-$postid active' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
                         } else {
                             echo "<button id='likePostButton' class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
                         }
                         echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                                <span class='likeCounter $postid'>$likesCount</span>
+                            </button>
+                            <button>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path fill-rule='evenodd' clip-rule='evenodd'
+                                        d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z'
+                                        fill='#1C274C' />
+                                </svg>
+                                <span>Comment</span>
+                            </button>
+                            <button>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M18.6357 15.6701L20.3521 10.5208C21.8516 6.02242 22.6013 3.77322 21.414 2.58595C20.2268 1.39869 17.9776 2.14842 13.4792 3.64788L8.32987 5.36432C4.69923 6.57453 2.88392 7.17964 2.36806 8.06698C1.87731 8.91112 1.87731 9.95369 2.36806 10.7978C2.88392 11.6852 4.69923 12.2903 8.32987 13.5005C8.77981 13.6505 9.28601 13.5434 9.62294 13.2096L15.1286 7.75495C15.4383 7.44808 15.9382 7.45041 16.245 7.76015C16.5519 8.06989 16.5496 8.56975 16.2398 8.87662L10.8231 14.2432C10.4518 14.6111 10.3342 15.1742 10.4995 15.6701C11.7097 19.3007 12.3148 21.1161 13.2022 21.6319C14.0463 22.1227 15.0889 22.1227 15.933 21.6319C16.8204 21.1161 17.4255 19.3008 18.6357 15.6701Z'
+                                        fill='#1C274C' />
+                                </svg>
+                                <span>Share</span>
+                            </button>
+                        </div>
+                        <button>
+                            <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                xmlns='http://www.w3.org/2000/svg'>
+                                <path
+                                    d='M19.1835 7.80516L16.2188 4.83755C14.1921 2.8089 13.1788 1.79457 12.0904 2.03468C11.0021 2.2748 10.5086 3.62155 9.5217 6.31506L8.85373 8.1381C8.59063 8.85617 8.45908 9.2152 8.22239 9.49292C8.11619 9.61754 7.99536 9.72887 7.86251 9.82451C7.56644 10.0377 7.19811 10.1392 6.46145 10.3423C4.80107 10.8 3.97088 11.0289 3.65804 11.5721C3.5228 11.8069 3.45242 12.0735 3.45413 12.3446C3.45809 12.9715 4.06698 13.581 5.28476 14.8L6.69935 16.2163L2.22345 20.6964C1.92552 20.9946 1.92552 21.4782 2.22345 21.7764C2.52138 22.0746 3.00443 22.0746 3.30236 21.7764L7.77841 17.2961L9.24441 18.7635C10.4699 19.9902 11.0827 20.6036 11.7134 20.6045C11.9792 20.6049 12.2404 20.5358 12.4713 20.4041C13.0192 20.0914 13.2493 19.2551 13.7095 17.5825C13.9119 16.8472 14.013 16.4795 14.2254 16.1835C14.3184 16.054 14.4262 15.9358 14.5468 15.8314C14.8221 15.593 15.1788 15.459 15.8922 15.191L17.7362 14.4981C20.4 13.4973 21.7319 12.9969 21.9667 11.9115C22.2014 10.826 21.1954 9.81905 19.1835 7.80516Z'
+                                    fill='#1C274C' />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class='caption'>
+                    $text
+                    </p>
+                </div>
+                <div>
+                    <h4>Comments</h4>
+                    <div class='divider'></div>
+                </div>
+                <div class='comment-container'>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
+                    </div>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
+                    </div>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
+                    </div>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <!-- Likes -->
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
+                    </div>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
+                    </div>
+                    <div class='comment-replies'>
+                        <div class='comment-user-comment'>
+                            <div class='user-container'>
+                                <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                                <div class='user-post-name'>
+                                    <span>Michael Schumacher</span>
+                                    <span>Comment - 22/01/23</span>
+                                </div>
+                            </div>
+                            <div class='comment-like'>
+                                <button class='like icons' onclick='toggleHeart(this)'>
+                                    <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <path
                                             d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
                                             fill='red' />
                                     </svg>
-                                    <span class='likeCounter $postid'>$likesCount</span>
                                 </button>
-    
                             </div>
-    
                         </div>
-                        <p class='caption'>
-                        $text
-                        </p>
+                        <div class='comment-replies-container'>
+                            <div class='comment-text'>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet,
+                                    nulla et dictum interdum, nisi lorem egestas vitae scel<span
+                                        id='dots'>...</span><span id='more'>erisque enim ligula venenatis dolor.
+                                        Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce
+                                        luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed
+                                        ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet
+                                        sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer
+                                        fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor
+                                        porta.</span></p>
+
+                                <button onclick='toggleMore()' id='myBtn'>Read more</button>
+                            </div>
+                            <div class='comment-options'>
+                                <span>1 Like</span>
+                                <a>Reply</a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4>Comments</h4>
-                        <div class='divider'></div>
-                    </div>
-    
-    
-                    <div class='comment-container id-$postid'>";
-                        if ($commentNumb > 0) {
-                            while ($row = pg_fetch_assoc($commentResult)) {
-                                $commenting_user = $row['username'];
-                                $comment = $row['text'];
-                                $date = $row['timestamp'];
-                                $comment_id = $row['commentid'];
-
-                                echo "
-                                <div class='comment-user-comment'>
-                                    <div class='user-container'>
-                                        <a href='Profile.php?id=$commenting_user'>
-                                        
-                                        <img src='../profile_pic/profile_pic_$commenting_user.png' class='post-avatar' />
-                                        </a>
-                                        <div class='user-post-name'>
-                                            <span>$commenting_user</span>
-                                            <span>Comment - $date</span>
-                                        </div>
-    
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class='comment-text'>$comment</div>
-                                    <div class='comment-options'>";
-
-                                if ($commenting_user == $username) {
-                                    echo "<form action='../php/deleteComments.php' method='post'>";
-                                    echo "<input type='hidden' name='comment_id' value='$comment_id'>";
-                                    echo "<button type='submit' name='delete_comment'>Delete</button>";
-                                    echo "</form>";
-                                }
-
-                                echo "</div>
-                                </div>
-                            </form>";
-                            }
-                        } else {
-                            echo "No comments";
-                        }
-
-                        ?>
-                        </div>
-                        <div class='comment-create-container'>
-                            <input class='comment-create' id='comment-create-text-<?php echo "$postid" ?>' name="text" type="text"
-                                required>
-                            <input type="hidden" id='comment-create-postid-<?php echo "$postid" ?>' name="postid"
-                                value="<?php echo $postid; ?>">
-                            <button name="commentSubmit"
-                                onclick='postComment(<?php echo "$postid, \"$username\"" ?>);'>Comment</button>
-                        </div>
-
-                        <?php echo "
                 </div>
-            </prepost>";
+                <div class='comment-create-container'>
+                    <form>
+                        <input class='comment-create' type='text'>
+                    </form>
+                </div>
+            </div>
+        </prepost>";
                         echo "<div class='feed-post'>";
                         echo "<div class='user-container'>";
-                        echo "<a href='Profile.php?id=$poster_username'><img src='../profile_pic/profile_pic_$poster_username.png' class='post-avatar' /></a>";
+                        echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
                         echo "<div class='user-post-name'>";
                         echo "<span>$name</span>";
                         echo "<span>@$poster_username</span>";
@@ -499,9 +656,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         echo "</button>";
                         echo "<div class='choices'>";
                         echo "<div class='post-options'>";
-
-
-
                         echo "<!-- Likes -->";
                         if ($postLikedByUser) {
                             echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
@@ -515,15 +669,34 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         echo "fill='red' />";
                         echo "</svg>";
                         echo "</button>";
-                        echo "<p class='likeCounter $postid'>$likesCount</p>";
-
+                        echo "<!-- Comment -->";
+                        echo "<button class='post-comment-button'>";
+                        echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                        echo "xmlns='http://www.w3.org/2000/svg'>";
+                        echo "<path fill-rule='evenodd' clip-rule='evenodd'";
+                        echo " d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z'";
+                        echo "fill='#1C274C' />";
+                        echo "</svg>";
+                        echo "</button>";
+                        echo "<!-- Send -->";
+                        echo "<button>";
+                        echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                        echo "xmlns='http://www.w3.org/2000/svg'>";
+                        echo "<path";
+                        echo " d='M18.6357 15.6701L20.3521 10.5208C21.8516 6.02242 22.6013 3.77322 21.414 2.58595C20.2268 1.39869 17.9776 2.14842 13.4792 3.64788L8.32987 5.36432C4.69923 6.57453 2.88392 7.17964 2.36806 8.06698C1.87731 8.91112 1.87731 9.95369 2.36806 10.7978C2.88392 11.6852 4.69923 12.2903 8.32987 13.5005C8.77981 13.6505 9.28601 13.5434 9.62294 13.2096L15.1286 7.75495C15.4383 7.44808 15.9382 7.45041 16.245 7.76015C16.5519 8.06989 16.5496 8.56975 16.2398 8.87662L10.8231 14.2432C10.4518 14.6111 10.3342 15.1742 10.4995 15.6701C11.7097 19.3007 12.3148 21.1161 13.2022 21.6319C14.0463 22.1227 15.0889 22.1227 15.933 21.6319C16.8204 21.1161 17.4255 19.3008 18.6357 15.6701Z'";
+                        echo "fill='#1C274C' />";
+                        echo "</svg>";
+                        echo "</button>";
                         echo "</div>";
-                        if ($poster_username == $username) {
-                            echo "<form action='../php/delete_post.php' method='post'>";
-                            echo "<input type='hidden' name='post_id' value='$postid'>";
-                            echo "<button type='submit' name='delete_post'>Delete</button>";
-                            echo "</form>";
-                        }
+                        echo "<!-- Pin -->";
+                        echo "<button>";
+                        echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                        echo "xmlns='http://www.w3.org/2000/svg'>";
+                        echo "<path";
+                        echo " d='M19.1835 7.80516L16.2188 4.83755C14.1921 2.8089 13.1788 1.79457 12.0904 2.03468C11.0021 2.2748 10.5086 3.62155 9.5217 6.31506L8.85373 8.1381C8.59063 8.85617 8.45908 9.2152 8.22239 9.49292C8.11619 9.61754 7.99536 9.72887 7.86251 9.82451C7.56644 10.0377 7.19811 10.1392 6.46145 10.3423C4.80107 10.8 3.97088 11.0289 3.65804 11.5721C3.5228 11.8069 3.45242 12.0735 3.45413 12.3446C3.45809 12.9715 4.06698 13.581 5.28476 14.8L6.69935 16.2163L2.22345 20.6964C1.92552 20.9946 1.92552 21.4782 2.22345 21.7764C2.52138 22.0746 3.00443 22.0746 3.30236 21.7764L7.77841 17.2961L9.24441 18.7635C10.4699 19.9902 11.0827 20.6036 11.7134 20.6045C11.9792 20.6049 12.2404 20.5358 12.4713 20.4041C13.0192 20.0914 13.2493 19.2551 13.7095 17.5825C13.9119 16.8472 14.013 16.4795 14.2254 16.1835C14.3184 16.054 14.4262 15.9358 14.5468 15.8314C14.8221 15.593 15.1788 15.459 15.8922 15.191L17.7362 14.4981C20.4 13.4973 21.7319 12.9969 21.9667 11.9115C22.2014 10.826 21.1954 9.81905 19.1835 7.80516Z'";
+                        echo "fill='#1C274C' />";
+                        echo "</svg>";
+                        echo "</button>";
                         echo "</div>";
                         echo "</div>";
 
@@ -534,14 +707,10 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "No posts found.";
                 }
 
-                // Close the database connection
-            
-
-
                 // profiles (exact match)
-            
+
                 if ($profileSearchListRESULT) {
-                    while ($row = pg_fetch_assoc($profileSearchListRESULT)) {
+                    while ($row = pg_fetch_assoc($profileSearchListRESULT)){
                         $profile_name = $row["name"];
                         $profile_username = $row["username"];
 
@@ -573,7 +742,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 }
 
                 if ($groupSearchListRESULT) {
-                    while ($row = pg_fetch_assoc($groupSearchListRESULT)) {
+                    while ($row = pg_fetch_assoc($groupSearchListRESULT)){
                         $group_ID = $row["groupid"];
                         $group_manager = $row["managerid"];
                         $group_name = $row["groupname"];
@@ -956,12 +1125,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                     }
                 } else {
-
+                
                 }
 
                 //posts like match
                 if ($profileLikeSearchListRESULT) {
-                    while ($row = pg_fetch_assoc($profileLikeSearchListRESULT)) {
+                    while ($row = pg_fetch_assoc($profileLikeSearchListRESULT)){
                         $profile_name = $row["name"];
                         $profile_username = $row["username"];
 
@@ -993,7 +1162,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 }
 
                 if ($groupLikeSearchListRESULT) {
-                    while ($row = pg_fetch_assoc($groupLikeSearchListRESULT)) {
+                    while ($row = pg_fetch_assoc($groupLikeSearchListRESULT)){
                         $group_ID = $row["groupid"];
                         $group_manager = $row["managerid"];
                         $group_name = $row["groupname"];
@@ -1375,11 +1544,11 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                     }
                 } else {
-
+                
                 }
 
             } else {
-                echo "No posts found 2";
+                echo "No posts found";
             }
 
             // Close the database connection
@@ -1395,7 +1564,27 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
 
 
-
+        <!-- Start of Groups-->
+        <groups class="tile group">
+            <div id="tile3">
+                <button class="groupButton">
+                    <div class="placeholder-img"></div>
+                    <p>Group 1</p>
+                </button>
+                <button class="groupButton">
+                    <div class="placeholder-img"></div>
+                    <p>Group 1</p>
+                </button>
+                <button class="groupButton">
+                    <div class="placeholder-img"></div>
+                    <p>Group 1</p>
+                </button>
+            </div>
+            <div id="viewMore">
+                <a href="../html/Notificaitons.php">View More</a>
+            </div>
+        </groups>
+        <!-- End of Gorups -->
     </main>
 </body>
 

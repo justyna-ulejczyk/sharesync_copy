@@ -37,9 +37,9 @@ if ($result) {
                     (username, timestamp, killtime, notifmessage) 
                     VALUES ($1, $2, $3, $4) RETURNING notificationID");
     $notificationResult = pg_execute($conn, "add_notification", array($user, $date, $killTime->format('Y-m-d'), $mess));
-    exit();
+    $row = pg_fetch_assoc($result); // Fetch the first row of the result
+    $comment_id = $row['commentid'];
+    echo "$comment_id";
 }
-
-
 // Close the connection
 pg_close($conn);

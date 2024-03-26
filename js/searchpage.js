@@ -23,29 +23,13 @@ document.getElementById('photoInput').addEventListener('change', function (event
         preview.style.display = 'block';
     }
 });
-function finishPost() {
-    var dimmedElement = document.querySelector('.dimmed');
-    var createPost = document.querySelector('.feed-create-post-container')
 
-    dimmedElement.classList.remove('active');
-    createPost.style.display = 'none';
-}
-
-function createPost() {
-    var createPost = document.querySelector('.feed-create-post-container')
-    var dimmedElement = document.querySelector('.dimmed');
-
-    dimmedElement.classList.add('active');
-    createPost.style.display = 'flex';
-}
 
 function exitButton(clickedElement) {
     var dimmedElement = document.querySelector('.dimmed');
-    var createPost = document.querySelector('.feed-create-post-container')
     var postElement = clickedElement.closest('.posts');
 
     dimmedElement.classList.remove('active');
-    createPost.style.display = 'none';
 
     console.log('Clicked Element:', clickedElement);
     console.log('Post Element:', postElement);

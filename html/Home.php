@@ -73,11 +73,26 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <!-- Start of Nav -->
     <nav>
         <section>
-            <form id="searchForm" action="">
-                <input id="searchInput" type="search" required>
+            <form id="searchForm" action="searchPage.php" method="POST">
+                <input id="searchInput" type="search" name="searchWord" required>
                 <i class="fa fa-search"></i>
             </form>
-
+            <script>
+                function submitForm(event) {
+                    var searchWord = document.getElementById("searchInput").value;
+                    var regex = /[;'"\]/;
+                    if (regex.test(searchWord)) {
+                        alert("Invalid characters detected. Please remove special characters.");
+                        event.preventDefault();
+                    }
+                }
+                document.getElementById("searchForm").addEventListener("keyup", function (event) {
+                    if (event.keyCode === 13) {
+                        submitForm(event);
+                    }
+                })
+                    ;
+            </script>
         </section>
         <section>
             <ul class="linksBar">
@@ -267,7 +282,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             </ul>
         </section>
     </nav>
-    <!-- End of Nav -->
 
 
 
@@ -338,12 +352,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 class="feed-create-post-captions"></textarea>
                         </div>
                         <script>
-                        var textarea = document.getElementById("text");
-                        textarea.addEventListener("input", function() {
-                            if (this.value.length > this.maxLength) {
-                                this.value = this.value.slice(0, this.maxLength);
-                            }
-                        });
+                            var textarea = document.getElementById("text");
+                            textarea.addEventListener("input", function () {
+                                if (this.value.length > this.maxLength) {
+                                    this.value = this.value.slice(0, this.maxLength);
+                                }
+                            });
                         </script>
                         <div class="tags-container">
                             <h3>Tags (please seperate with commas)</h3>

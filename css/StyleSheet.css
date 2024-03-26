@@ -186,11 +186,9 @@ nav img {
 /*search Bar */
 nav form {
     position: relative;
-    top: 50%;
-    display: inline;
-    transform: translate(0%, -50%);
+    display: inline-block; /* Changed from inline */
     transition: all 1s;
-    width: 50px;
+    width: 200px; /* Adjusted width for better visibility */
     height: 50px;
     box-sizing: border-box;
     border-radius: 25px;
@@ -198,10 +196,8 @@ nav form {
 }
 
 nav input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 90%;
+    margin-left: 50px;
+    width: calc(100% - 50px); /* Adjusted width to accommodate icon */
     height: 42.5px;
     line-height: 30px;
     outline: 0;
@@ -213,18 +209,18 @@ nav input {
 }
 
 nav .fa {
+    position: absolute; /* Positioned the icon absolutely */
+    top: 50%;
+    left: 5px; /* Adjusted left position */
+    transform: translateY(-50%);
     box-sizing: border-box;
     padding: 10px;
     width: 42.5px;
     height: 42.5px;
-    position: absolute;
-    top: 0;
-    right: 0;
     border-radius: 50%;
     color: var(--text);
     text-align: center;
     font-size: 1.2em;
-    transition: all 1s;
 }
 
 nav form:hover,
@@ -236,44 +232,6 @@ form:valid {
 nav form:hover input,
 form:valid input {
     display: block;
-}
-
-nav form:hover .fa,
-form:valid .fa {
-    background: var(--text);
-    color: var(--foreground);
-}
-
-nav .fa {
-    box-sizing: border-box;
-    padding: 10px;
-    width: 42.5px;
-    height: 42.5px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    color: var(--text);
-    text-align: center;
-    font-size: 1.2em;
-    transition: all 1s;
-}
-
-nav form:hover,
-form:valid {
-    width: 80%;
-    cursor: pointer;
-}
-
-nav form:hover input,
-form:valid input {
-    display: block;
-}
-
-nav form:hover .fa,
-form:valid .fa {
-    background: var(--text);
-    color: var(--foreground);
 }
 
 .nav-profile {
@@ -641,7 +599,7 @@ prepost {
 }
 
 .comment-container > div:nth-child(4) {
-    margin-top: auto;
+    margin-top: 0;
 }
 
 .comment-create-container {
