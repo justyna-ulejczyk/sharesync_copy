@@ -1,4 +1,4 @@
-<?php
+
 
 session_start();
 if (!isset($_SESSION["username"])) {
@@ -54,4 +54,4 @@ if ($dob !== null) {
 }
 header ('Location:../html/Settings.php');
     exit();
-?>
+

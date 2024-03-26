@@ -314,7 +314,9 @@ session_write_close();
                     </span>
                 </div>
                 <div class='settings-box'>
-                    <div class='settings-options'>
+
+                    <button class="dropbtn">Settings Options</button>
+                    <div class="dropdown-content-settings">
                         <input type="radio" id="tab1" name="tab" checked>
                         <label for="tab1">Manage Group</label>
                         <input type="radio" id="tab2" name="tab">
@@ -484,6 +486,8 @@ session_write_close();
 
     <script src="../js/icon-change.js"></script>
     <script src="../js/group-settings.js"></script>
+
+
 </body>
 
 </html>

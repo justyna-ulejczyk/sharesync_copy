@@ -547,7 +547,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
         <!-- Displaying About -->
         <section class="profile-info-about">
 
-            <?php
+            <!-- <?php
             $details = pg_prepare($conn, "details", "SELECT * FROM accounts Where username = $1 ");
             $detailsResult = pg_execute($conn, "details", array($account_username));
             $row = pg_fetch_assoc($detailsResult);
@@ -599,7 +599,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
             </div>
 
             <section id="friends">
-                <div>
+                <div> -->
                     <?php
                     //require_once '../php/connect_db.php';
                     $followeeStmt = pg_prepare($conn, "follows", "SELECT * From follows Where username = $1");
@@ -615,9 +615,9 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         while ($row = pg_fetch_assoc($followeeEx)) {
                             $foll = $row['followee'];
 
-                            echo '<div class="profile">
-                                   <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">';
+                            echo '<div class="profile">';
+                                  echo " <img src='../Profile_pic/profile_pic_$foll.png' alt='friend profile pic'>
+                                   <p id='friendName'>";
                             echo "<a href ='../html/Profile.php?id=$foll'>$foll<a> </p>";
                             if ($login_username == $account_username) {
                                 echo "<span><a href='../php/stop_follow.php?id=$foll'><img id='trash'src='/images/icons/trash-bin-trash-svgrepo-com.svg'></img> </a></div>";
@@ -635,9 +635,9 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         echo "<p>$account_username has $numRows2 followers: </p>";
                         while ($row = pg_fetch_assoc($followersEx)) {
                             $foll = $row['username'];
-                            echo '<div class="profile">
-                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                    <p id="friendName">';
+                            echo '<div class="profile">';
+                                   echo " <img src='../profile_pic/profile_pic_$foll.png' alt='friend profile pic'>";
+                                   echo' <p id="friendName">';
                             echo "<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a>";
                             echo '</p>;
                             </div>';

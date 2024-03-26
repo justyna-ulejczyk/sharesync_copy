@@ -290,18 +290,18 @@ $visibility = $row["accountvisibility"];
 
 
 
-            <h1 onclick="account()">Account</h2>
+          <h1 onclick="account()">Account</h2>
                 <h3 onclick="updateEmail()">Update Email</h3>
                 <h3 onclick="updateName()">Update Name</h3>
                 <h3 onclick="updatePassword()">Reset Password</h3>
                 <h3 onclick="updateBio()">Update Bio</h3>
-                <h3 onclick="overview()">Overview</h3>
+                <!-- <h3 onclick="overview()">Overview</h3> -->
                 <!-- <h3 onclick="contactinfo()">Contact Info</h3> -->
 
                 <h1 onclick="privacy()">Privacy & security</h2>
                     <h3 onclick="accountPrivacy()">Account Privacy</h3>
                     <h3 onclick="privacyPolicy()"> Privacy Policy</h3>
-                    <h3 onclick="deleteAccount()">Delete Account</h3>
+                    <h3 onclick="deleteAccount()">Delete Account</h3> 
 
 
         </div>
@@ -452,7 +452,7 @@ $visibility = $row["accountvisibility"];
             </form>
         </div>
 
-        <div id="overview">
+        <!-- <div id="overview">
             <span class="updateTitle">Overview</span>
             <div class='divider'></div>
             <form action="../php/profile_details.php" method="post">
@@ -526,7 +526,7 @@ $visibility = $row["accountvisibility"];
             
         
 
-        </div>
+        </div> -->
 
 
         <div id="privacyPolicy">
